@@ -1,0 +1,271 @@
+/* =========================================
+   FITNESS LIFE - CALCULADORA (YELLOW MODERN UI)
+========================================= */
+
+/* ===== VARIABLES ===== */
+:root{
+
+    --bg: #05070D;
+    --bg-2: #000000;
+
+    --card: #0E1420;
+    --card-2: #141B2B;
+
+    --border: rgba(255,255,255,0.08);
+
+    --text: #ffffff;
+    --soft: rgba(255,255,255,0.65);
+
+    --gold: #FFD400;
+
+    --radius: 18px;
+}
+
+/* ===== GLOBAL ===== */
+body{
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    background: var(--bg);
+    color: var(--text);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+/* ===================== LOADER ===================== */
+#loader{
+    position: fixed;
+    inset: 0;
+    background: var(--bg-2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+}
+
+.loader-content{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    animation: fadeUp .6s ease;
+}
+
+.loader-content h2{
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(255,212,0,0.25);
+}
+
+.loader-content p{
+    color: var(--soft);
+    font-size: 14px;
+}
+
+/* ===== LINEAS ANIMADAS ===== */
+.line-loader{
+    display: flex;
+    gap: 6px;
+    align-items: flex-end;
+    justify-content: center;
+    height: 50px;
+}
+
+.line-loader span{
+    width: 6px;
+    height: 20px;
+    background: var(--gold);
+    border-radius: 10px;
+    animation: lines 1s infinite ease-in-out;
+}
+
+.line-loader span:nth-child(2){ animation-delay: 0.1s; }
+.line-loader span:nth-child(3){ animation-delay: 0.2s; }
+.line-loader span:nth-child(4){ animation-delay: 0.3s; }
+.line-loader span:nth-child(5){ animation-delay: 0.4s; }
+
+@keyframes lines{
+    0%, 100%{
+        height: 10px;
+        opacity: 0.4;
+    }
+    50%{
+        height: 50px;
+        opacity: 1;
+        box-shadow: 0 0 12px var(--gold);
+    }
+}
+
+/* ===================== NAVBAR ===================== */
+.navbar{
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(5,7,13,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-container{
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LINKS */
+.nav-links a{
+    color: var(--soft);
+    text-decoration: none;
+    margin-left: 15px;
+    position: relative;
+    transition: .3s ease;
+}
+
+/* HOVER */
+.nav-links a:hover{
+    color: var(--gold);
+    transform: translateY(-2px);
+}
+
+/* UNDERLINE ANIMADO */
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:0%;
+    height:2px;
+    background: var(--gold);
+    transition:.3s ease;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* ===================== CALCULADORA ===================== */
+.calc-container{
+    max-width: 900px;
+    margin: auto;
+    padding: 120px 20px 60px;
+    text-align: center;
+    animation: fadeUp .7s ease;
+}
+
+.calc-container h1{
+    font-size: 2.4rem;
+    margin-bottom: 25px;
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 18px rgba(255,212,0,0.2);
+}
+
+/* FORMULARIO */
+.calc-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    background: var(--card);
+    padding: 25px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+
+    transition: .3s ease;
+}
+
+.calc-form:hover{
+    box-shadow: 0 10px 30px rgba(255,212,0,0.08);
+    transform: translateY(-3px);
+}
+
+/* INPUTS */
+.calc-form input,
+.calc-form select{
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #0B0F18;
+    color: var(--text);
+    outline: none;
+    transition: .3s;
+}
+
+/* FOCUS */
+.calc-form input:focus,
+.calc-form select:focus{
+    border-color: var(--gold);
+    box-shadow: 0 0 10px rgba(255,212,0,0.25);
+    transform: scale(1.02);
+}
+
+/* BOTÓN */
+.calc-form button{
+    grid-column: 1 / -1;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 900;
+    color: #000;
+    background: var(--gold);
+    transition: .3s ease;
+}
+
+/* BOTÓN HOVER */
+.calc-form button:hover{
+    transform: scale(1.04);
+    box-shadow: 0 0 20px rgba(255,212,0,0.35);
+}
+
+/* RESULTADOS */
+.resultado{
+    margin-top: 25px;
+    background: var(--card-2);
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    text-align: left;
+    animation: fadeIn .5s ease;
+}
+
+.resultado p{
+    margin: 6px 0;
+    color: var(--soft);
+}
+
+/* ===================== ANIMACIONES ===================== */
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media(max-width: 768px){
+    .calc-form{
+        grid-template-columns: 1fr;
+    }
+
+    .calc-container h1{
+        font-size: 2rem;
+    }
+}

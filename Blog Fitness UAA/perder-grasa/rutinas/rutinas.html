@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Entrenamiento - Perder Grasa</title>
+
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+<!-- ===================== LOADER ===================== -->
+<div id="loader">
+    <div class="loader-content">
+
+        <div class="line-loader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <h2>Fitness Life</h2>
+        <p>Cargando entrenamiento...</p>
+
+    </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="index.html" class="logo-box">
+            <img src="img/logo.png" class="nav-logo" alt="Logo">
+            <span class="logo-text">Fitness Life</span>
+        </a>
+
+        <button class="menu-toggle" id="menu-toggle">☰</button>
+
+        <nav class="nav-links" id="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="#categorias">Categorías</a>
+            <a href="Calculadora.html">Calculadora</a>
+        </nav>
+
+    </div>
+
+</header>
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Perder Grasa</h1>
+
+            <p>
+                Elegí el tipo de entrenamiento ideal para reducir grasa corporal y mejorar tu condición física.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CONTENIDO -->
+    <main class="container">
+
+        <section class="section-title">
+            <h2>Seleccioná tu tipo de entrenamiento</h2>
+        </section>
+
+        <section class="cards">
+
+            <!-- CASA -->
+            <a class="card" href="entrenamiento-casa/index.html">
+
+                <h3>Casa</h3>
+
+                <p>
+                    Rutinas de cardio y ejercicios con peso corporal para quemar grasa desde casa.
+                </p>
+
+            </a>
+
+            <!-- GYM -->
+            <a class="card" href="entrenamiento-gym/index.html">
+
+                <h3>Gym</h3>
+
+                <p>
+                    Entrenamientos enfocados en cardio, circuitos y quema de grasa con máquinas y pesas.
+                </p>
+
+            </a>
+
+        </section>
+
+    </main>
+<script>
+window.addEventListener("load", () => {
+
+    const loader = document.getElementById("loader");
+
+    document.body.style.opacity = "1";
+
+    setTimeout(() => {
+        loader.style.opacity = "0";
+        loader.style.transition = "0.8s ease";
+
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 800);
+
+    }, 1200);
+
+});
+</script>
+
+</body>
+
+</html>
