@@ -1,0 +1,429 @@
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',system-ui,sans-serif;
+    background: radial-gradient(circle at 50% 0%, #141414 0%, #060606 55%, #000000 100%);
+    color:#f2f2f2;
+    line-height:1.6;
+}
+
+/* ================= LINKS ================= */
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* ================= LOGO BAR ================= */
+
+.logo-bar{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:72px;
+
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border-bottom:1px solid rgba(255,255,255,.09);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 24px;
+
+    z-index:1000;
+}
+
+.logo-container{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+}
+
+.brand{
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:#fff;
+    opacity:0.9;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.nav-links a{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#888;
+    padding:8px 14px;
+    border-radius:999px;
+    transition:.2s ease;
+}
+
+.nav-links a:hover{
+    color:#fff;
+    background:rgba(255,255,255,.06);
+}
+
+.nav-links a.active{
+    color:#000;
+    background:#fff;
+    box-shadow: 0 0 16px rgba(255,255,255,0.22);
+}
+
+.nav-toggle{
+    display:none;
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+    padding:140px 20px 70px;
+}
+
+.hero-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.badge{
+    font-size:12px;
+    color:#888;
+    border:1px solid rgba(255,255,255,0.06);
+    background:rgba(255,255,255,0.02);
+    padding:6px 10px;
+    border-radius:999px;
+    display:inline-block;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:2.4rem;
+    font-weight:600;
+    line-height:1.1;
+    margin-bottom:12px;
+}
+
+.hero p{
+    color:#888;
+    margin-bottom:25px;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    display:flex;
+    gap:28px;
+}
+
+.stats h3{
+    font-size:1.1rem;
+    color:#fff;
+}
+
+.stats p{
+    font-size:12px;
+    color:#777;
+}
+
+/* ================= SLIDER ================= */
+
+.slider{
+    position:relative;
+    width:100%;
+    height:360px;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,0.65), inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.slider img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    animation: fade 16s infinite;
+}
+
+.slider img:nth-child(1){ animation-delay:0s; }
+.slider img:nth-child(2){ animation-delay:4s; }
+.slider img:nth-child(3){ animation-delay:8s; }
+.slider img:nth-child(4){ animation-delay:12s; }
+
+@keyframes fade{
+    0%{opacity:0;}
+    10%{opacity:1;}
+    25%{opacity:1;}
+    35%{opacity:0;}
+    100%{opacity:0;}
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+/* ================= SECTION TITLE ================= */
+
+.section-title{
+    max-width:1000px;
+    margin:70px auto 20px;
+    padding:0 20px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+}
+
+.section-title .idx{
+    font-size:20px;
+    color:#fff;
+    opacity:0.6;
+}
+
+.section-title h2{
+    font-size:1.6rem;
+    font-weight:600;
+}
+
+.section-title p{
+    color:#777;
+    font-size:14px;
+    margin-top:4px;
+}
+
+/* ================= DAY NAV ================= */
+
+.day-nav{
+    max-width:1000px;
+    margin:30px auto;
+    padding:0 20px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.day-nav a{
+    font-size:13px;
+    padding:8px 12px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.06);
+    background:rgba(255,255,255,0.015);
+    color:#aaa;
+    transition:.2s ease;
+}
+
+.day-nav a:hover{
+    color:#fff;
+    border-color:rgba(255,255,255,0.15);
+    transform:translateY(-2px);
+}
+
+/* ================= BENTO GRID ================= */
+
+.bento{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
+
+/* ================= CARDS (IDÉNTICAS AL ORIGINAL) ================= */
+
+.card,
+.routine-block{
+    background:linear-gradient(180deg,#0c0c0c,#0a0a0a);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    transition:.25s ease;
+}
+
+.card:hover,
+.routine-block:hover{
+    transform:translateY(-4px);
+    border-color:rgba(255,255,255,0.12);
+    box-shadow:0 20px 50px rgba(0,0,0,0.6);
+}
+
+.card.large,
+.card.wide{
+    grid-column:span 2;
+}
+
+/* ================= IMÁGENES EJERCICIO ================= */
+
+.exercise-img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:12px;
+    margin-bottom:14px;
+    filter:contrast(1.05) brightness(0.95);
+}
+
+/* ================= TAGS ================= */
+
+.tag,
+.variant-tag{
+    font-size:12px;
+    color:#aaa;
+    border:1px solid rgba(255,255,255,0.06);
+    padding:5px 10px;
+    border-radius:999px;
+    display:inline-block;
+    margin-bottom:12px;
+}
+
+.muscle-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin:10px 0 14px;
+}
+
+.muscle-tag{
+    font-size:11px;
+    color:#777;
+    border:1px solid rgba(255,255,255,0.06);
+    padding:4px 8px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.02);
+}
+
+/* ================= EJERCICIOS ================= */
+
+.exercise-row{
+    display:flex;
+    justify-content:space-between;
+    padding:6px 0;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+    font-size:14px;
+    color:#ddd;
+}
+
+.exercise-row span:first-child{
+    color:#eaeaea;
+}
+
+.sets{
+    color:#fff;
+    font-weight:500;
+    opacity:0.85;
+}
+
+/* ================= TEXTOS ================= */
+
+.equip{
+    font-size:13px;
+    color:#777;
+    margin-bottom:10px;
+}
+
+.routine-sub{
+    margin-top:14px;
+    margin-bottom:8px;
+    font-size:13px;
+    color:#bbb;
+    letter-spacing:0.5px;
+}
+
+.circuit-note{
+    margin-top:10px;
+    font-size:12px;
+    color:#666;
+    font-style:italic;
+}
+
+/* ================= BOTÓN ================= */
+
+.btn{
+    display:inline-block;
+    padding:10px 18px;
+    background:#fff;
+    color:#000;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:500;
+    box-shadow:0 8px 24px rgba(255,255,255,0.12), inset 0 1px 0 rgba(255,255,255,0.4);
+    transition:.2s ease;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 34px rgba(255,255,255,0.2), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    text-align:center;
+    padding:60px 20px;
+    color:#666;
+    border-top:1px solid rgba(255,255,255,0.06);
+    background:linear-gradient(to bottom, transparent, rgba(0,0,0,0.5));
+    font-size:13px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+.hero-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+}
+
+.hero h1{
+    font-size:2rem;
+}
+
+.stats{
+    flex-wrap:wrap;
+    gap:16px;
+}
+
+.bento{
+    grid-template-columns:1fr;
+}
+
+.slider{
+    height:240px;
+}
+}

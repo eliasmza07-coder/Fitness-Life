@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Life | Calculadora Guía Nutricional Completa</title>
+  <link rel="stylesheet" href="calculadora.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="pulse-dot"></span>
+    FITNESS LIFE • CALCULADORA GUÍA NUTRICIONAL ORIENTATIVA
+  </div>
+  <nav class="nav-menu">
+    <a href="#calculadora">Calculadora</a>
+    <a href="#analisis">Análisis Dinámico</a>
+    <a href="#guia">Guía General</a>
+    <a href="#tips">Tips y Recomendaciones</a>
+  </nav>
+</header>
+
+<main class="app-container">
+
+  <!-- =============== SECCIÓN 1: CALCULADORA PRINCIPAL =============== -->
+  <section id="calculadora" class="grid-main">
+    <div class="box-card">
+      <h1>Tus Datos</h1>
+      <p>Completa tus datos para obtener un plan nutricional orientativo, con análisis completo y guía de aplicación.</p>
+
+      <div class="form-stack">
+        <div class="span-full">
+          <label for="edad">Edad</label>
+          <input id="edad" type="number" placeholder="Edad (ej: 28)">
+        </div>
+
+        <div class="span-full">
+          <label for="sexo">Sexo</label>
+          <select id="sexo">
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="peso">Peso (kg)</label>
+          <input id="peso" type="number" step="0.1" placeholder="Ej: 75.0">
+        </div>
+
+        <div>
+          <label for="altura">Altura (cm)</label>
+          <input id="altura" type="number" step="0.1" placeholder="Ej: 175">
+        </div>
+
+        <label class="label-title">Nivel de movimiento diario</label>
+        <div class="span-full">
+          <select id="actividad">
+            <option value="1.2">Sedentario (Oficina / poco movimiento)</option>
+            <option value="1.375">Ligero (Caminatas / 1-3 días suaves)</option>
+            <option value="1.55" selected>Moderado (Entreno 3-5 días / vida activa)</option>
+            <option value="1.725">Intenso (Entreno pesado 6-7 días)</option>
+            <option value="1.9">Muy intenso (Atleta / doble turno)</option>
+          </select>
+        </div>
+
+        <label class="label-title">Objetivo principal</label>
+        <div class="span-full">
+          <select id="objetivo">
+            <option value="deficit_agresivo">Bajar grasa rápido (-750 kcal)</option>
+            <option value="deficit" selected>Bajar grasa progresivo y seguro (-500 kcal)</option>
+            <option value="mantenimiento">Mantener peso y energía estable</option>
+            <option value="superavit">Ganar masa muscular (+300 kcal)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button class="btn-main" onclick="calcularPlanDirecto()">Calcular guía completa</button>
+        <button class="btn-ghost" onclick="limpiarPlan()">Borrar</button>
+        <button class="btn-ghost btn-print" onclick="window.print()">Imprimir</button>
+      </div>
+
+      <p class="tech-note">
+        Esta herramienta usa la ecuación Mifflin–St Jeor para estimar tu TMB (metabolismo basal) y tu TDEE (gasto energético total),
+        tal como hacen las calculadoras serias de calorías y macros, y distribuye los macronutrientes siguiendo enfoques habituales:
+        proteína priorizada, grasas suficientes para salud hormonal y el resto en carbohidratos. Es una guía orientativa y no reemplaza
+        el criterio de un profesional de la salud. [web:14][web:58]
+      </p>
+    </div>
+
+    <div class="box-card results-header">
+      <h2>Tu referencia diaria</h2>
+      <p>Calorías, agua y macros calculados, más una vista visual rápida de cómo se reparte tu energía.</p>
+
+      <div id="resultado" class="direct-grid">
+        <div class="metric-pod span-full" style="text-align:center; padding: 45px 0; color:var(--text-muted)">
+          Completá tus datos a la izquierda para ver tu guía diaria personalizada.
+        </div>
+      </div>
+
+      <div id="visuales" class="visuals-grid">
+        <!-- Se llena dinámicamente con barra de macros y resumen rápido -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== SECCIÓN 2: ANÁLISIS DINÁMICO =============== -->
+  <section id="analisis" class="guide-layout">
+    <div>
+      <h2>Análisis completo de tus resultados</h2>
+      <p class="sub">Todo lo que significa tu plan, con números y explicación en lenguaje simple.</p>
+    </div>
+
+    <div id="analisis-contenido" class="analysis-grid">
+      <div class="guide-card-item">
+        <h3>Esperando tus datos</h3>
+        <p>Calculá primero tu guía en la parte superior para ver un análisis dinámico adaptado a tu objetivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== SECCIÓN 3: GUÍA GENERAL DE USO =============== -->
+  <section id="guia" class="guide-layout">
+    <div>
+      <h2>Guía general: cómo aplicar tu plan</h2>
+      <p class="sub">Principios que valen para cualquier objetivo, pensados para la vida real y no solo para los números.</p>
+    </div>
+
+    <div class="guide-card-item neon">
+      <h3>Usá las calorías como marco, no como castigo</h3>
+      <p>
+        Las calorías calculadas son un rango orientativo basado en tu gasto estimado y tu objetivo. No son un castigo, ni una prisión.
+        Funcionan como referencia para que tengas una idea clara de “aproximadamente cuánto” comer al día. Las buenas calculadoras
+        de macros suelen trabajar con ajustes de ±300 a ±500 kcal alrededor del TDEE para lograr cambios sin extremos. [web:14][web:58]
+      </p>
+    </div>
+
+    <div class="guide-card-item amber">
+      <h3>Proteína alta: seguro mínimo de tu músculo</h3>
+      <p>
+        La proteína calculada busca que tengas un objetivo claro en gramos por día, normalmente entre 1.8 y 2.2 g/kg, tal como muchas
+        guías de recomposición corporal recomiendan para cuidar masa muscular mientras bajas grasa o subís volumen. Esto ayuda a que
+        los cambios en la balanza no sean solo de agua o músculo perdido. [web:58]
+      </p>
+    </div>
+
+    <div class="guide-card-item violet">
+      <h3>Agua, descanso y coherencia semanal</h3>
+      <p>
+        Ningún plan funciona si el sueño, el estrés y la hidratación son un desastre. Usá el objetivo de agua como base diaria,
+        pero poné foco en dormir bien, entrenar con sentido y no rendirte por uno o dos días malos. Muchas calculadoras y coaches
+        insisten en mirar tendencias semanales, no solo el peso de un día. [web:58]
+      </p>
+    </div>
+  </section>
+
+  <!-- =============== SECCIÓN 4: TIPS Y RECOMENDACIONES DINÁMICAS =============== -->
+  <section id="tips" class="guide-layout">
+    <div>
+      <h2>Tips personalizados según tu resultado</h2>
+      <p class="sub">Consejos adaptados a tu distribución de macros y tu objetivo.</p>
+    </div>
+
+    <div id="tips-contenido" class="analysis-grid">
+      <div class="guide-card-item">
+        <h3>Esperando tu cálculo</h3>
+        <p>Una vez que calcules tu plan, acá vas a ver recomendaciones específicas según cómo quedaron tus macros.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+function calcularPlanDirecto() {
+  const edad = +document.getElementById("edad").value;
+  const sexo = document.getElementById("sexo").value;
+  const peso = +document.getElementById("peso").value;
+  const altura = +document.getElementById("altura").value;
+  const actividad = +document.getElementById("actividad").value;
+  const objetivo = document.getElementById("objetivo").value;
+
+  if (!edad || !peso || !altura) {
+    alert("Completá todos los datos numéricos requeridos (edad, peso, altura).");
+    return;
+  }
+
+  // === CÁLCULOS PRINCIPALES (Mifflin–St Jeor + TDEE) ===
+  const tmb = sexo === "hombre"
+    ? 10 * peso + 6.25 * altura - 5 * edad + 5
+    : 10 * peso + 6.25 * altura - 5 * edad - 161;
+
+  const tdee = tmb * actividad;
+
+  const ajustes = {
+    deficit_agresivo: -750,
+    deficit: -500,
+    mantenimiento: 0,
+    superavit: 300
+  };
+
+  const caloriasObjetivo = tdee + (ajustes[objetivo] || 0);
+
+  // mínimo de seguridad
+  const calorias = Math.max(
+    sexo === "hombre" ? 1500 : 1200,
+    caloriasObjetivo
+  );
+
+  const proteina = Math.round(peso * 2.2);        // g/día (≈2.2 g/kg)
+  const grasa = Math.round(peso * 0.9);           // g/día
+  const carbs = Math.max(
+    0,
+    Math.round((calorias - (proteina * 4 + grasa * 9)) / 4)
+  );
+  const agua = (peso * 0.035).toFixed(1);         // litros/día aprox.
+
+  // === VISUAL DE MACROS ===
+  const kcalProteina = proteina * 4;
+  const kcalGrasa = grasa * 9;
+  const kcalCarbs = carbs * 4;
+  const totalKcalMacros = kcalProteina + kcalGrasa + kcalCarbs || 1;
+
+  const pctProteina = Math.round((kcalProteina / totalKcalMacros) * 100);
+  const pctGrasa = Math.round((kcalGrasa / totalKcalMacros) * 100);
+  const pctCarbs = Math.round((kcalCarbs / totalKcalMacros) * 100);
+
+  // === BLOQUE DE RESULTADOS PRINCIPALES ===
+  document.getElementById("resultado").innerHTML = `
+    <div class="metric-pod highlight">
+      <span class="lbl">Calorías orientativas al día</span>
+      <div class="val">${calorias.toFixed(0)} kcal</div>
+      <div class="sub">Punto de partida según tus datos y objetivo</div>
+    </div>
+
+    <div class="metric-pod">
+      <span class="lbl">Agua sugerida</span>
+      <div class="val">${agua} L</div>
+      <div class="sub">Mínimo diario recomendado de hidratación</div>
+    </div>
+
+    <div class="metric-pod">
+      <span class="lbl">Proteínas</span>
+      <div class="val">${proteina} g</div>
+      <div class="sub">Clave para cuidar y construir músculo</div>
+    </div>
+
+    <div class="metric-pod">
+      <span class="lbl">Carbohidratos y grasas</span>
+      <div class="val">${carbs}g / ${grasa}g</div>
+      <div class="sub">Energía diaria + salud hormonal</div>
+    </div>
+  `;
+
+  // === VISUALES (BARRAS DE MACROS + RESUMEN) ===
+  document.getElementById("visuales").innerHTML = `
+    <div class="visual-card">
+      <h3>Distribución de calorías por macronutriente</h3>
+      <p>Así se reparte tu energía diaria entre proteína, carbohidratos y grasas.</p>
+      <div class="macro-bars">
+        <div class="macro-bar macro-protein" style="width:${pctProteina}%">
+          Proteína: ${pctProteina}% (${proteina} g)
+        </div>
+        <div class="macro-bar macro-carbs" style="width:${pctCarbs}%">
+          Carbohidratos: ${pctCarbs}% (${carbs} g)
+        </div>
+        <div class="macro-bar macro-fat" style="width:${pctGrasa}%">
+          Grasas: ${pctGrasa}% (${grasa} g)
+        </div>
+      </div>
+      <p class="macro-note">
+        La proteína se prioriza para proteger tu masa muscular, las grasas sostienen tus hormonas
+        y sistema nervioso, y el resto de calorías va a carbohidratos para alimentar tu entrenamiento
+        y tu vida diaria, tal como proponen muchas calculadoras de macros modernas. [web:14][web:58]
+      </p>
+    </div>
+
+    <div class="visual-card">
+      <h3>Resumen semanal aproximado</h3>
+      <p>Ver tu plan en una semana ayuda a bajar la ansiedad de “un día malo”.</p>
+      <ul class="weekly-list">
+        <li>Calorías semanales: <strong>${(calorias * 7).toFixed(0)} kcal</strong></li>
+        <li>Proteína semanal: <strong>${proteina * 7} g</strong></li>
+        <li>Carbohidratos semanales: <strong>${carbs * 7} g</strong></li>
+        <li>Grasas semanales: <strong>${grasa * 7} g</strong></li>
+      </ul>
+      <p class="macro-note">
+        Muchas guías de composición corporal recomiendan observar tendencias semanales de calorías,
+        macros y peso, en lugar de obsesionarse con un único día o medición. [web:58]
+      </p>
+    </div>
+  `;
+
+  // === ANÁLISIS DINÁMICO SEGÚN OBJETIVO ===
+  let tituloAnalisis;
+  let textoIntro;
+  let textoDetalle;
+
+  if (objetivo.includes("deficit")) {
+    tituloAnalisis = "Estás trabajando en un déficit calórico";
+    textoIntro = `
+      Estás aplicando un <strong>déficit calórico progresivo</strong>, calculado restando calorías al TDEE
+      sin caer en extremos. Este esquema es similar al que usan calculadoras serias de pérdida de grasa,
+      restando alrededor de 500 kcal al gasto diario estimado. [web:14][web:58]
+    `;
+    textoDetalle = `
+      • Tu TMB estimado (metabolismo basal) es de <strong>${tmb.toFixed(0)} kcal/día</strong>.<br>
+      • Tu TDEE estimado (gasto total) ronda las <strong>${tdee.toFixed(0)} kcal/día</strong>.<br>
+      • Tu plan de déficit apunta a unas <strong>${calorias.toFixed(0)} kcal/día</strong>, respetando mínimos
+        de seguridad para evitar recortes exagerados.<br><br>
+      La proteína alta (<strong>${proteina} g/día</strong>) ayuda a mantener tu masa muscular mientras el cuerpo
+      utiliza más grasa como energía. Las grasas (<strong>${grasa} g/día</strong>) sostienen salud hormonal,
+      y los carbohidratos (<strong>${carbs} g/día</strong>) se ajustan como combustible flexible para tu día y tu entrenamiento.
+    `;
+  } else if (objetivo === "superavit") {
+    tituloAnalisis = "Estás trabajando en un superávit moderado";
+    textoIntro = `
+      Estás en un <strong>superávit moderado</strong>, añadiendo calorías por encima de tu TDEE para promover
+      ganancia de masa muscular con la menor cantidad posible de grasa extra. Esto se parece a los enfoques
+      que recomiendan +250 a +300 kcal para volumen controlado. [web:14][web:58]
+    `;
+    textoDetalle = `
+      • TMB estimado: <strong>${tmb.toFixed(0)} kcal/día</strong>.<br>
+      • TDEE estimado: <strong>${tdee.toFixed(0)} kcal/día</strong>.<br>
+      • Calorías objetivo en superávit: <strong>${calorias.toFixed(0)} kcal/día</strong>.<br><br>
+      Con este nivel de calorías, y entrenamiento de fuerza consistente, tus mejoras deberían verse en fuerza,
+      rendimiento y medidas corporales en varias semanas. Proteína (<strong>${proteina} g/día</strong>) y carbohidratos
+      (<strong>${carbs} g/día</strong>) son clave para alimentar tus entrenos, mientras las grasas
+      (<strong>${grasa} g/día</strong>) sostienen tu sistema hormonal y la recuperación.
+    `;
+  } else {
+    tituloAnalisis = "Estás en mantenimiento controlado";
+    textoIntro = `
+      Estás usando un esquema de <strong>mantenimiento</strong>, que busca que tu ingesta calórica se aproxime
+      a tu gasto diario, manteniendo peso pero ganando estabilidad en energía, hambre y rendimiento físico.
+    `;
+    textoDetalle = `
+      • TMB estimado: <strong>${tmb.toFixed(0)} kcal/día</strong>.<br>
+      • TDEE estimado: <strong>${tdee.toFixed(0)} kcal/día</strong>.<br>
+      • Calorías objetivo de mantenimiento: <strong>${calorias.toFixed(0)} kcal/día</strong>.<br><br>
+      Es un buen punto de partida para construir hábitos sólidos de comida y actividad. La proteína alta
+      (<strong>${proteina} g/día</strong>) sigue protegiendo tu músculo, mientras las grasas
+      (<strong>${grasa} g/día</strong>) y los carbohidratos (<strong>${carbs} g/día</strong>) te dan margen
+      para ajustar según tu respuesta real (energía, hambre, rendimiento).
+    `;
+  }
+
+  document.getElementById("analisis-contenido").innerHTML = `
+    <div class="guide-card-item">
+      <h3>${tituloAnalisis}</h3>
+      <p>${textoIntro}</p>
+    </div>
+
+    <div class="guide-card-item">
+      <h3>Resumen técnico de tu plan</h3>
+      <p>${textoDetalle}</p>
+    </div>
+
+    <div class="guide-card-item">
+      <h3>Cómo interpretar cambios en la vida real</h3>
+      <p>
+        • Si tu energía diaria mejora y tu rendimiento en entrenamientos sube, es señal de que las calorías y los macros
+          están cerca de lo que necesitás.<br>
+        • Si el hambre es extremadamente alta o el cansancio constante, puede que el déficit sea muy agresivo o que el
+          descanso no acompañe.<br>
+        • Si el peso sube o baja más rápido de lo esperado, revisá tanto las calorías como el sueño, el estrés y la calidad
+          de los alimentos, no solo los números.<br><br>
+        Las calculadoras avanzadas suelen combinar estos datos numéricos con observación diaria y ajustes suaves,
+        en lugar de cambios drásticos de un día para otro. [web:58]
+      </p>
+    </div>
+
+    <div class="guide-card-item">
+      <h3>Cuándo deberías recalcular tu plan</h3>
+      <p>
+        • Cada vez que tu peso cambie de forma significativa (por ejemplo, más de 3-5 kg).<br>
+        • Si cambiás tu nivel de actividad (de sedentario a entrenar varios días, o viceversa).<br>
+        • Si tu objetivo cambia (pasar de bajar grasa a volumen, o de volumen a mantenimiento).<br><br>
+        Recalcular cada cierto tiempo es lo que recomiendan muchas herramientas de macros para mantener tus objetivos
+        actualizados a tu realidad actual. [web:14][web:58]
+      </p>
+    </div>
+  `;
+
+  // === TIPS PERSONALIZADOS SEGÚN DISTRIBUCIÓN DE MACROS ===
+  let tipsHtml = "";
+
+  if (pctProteina < 25) {
+    tipsHtml += `
+      <div class="guide-card-item">
+        <h3>Tu proteína está relativamente baja</h3>
+        <p>
+          La proteína representa solo <strong>${pctProteina}%</strong> de tus calorías. Podrías considerar subirla
+          ligeramente (por ejemplo, añadiendo una porción más de alimentos proteicos por día) para mejorar saciedad
+          y protección muscular, tal como sugieren muchas guías de recomposición corporal. [web:58]
+        </p>
+      </div>
+    `;
+  } else {
+    tipsHtml += `
+      <div class="guide-card-item">
+        <h3>Tu proteína está en buen nivel</h3>
+        <p>
+          La proteína representa alrededor de <strong>${pctProteina}%</strong> de tus calorías, lo cual está en línea
+          con muchas recomendaciones modernas para cambios de composición corporal. Mantené este nivel priorizando
+          fuentes de calidad (carnes magras, huevos, lácteos, legumbres, etc.). [web:58]
+        </p>
+      </div>
+    `;
+  }
+
+  if (pctGrasa > 35) {
+    tipsHtml += `
+      <div class="guide-card-item">
+        <h3>Grasas algo altas</h3>
+        <p>
+          Las grasas ocupan cerca de <strong>${pctGrasa}%</strong> de tus calorías. Si tu objetivo es bajar grasa,
+          podrías revisar que estas grasas provengan mayormente de fuentes saludables (aceite de oliva, frutos secos,
+          palta, etc.) y no de ultraprocesados. Un enfoque balanceado suele moverse entre 20-35% de calorías en grasas. [web:54]
+        </p>
+      </div>
+    `;
+  } else {
+    tipsHtml += `
+      <div class="guide-card-item">
+        <h3>Grasas en rango moderado</h3>
+        <p>
+          Tus grasas representan aproximadamente <strong>${pctGrasa}%</strong> de las calorías, un rango habitual para
+          mantener buen funcionamiento hormonal y sensación de estabilidad. Mantené fuentes de grasa saludables como base. [web:54]
+        </p>
+      </div>
+    `;
+  }
+
+  if (pctCarbs < 35) {
+    tipsHtml += `
+      <div class="guide-card-item">
+        <h3>Carbohidratos relativamente bajos</h3>
+        <p>
+          Los carbohidratos aportan cerca de <strong>${pctCarbs}%</strong> de tus calorías. Si entrenás fuerza o deportes
+          intensos, podría ser útil subir ligeramente esta parte con carbohidratos de calidad (arroz, papa, avena, frutas)
+          para mejorar rendimiento, siguiendo ideas de timing de carbohidratos alrededor del entrenamiento. [web:58]
+        </p>
+      </div>
+    `;
+  } else {
+    tipsHtml += `
+      <div class="guide-card-item">
+        <h3>Carbohidratos en buen rango</h3>
+        <p>
+          Los carbohidratos aportan alrededor de <strong>${pctCarbs}%</strong> de tus calorías, lo que suele sostener bien
+          entrenamientos y actividad diaria. Priorizar carbohidratos complejos y frutas ayuda a mantener energía estable
+          sin picos pronunciados. [web:58]
+        </p>
+      </div>
+    `;
+  }
+
+  tipsHtml += `
+    <div class="guide-card-item">
+      <h3>Recordatorio clave</h3>
+      <p>
+        Estos tips son una guía general basada en tu distribución de macros. La respuesta real de tu cuerpo depende también
+        de tu contexto, tu historia, tu descanso y tu nivel de estrés. Usá la calculadora como punto de partida y ajustá
+        con sentido común o apoyo profesional si lo tenés. [web:58]
+      </p>
+    </div>
+  `;
+
+  document.getElementById("tips-contenido").innerHTML = tipsHtml;
+}
+
+function limpiarPlan() {
+  ["edad", "peso", "altura"].forEach(id => {
+    document.getElementById(id).value = "";
+  });
+
+  document.getElementById("resultado").innerHTML = `
+    <div class="metric-pod span-full" style="text-align:center; padding: 45px 0; color:var(--text-muted)">
+      Completá tus datos a la izquierda para ver tu guía diaria personalizada.
+    </div>
+  `;
+
+  document.getElementById("visuales").innerHTML = "";
+  document.getElementById("analisis-contenido").innerHTML = `
+    <div class="guide-card-item">
+      <h3>Esperando tus datos</h3>
+      <p>Calculá primero tu guía en la parte superior para ver un análisis dinámico adaptado a tu objetivo.</p>
+    </div>
+  `;
+
+  document.getElementById("tips-contenido").innerHTML = `
+    <div class="guide-card-item">
+      <h3>Esperando tu cálculo</h3>
+      <p>Una vez que calcules tu plan, acá vas a ver recomendaciones específicas según cómo quedaron tus macros.</p>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>

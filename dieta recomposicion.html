@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guía completa de nutrición para recomposición corporal: cálculo de calorías, macros, menú semanal, recetas, suplementos y errores comunes.">
+    <title>Fitness Life | Nutrición para Recomposición Corporal</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- LOGO BAR -->
+<header class="logo-bar">
+
+    <a href="../index.html" class="logo-container">
+        <img src="../img/logo.png" class="logo" alt="Fitness Life">
+        <span class="brand">Fitness Life</span>
+    </a>
+
+    <nav class="nav-links">
+        <a href="../index.html">Inicio</a>
+        <a href="../rutinas/rutinas.html">Entrenamiento</a>
+        <a href="../plan/plan.html">Plan</a>
+        <a href="dieta.html" class="active">Dieta</a>
+    </nav>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-grid">
+
+        <div class="hero-content">
+
+            <span class="badge mono">GUÍA · RECOMPOSICIÓN CORPORAL</span>
+
+            <h1>Come para construir músculo mientras perdés grasa.</h1>
+
+            <p>
+                Un sistema completo de nutrición: cuánto comer, qué comer, cuándo comer y cómo ajustarlo
+                cuando el progreso se detiene.
+            </p>
+
+            <div class="stats">
+                <div>
+                    <h3 class="mono">1.8–2.2</h3>
+                    <p>g de proteína / kg</p>
+                </div>
+                <div>
+                    <h3 class="mono">10–15%</h3>
+                    <p>déficit calórico</p>
+                </div>
+                <div>
+                    <h3 class="mono">2–3 L</h3>
+                    <p>agua diaria</p>
+                </div>
+            </div>
+
+            <a href="#calorias" class="btn">Calculá tus calorías</a>
+
+        </div>
+
+        <div class="slider">
+            <img src="img/icon-protein.svg" alt="Proteína">
+            <img src="img/icon-carbs.svg" alt="Carbohidratos">
+            <img src="img/icon-fats.svg" alt="Grasas saludables">
+            <img src="img/icon-hydration.svg" alt="Hidratación">
+        </div>
+
+    </div>
+
+</section>
+
+<main class="container">
+
+<!-- ÍNDICE -->
+<nav class="toc" aria-label="Índice de contenidos">
+    <a href="#intro">01 Introducción</a>
+    <a href="#calorias">02 Calorías</a>
+    <a href="#macros">03 Macros</a>
+    <a href="#plato">04 El plato</a>
+    <a href="#intercambios">05 Intercambios</a>
+    <a href="#menu">06 Menú semanal</a>
+    <a href="#recetas">07 Recetas</a>
+    <a href="#entreno">08 Pre/post entreno</a>
+    <a href="#hidratacion">09 Hidratación</a>
+    <a href="#suplementos">10 Suplementos</a>
+    <a href="#8020">11 Regla 80/20</a>
+    <a href="#errores">12 Errores</a>
+    <a href="#faq">13 Preguntas frecuentes</a>
+    <a href="#conclusion">14 Conclusión</a>
+</nav>
+
+<!-- INTRODUCCIÓN -->
+<section class="section-title" id="intro">
+    <span class="idx mono">01</span>
+    <div>
+        <h2>Qué es la recomposición corporal</h2>
+        <p>Bajar grasa y ganar músculo al mismo tiempo, sin pasar por fases separadas de "volumen" y "definición".</p>
+    </div>
+</section>
+
+<section class="bento">
+
+    <div class="card">
+        <span class="tag">Definición</span>
+        <h3>Dos procesos, un plan</h3>
+        <p>
+            Reducir grasa corporal mientras se desarrolla o mantiene masa muscular, mediante nutrición
+            y entrenamiento adecuados trabajando en conjunto. Funciona mejor en principiantes, personas
+            que retoman el entrenamiento después de una pausa, o quienes tienen sobrepeso moderado.
+        </p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Rol de la comida</span>
+        <h3>Combustible y material</h3>
+        <p>
+            La alimentación no solo aporta energía: entrega los nutrientes que el cuerpo usa para
+            recuperarse y construir tejido muscular nuevo. Sin suficiente proteína y calorías, el
+            entrenamiento por sí solo no alcanza.
+        </p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Tiempos realistas</span>
+        <h3>Cuánto tarda</h3>
+        <p>
+            Un ritmo sostenible ronda 0.3–0.5 kg de grasa perdida por semana, con cambios visibles en
+            composición corporal recién a partir de la semana 4–6. La balanza sola no cuenta la historia completa.
+        </p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Para quién no aplica igual</span>
+        <h3>Nivel avanzado</h3>
+        <p>
+            Con más años de entrenamiento serio, ganar músculo y perder grasa a la vez se vuelve más difícil.
+            En ese caso conviene alternar fases cortas de superávit y déficit en lugar de buscar todo al mismo tiempo.
+        </p>
+    </div>
+
+</section>
+
+<!-- CÁLCULO DE CALORÍAS -->
+<section class="section-title" id="calorias">
+    <span class="idx mono">02</span>
+    <div>
+        <h2>Cómo calcular tus calorías</h2>
+        <p>El número de mantenimiento del que parte todo lo demás.</p>
+    </div>
+</section>
+
+<section class="bento">
+
+    <div class="card large">
+        <span class="tag">Paso 1 · Metabolismo basal (Mifflin-St Jeor)</span>
+        <h3>Tasa metabólica basal (TMB)</h3>
+        <div class="formula-box">
+            <span class="formula mono">Hombres: TMB = (10 × peso kg) + (6.25 × altura cm) − (5 × edad) + 5</span>
+            <span class="formula mono">Mujeres: TMB = (10 × peso kg) + (6.25 × altura cm) − (5 × edad) − 161</span>
+        </div>
+        <p>
+            Ejemplo: hombre de 75 kg, 175 cm, 28 años → TMB = 750 + 1093.75 − 140 + 5 ≈ <strong>1709 kcal</strong>.
+        </p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Paso 2 · Factor de actividad</span>
+        <h3>Multiplicador diario</h3>
+        <div class="formula-box">
+            <span class="formula mono">Sedentario × 1.2</span>
+            <span class="formula mono">Actividad ligera × 1.375</span>
+            <span class="formula mono">Actividad moderada × 1.55</span>
+            <span class="formula mono">Actividad intensa × 1.725</span>
+        </div>
+        <p class="label">Entrenar 3–5 veces por semana suele ubicarse en "moderada" o "intensa".</p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Paso 3 · Ajuste según objetivo</span>
+        <h3>Calorías finales</h3>
+        <div class="formula-box">
+            <span class="formula mono">Mantenimiento = TMB × factor de actividad</span>
+            <span class="formula mono">Déficit leve = Mantenimiento × 0.85–0.90</span>
+        </div>
+        <p class="label">Siguiendo el ejemplo anterior con actividad moderada: 1709 × 1.55 ≈ 2649 kcal de mantenimiento.</p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Ajuste por respuesta real</span>
+        <h3>Revisá cada 2 semanas</h3>
+        <p>
+            Las fórmulas son un punto de partida, no una ley. Si en dos semanas el peso no se mueve y las
+            medidas tampoco, ajustá las calorías entre 100 y 150 kcal hacia el lado que corresponda.
+        </p>
+    </div>
+
+</section>
+
+<!-- MACRONUTRIENTES -->
+<section class="section-title" id="macros">
+    <span class="idx mono">03</span>
+    <div>
+        <h2>Macronutrientes</h2>
+        <p>Cómo se reparte la energía dentro de ese balance calórico.</p>
+    </div>
+</section>
+
+<section class="bento">
+
+    <div class="card large">
+        <div class="macro-panel">
+            <div class="macro-ring">
+                <span class="macro-center">POR<br>RACIÓN</span>
+            </div>
+            <div class="macro-legend">
+                <div class="row"><span class="dot p"></span> Proteína <span class="val">40%</span></div>
+                <div class="row"><span class="dot c"></span> Carbohidratos <span class="val">35%</span></div>
+                <div class="row"><span class="dot f"></span> Grasas <span class="val">25%</span></div>
+            </div>
+        </div>
+        <div class="formula-box">
+            <span class="formula mono">Proteína: 1.8–2.2 g/kg → 4 kcal/g</span>
+            <span class="formula mono">Grasas: 0.8–1 g/kg → 9 kcal/g</span>
+            <span class="formula mono">Carbohidratos: el resto de las calorías → 4 kcal/g</span>
+        </div>
+        <p class="label">Ejemplo para 75 kg y 2400 kcal: 150 g proteína (600 kcal) + 70 g grasa (630 kcal) + carbohidratos con las 1170 kcal restantes ≈ 292 g.</p>
+    </div>
+
+    <div class="card">
+        <span class="tag mono">1.8–2.2 G/KG</span>
+        <h3>Proteínas</h3>
+        <p>Por kilogramo de peso corporal, para favorecer la reparación y el crecimiento muscular. Repartida en 3–4 tomas a lo largo del día.</p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Energía</span>
+        <h3>Carbohidratos</h3>
+        <p>La principal fuente de energía para entrenamientos intensos y para la recuperación posterior. No hay razón para eliminarlos.</p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Hormonas</span>
+        <h3>Grasas saludables</h3>
+        <p>Fundamentales para la producción hormonal y la salud general. No deberían bajar de 0.8 g/kg incluso en déficit.</p>
+    </div>
+
+</section>
+
+<!-- CONSTRUCCIÓN DEL PLATO -->
+<section class="section-title" id="plato">
+    <span class="idx mono">04</span>
+    <div>
+        <h2>Construcción del plato</h2>
+        <p>Tres grupos que deberían estar presentes en cada comida principal.</p>
+    </div>
+</section>
+
+<section class="bento cols-3">
+
+    <div class="card">
+        <span class="tag">Proteína · 1/4 del plato</span>
+        <h3>Base muscular</h3>
+        <p>Pollo, huevos, carne magra, pescado, queso Paraguay, lentejas, tofu.</p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Carbohidratos · 1/4 del plato</span>
+        <h3>Combustible</h3>
+        <p>Arroz, avena, mandioca, batata, fideos, pan integral, quinoa.</p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Vegetales · 1/2 del plato</span>
+        <h3>Micronutrientes</h3>
+        <p>Lechuga, tomate, zanahoria, repollo, brócoli y verduras de estación, variando el color.</p>
+    </div>
+
+</section>
+
+<!-- TABLA DE INTERCAMBIOS -->
+<section class="section-title" id="intercambios">
+    <span class="idx mono">05</span>
+    <div>
+        <h2>Tabla de intercambios</h2>
+        <p>Porciones aproximadamente equivalentes para variar sin recalcular todo de nuevo.</p>
+    </div>
+</section>
+
+<section class="bento">
+
+    <div class="card large">
+        <span class="tag">≈ 25 g de proteína</span>
+        <h3>Fuentes de proteína</h3>
+        <div class="table-wrap">
+            <table class="swap-table">
+                <thead>
+                    <tr><th>Alimento</th><th>Cantidad</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Pechuga de pollo</td><td class="unit">120 g</td></tr>
+                    <tr><td>Carne magra</td><td class="unit">120 g</td></tr>
+                    <tr><td>Pescado</td><td class="unit">130 g</td></tr>
+                    <tr><td>Huevos enteros</td><td class="unit">4 unidades</td></tr>
+                    <tr><td>Queso Paraguay</td><td class="unit">140 g</td></tr>
+                    <tr><td>Lentejas cocidas</td><td class="unit">280 g</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="tag">≈ 40 g de carbohidratos</span>
+        <h3>Fuentes de carbohidratos</h3>
+        <div class="table-wrap">
+            <table class="swap-table">
+                <thead><tr><th>Alimento</th><th>Cantidad</th></tr></thead>
+                <tbody>
+                    <tr><td>Arroz cocido</td><td class="unit">150 g</td></tr>
+                    <tr><td>Avena en hojuelas</td><td class="unit">50 g</td></tr>
+                    <tr><td>Mandioca</td><td class="unit">130 g</td></tr>
+                    <tr><td>Batata</td><td class="unit">180 g</td></tr>
+                    <tr><td>Pan integral</td><td class="unit">2 rebanadas</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="tag">≈ 10 g de grasa</span>
+        <h3>Fuentes de grasa</h3>
+        <div class="table-wrap">
+            <table class="swap-table">
+                <thead><tr><th>Alimento</th><th>Cantidad</th></tr></thead>
+                <tbody>
+                    <tr><td>Aceite de oliva</td><td class="unit">1 cda</td></tr>
+                    <tr><td>Palta</td><td class="unit">70 g</td></tr>
+                    <tr><td>Maní / manteca de maní</td><td class="unit">15 g</td></tr>
+                    <tr><td>Frutos secos</td><td class="unit">15 g</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+
+<!-- MENÚ SEMANAL -->
+<section class="section-title" id="menu">
+    <span class="idx mono">06</span>
+    <div>
+        <h2>Menú semanal completo</h2>
+        <p>Una base de 7 días para adaptar según tus gustos y disponibilidad de tiempo.</p>
+    </div>
+</section>
+
+<section class="bento cols-3">
+
+    <div class="card day-card">
+        <span class="day-label">Lunes</span>
+        <div class="meal"><span>Desayuno</span><span>Avena + leche + banana</span></div>
+        <div class="meal"><span>Almuerzo</span><span>Pollo + arroz + ensalada</span></div>
+        <div class="meal"><span>Merienda</span><span>Yogur + frutos secos</span></div>
+        <div class="meal"><span>Cena</span><span>Tortilla + mandioca</span></div>
+    </div>
+
+    <div class="card day-card">
+        <span class="day-label">Martes</span>
+        <div class="meal"><span>Desayuno</span><span>Pan integral + huevos</span></div>
+        <div class="meal"><span>Almuerzo</span><span>Carne magra + batata</span></div>
+        <div class="meal"><span>Merienda</span><span>Fruta + queso Paraguay</span></div>
+        <div class="meal"><span>Cena</span><span>Omelette + verduras</span></div>
+    </div>
+
+    <div class="card day-card">
+        <span class="day-label">Miércoles</span>
+        <div class="meal"><span>Desayuno</span><span>Yogur + avena</span></div>
+        <div class="meal"><span>Almuerzo</span><span>Pollo + mandioca</span></div>
+        <div class="meal"><span>Merienda</span><span>Batido de proteína + banana</span></div>
+        <div class="meal"><span>Cena</span><span>Ensalada + huevos</span></div>
+    </div>
+
+    <div class="card day-card">
+        <span class="day-label">Jueves</span>
+        <div class="meal"><span>Desayuno</span><span>Tostadas + palta + huevo</span></div>
+        <div class="meal"><span>Almuerzo</span><span>Pescado + arroz + vegetales</span></div>
+        <div class="meal"><span>Merienda</span><span>Yogur + avena</span></div>
+        <div class="meal"><span>Cena</span><span>Pollo + ensalada</span></div>
+    </div>
+
+    <div class="card day-card">
+        <span class="day-label">Viernes</span>
+        <div class="meal"><span>Desayuno</span><span>Avena + maní + fruta</span></div>
+        <div class="meal"><span>Almuerzo</span><span>Carne + batata + ensalada</span></div>
+        <div class="meal"><span>Merienda</span><span>Queso Paraguay + fruta</span></div>
+        <div class="meal"><span>Cena</span><span>Omelette + mandioca</span></div>
+    </div>
+
+    <div class="card day-card">
+        <span class="day-label">Sábado</span>
+        <div class="meal"><span>Desayuno</span><span>Huevos + pan integral</span></div>
+        <div class="meal"><span>Almuerzo</span><span>Comida libre dentro del 20%</span></div>
+        <div class="meal"><span>Merienda</span><span>Yogur + frutos secos</span></div>
+        <div class="meal"><span>Cena</span><span>Pollo + vegetales</span></div>
+    </div>
+
+    <div class="card day-card">
+        <span class="day-label">Domingo</span>
+        <div class="meal"><span>Desayuno</span><span>Avena + leche + fruta</span></div>
+        <div class="meal"><span>Almuerzo</span><span>Pescado + arroz + ensalada</span></div>
+        <div class="meal"><span>Merienda</span><span>Batido + maní</span></div>
+        <div class="meal"><span>Cena</span><span>Tortilla + verduras</span></div>
+    </div>
+
+</section>
+
+<!-- RECETAS -->
+<section class="section-title" id="recetas">
+    <span class="idx mono">07</span>
+    <div>
+        <h2>Recetas rápidas</h2>
+        <p>Preparaciones de menos de 20 minutos con macros aproximados por porción.</p>
+    </div>
+</section>
+
+<section class="bento">
+
+    <div class="card recipe-card">
+        <span class="tag">15 minutos</span>
+        <h3>Bowl de pollo y arroz</h3>
+        <div class="macro-row">
+            <span>P 42 g</span><span>C 48 g</span><span>G 12 g</span><span>≈ 460 kcal</span>
+        </div>
+        <ol>
+            <li>Cocinar 150 g de pechuga de pollo a la plancha con sal, ajo y pimentón.</li>
+            <li>Servir sobre 150 g de arroz cocido.</li>
+            <li>Agregar ensalada de tomate, lechuga y un chorrito de aceite de oliva.</li>
+        </ol>
+    </div>
+
+    <div class="card recipe-card">
+        <span class="tag">10 minutos</span>
+        <h3>Tortilla de huevo y mandioca</h3>
+        <div class="macro-row">
+            <span>P 24 g</span><span>C 38 g</span><span>G 14 g</span><span>≈ 380 kcal</span>
+        </div>
+        <ol>
+            <li>Hervir 150 g de mandioca hasta que esté tierna.</li>
+            <li>Batir 3 huevos con sal y cebollita picada.</li>
+            <li>Cocinar la tortilla a fuego medio de ambos lados y servir con la mandioca.</li>
+        </ol>
+    </div>
+
+    <div class="card recipe-card">
+        <span class="tag">5 minutos</span>
+        <h3>Batido post entreno</h3>
+        <div class="macro-row">
+            <span>P 30 g</span><span>C 35 g</span><span>G 6 g</span><span>≈ 320 kcal</span>
+        </div>
+        <ol>
+            <li>Licuar 1 scoop de proteína en polvo con 1 banana y 250 ml de leche o bebida vegetal.</li>
+            <li>Agregar hielo al gusto y licuar 30 segundos más.</li>
+        </ol>
+    </div>
+
+    <div class="card recipe-card">
+        <span class="tag">18 minutos</span>
+        <h3>Pescado con batata al horno</h3>
+        <div class="macro-row">
+            <span>P 36 g</span><span>C 40 g</span><span>G 10 g</span><span>≈ 400 kcal</span>
+        </div>
+        <ol>
+            <li>Cortar 180 g de batata en rodajas y hornear 15 minutos a 200°C.</li>
+            <li>Cocinar 150 g de filet de pescado con limón, sal y perejil a la plancha.</li>
+            <li>Servir junto con vegetales verdes salteados.</li>
+        </ol>
+    </div>
+
+</section>
+
+<!-- PRE Y POST ENTRENO -->
+<section class="section-title" id="entreno">
+    <span class="idx mono">08</span>
+    <div>
+        <h2>Alrededor del entrenamiento</h2>
+        <p>Qué comer antes y después para aprovechar cada sesión.</p>
+    </div>
+</section>
+
+<section class="bento">
+
+    <div class="card">
+        <span class="tag mono">1–3 H ANTES</span>
+        <h3>Antes de entrenar</h3>
+        <p>Proteína y carbohidratos entre 1 y 3 horas antes del entrenamiento, en una comida no muy pesada, para tener energía disponible sin pesadez digestiva.</p>
+    </div>
+
+    <div class="card">
+        <span class="tag mono">30–60 MIN DESPUÉS</span>
+        <h3>Post entreno</h3>
+        <p>Proteína de calidad junto con carbohidratos dentro de la hora posterior optimiza la recuperación y repone el glucógeno gastado.</p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Si entrenás en ayunas</span>
+        <h3>Entrenamientos matutinos</h3>
+        <p>Podés entrenar en ayunas sin problema si el entrenamiento dura menos de 60 minutos; priorizá comer bien apenas termines.</p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Cafeína</span>
+        <h3>Estimulante pre entreno</h3>
+        <p>200–400 mg de cafeína (1–2 tazas de café) 30–45 minutos antes puede mejorar el rendimiento percibido y la fuerza.</p>
+    </div>
+
+</section>
+
+<!-- HIDRATACIÓN -->
+<section class="section-title" id="hidratacion">
+    <span class="idx mono">09</span>
+    <div>
+        <h2>Hidratación</h2>
+        <p>El nutriente que más se subestima en cualquier plan.</p>
+    </div>
+</section>
+
+<section class="bento">
+
+    <div class="card">
+        <span class="tag mono">35 ML/KG</span>
+        <h3>Cálculo diario</h3>
+        <p>Como referencia rápida: 35 ml de agua por kilogramo de peso corporal. Para 75 kg, eso equivale a unos 2.6 litros.</p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Ajuste</span>
+        <h3>Consejo</h3>
+        <p>Aumentá la ingesta si entrenás intensamente, en ambientes calurosos, o si notás orina de color oscuro.</p>
+    </div>
+
+    <div class="card">
+        <span class="tag">Electrolitos</span>
+        <h3>Sudoración intensa</h3>
+        <p>En sesiones largas o con mucho calor, agregar una pizca de sal o electrolitos ayuda a reponer lo perdido en el sudor.</p>
+    </div>
+
+</section>
+
+<!-- SUPLEMENTOS -->
+<section class="section-title" id="suplementos">
+    <span class="idx mono">10</span>
+    <div>
+        <h2>Suplementación básica</h2>
+        <p>Ninguno reemplaza la comida real; son un complemento cuando la dieta no alcanza a cubrir algo.</p>
+    </div>
+</section>
+
+<section class="bento">
+
+    <div class="card supp-card">
+        <span class="tag">Cubrir proteína</span>
+        <h3>Proteína en polvo (whey o vegetal)</h3>
+        <p>Útil cuando cuesta llegar a los gramos de proteína diarios solo con comida.</p>
+        <span class="dose mono">20–30 g por toma</span>
+    </div>
+
+    <div class="card supp-card">
+        <span class="tag">Rendimiento y fuerza</span>
+        <h3>Creatina monohidrato</h3>
+        <p>Uno de los suplementos más estudiados; apoya la fuerza y la recuperación entre series.</p>
+        <span class="dose mono">3–5 g diarios, todos los días</span>
+    </div>
+
+    <div class="card supp-card">
+        <span class="tag">Estimulante</span>
+        <h3>Cafeína</h3>
+        <p>Mejora el rendimiento percibido en el entrenamiento cuando se toma antes de la sesión.</p>
+        <span class="dose mono">200–400 mg, 30–45 min antes</span>
+    </div>
+
+    <div class="card supp-card">
+        <span class="tag">Salud general</span>
+        <h3>Multivitamínico y omega 3</h3>
+        <p>Cubre posibles huecos de micronutrientes cuando la dieta es poco variada o el déficit es prolongado.</p>
+        <span class="dose mono">Según indicación del envase</span>
+    </div>
+
+</section>
+
+<!-- REGLA 80/20 -->
+<section class="section-title" id="8020">
+    <span class="idx mono">11</span>
+    <div>
+        <h2>Regla 80/20</h2>
+        <p>Sostenibilidad por sobre perfección.</p>
+    </div>
+</section>
+
+<section class="bento">
+
+    <div class="card">
+        <span class="tag mono">80%</span>
+        <h3>Base del plan</h3>
+        <p>Alimentos nutritivos y mínimamente procesados, la mayor parte de tus comidas de la semana.</p>
+    </div>
+
+    <div class="card">
+        <span class="tag mono">20%</span>
+        <h3>Margen flexible</h3>
+        <p>Espacio para disfrutar comidas favoritas sin comprometer la adherencia al plan a largo plazo.</p>
+    </div>
+
+</section>
+
+<!-- ERRORES -->
+<section class="section-title" id="errores">
+    <span class="idx mono">12</span>
+    <div>
+        <h2>Errores comunes</h2>
+        <p>Lo que más frena el progreso, en orden de frecuencia.</p>
+    </div>
+</section>
+
+<section class="bento cols-3">
+
+    <div class="card danger">
+        <h3>Poca proteína</h3>
+        <p>Limita la recuperación y el crecimiento muscular.</p>
+    </div>
+
+    <div class="card danger">
+        <h3>Eliminar carbohidratos</h3>
+        <p>Reduce la energía y el rendimiento en los entrenamientos.</p>
+    </div>
+
+    <div class="card danger">
+        <h3>Obsesionarse con la balanza</h3>
+        <p>El peso no siempre refleja las mejoras reales en composición corporal.</p>
+    </div>
+
+    <div class="card danger">
+        <h3>Déficit demasiado agresivo</h3>
+        <p>Acelera la pérdida de músculo junto con la grasa y es difícil de sostener.</p>
+    </div>
+
+    <div class="card danger">
+        <h3>No ajustar con el tiempo</h3>
+        <p>Las calorías de mantenimiento bajan a medida que se pierde peso; hay que recalcular.</p>
+    </div>
+
+    <div class="card danger">
+        <h3>Copiar la dieta de otra persona</h3>
+        <p>Peso, altura, actividad y objetivo cambian los números; un plan genérico rara vez encaja igual.</p>
+    </div>
+
+</section>
+
+<!-- FAQ -->
+<section class="section-title" id="faq">
+    <span class="idx mono">13</span>
+    <div>
+        <h2>Preguntas frecuentes</h2>
+        <p>Dudas que suelen aparecer al empezar.</p>
+    </div>
+</section>
+
+<section class="card">
+
+    <div class="faq-item">
+        <h3><span class="q-idx mono">Q1</span>¿Puedo bajar de peso sin contar calorías?</h3>
+        <p>Sí, usando referencias visuales como el tamaño del plato y la mano, pero contar por unas semanas al principio ayuda a calibrar el ojo.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3><span class="q-idx mono">Q2</span>¿Es necesario comer cada 3 horas?</h3>
+        <p>No. Lo que más importa es el total diario de calorías y proteína; la distribución en 3 o 6 comidas es una preferencia personal.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3><span class="q-idx mono">Q3</span>¿La fruta engorda?</h3>
+        <p>No más que cualquier otro carbohidrato en las mismas calorías; aporta además fibra y micronutrientes que la mayoría de las dietas necesita.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3><span class="q-idx mono">Q4</span>¿Cuánto tiempo se nota la recomposición?</h3>
+        <p>Cambios visibles suelen aparecer entre la semana 4 y 6, con fotos y medidas más que con el peso en la balanza.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3><span class="q-idx mono">Q5</span>¿Qué hago si me estanco?</h3>
+        <p>Revisá que estés pesando y midiendo en serio durante 2 semanas antes de bajar calorías; muchas veces el estancamiento es solo falta de registro preciso.</p>
+    </div>
+
+</section>
+
+<!-- CONCLUSIÓN -->
+<section class="section-title" id="conclusion">
+    <span class="idx mono">14</span>
+    <div>
+        <h2>Conclusión</h2>
+        <p>Lo único que hace falta recordar.</p>
+    </div>
+</section>
+
+<section class="bento">
+
+    <div class="card large">
+        <h3>Resultado real</h3>
+        <p>
+            La recomposición corporal requiere equilibrio entre calorías, proteínas, entrenamiento y constancia.
+            El objetivo es mejorar la composición corporal, no solo bajar de peso. Empezá calculando tus
+            calorías, fijá tu proteína diaria, armá el plato con los tres grupos, y ajustá cada dos semanas
+            según lo que muestre el espejo y la balanza juntos.
+        </p>
+    </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="foot-links">
+        <a href="../index.html">Inicio</a>
+        <a href="../rutinas/rutinas.html">Entrenamiento</a>
+        <a href="../plan/plan.html">Plan</a>
+        <a href="dieta.html">Dieta</a>
+    </div>
+    <p>Fitness Life © 2026 · Guía completa de nutrición para recomposición corporal</p>
+</footer>
+
+</body>
+</html>
