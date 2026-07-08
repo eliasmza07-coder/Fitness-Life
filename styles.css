@@ -68,6 +68,25 @@ a{
     text-transform:uppercase;
     color:#fff;
     opacity:0.9;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ================= PULSE DOT ANIMATION ================= */
+
+.brand .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.6; }
 }
 
 .nav-links{
@@ -263,7 +282,7 @@ a{
     gap:14px;
 }
 
-/* ================= CARDS (IDÉNTICAS AL ORIGINAL) ================= */
+/* ================= CARDS ================= */
 
 .card,
 .routine-block{
@@ -403,33 +422,35 @@ a{
 
 /* ================= MOBILE ================= */
 
-@media(max-width: 768px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    .hero h1 {
-        font-size: 2rem;
-    }
-    .stats {
-        flex-wrap: wrap;
-        gap: 16px;
-    }
-    .bento {
-        grid-template-columns: 1fr;
-    }
-    .slider {
-        height: 240px;
+@media(max-width:768px){
+
+    .hero-grid{
+        grid-template-columns:1fr;
+        gap:30px;
     }
 
-    /* Forzar ocultamiento absoluto en Brave y otros navegadores */
-    header .logo-bar .nav-links,
-    .logo-bar .nav-links,
-    .nav-links {
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .stats{
+        flex-wrap:wrap;
+        gap:16px;
+    }
+
+    .bento{
+        grid-template-columns:1fr;
+    }
+
+    .slider{
+        height:240px;
+    }
+
+    .logo-bar .nav-links {
         display: none !important;
     }
 
-    .nav-toggle {
+    .nav-toggle{
         display: none !important;
     }
 }
