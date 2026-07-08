@@ -405,25 +405,35 @@ a{
 
 @media(max-width:768px){
 
-.hero-grid{
-    grid-template-columns:1fr;
-    gap:30px;
-}
+    .hero-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
 
-.hero h1{
-    font-size:2rem;
-}
+    .hero h1{
+        font-size:2rem;
+    }
 
-.stats{
-    flex-wrap:wrap;
-    gap:16px;
-}
+    .stats{
+        flex-wrap:wrap;
+        gap:16px;
+    }
 
-.bento{
-    grid-template-columns:1fr;
-}
+    .bento{
+        grid-template-columns:1fr;
+    }
 
-.slider{
-    height:240px;
-}
+    .slider{
+        height:240px;
+    }
+
+    /* Oculta completamente los enlaces de navegación en móvil */
+    .nav-links{
+        display: none !important;
+    }
+
+    /* Asegura que el botón toggle tampoco aparezca si decides no usar menú hamburguesa */
+    .nav-toggle{
+        display: none !important;
+    }
 }
