@@ -403,37 +403,33 @@ a{
 
 /* ================= MOBILE ================= */
 
-@media(max-width:768px){
-
-    .hero-grid{
-        grid-template-columns:1fr;
-        gap:30px;
+@media(max-width: 768px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .stats {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    .bento {
+        grid-template-columns: 1fr;
+    }
+    .slider {
+        height: 240px;
     }
 
-    .hero h1{
-        font-size:2rem;
-    }
-
-    .stats{
-        flex-wrap:wrap;
-        gap:16px;
-    }
-
-    .bento{
-        grid-template-columns:1fr;
-    }
-
-    .slider{
-        height:240px;
-    }
-
-    /* Oculta completamente los enlaces de navegación en móvil */
-    .nav-links{
+    /* Forzar ocultamiento absoluto en Brave y otros navegadores */
+    header .logo-bar .nav-links,
+    .logo-bar .nav-links,
+    .nav-links {
         display: none !important;
     }
 
-    /* Asegura que el botón toggle tampoco aparezca si decides no usar menú hamburguesa */
-    .nav-toggle{
+    .nav-toggle {
         display: none !important;
     }
 }
