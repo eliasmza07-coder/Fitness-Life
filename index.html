@@ -2,137 +2,1092 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitness Life</title>
 
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fitness Life — Configurador</title>
+
+<link rel="stylesheet" href="styles index.css">
+
 </head>
+
 
 <body>
 
-<!-- LOGO BAR -->
+
 <header class="logo-bar">
 
-    <a href="../index.html" class="logo-container">
-        <span class="brand">Fitness Life</span>
-    </a>
+<div class="header-inner">
 
-    <nav class="nav-links">
-        <a class="active">Objetivo</a>
-        <a href="../rutinas/rutinas.html">Entrenamiento</a>
-        <a href="../plan/plan.html">Plan</a>
-        <a href="dieta.html">Dieta</a>
-    </nav>
+<a href="index.html" class="brand">
+
+<span class="pulse-dot"></span>
+
+Fitness Life
+
+</a>
+
+
+<div class="nav-badge">
+PROGRAMA // 01
+</div>
+
+
+</div>
 
 </header>
 
-<!-- ================= HERO ================= -->
+
+
+
+
 <section class="hero">
 
-    <div class="hero-grid">
+<div class="hero-grid">
 
-        <div class="hero-text">
+<span class="badge">
+PLAN PERSONALIZADO
+</span>
 
-            <span class="badge">Fitness • Disciplina • Progreso</span>
 
-            <h1>
-                Construí tu mejor versión<br>
-                con un sistema simple.
-            </h1>
+<h1>
+Construí tu transformación
+</h1>
 
-            <p>
-                Entrenamiento y control de progreso en un solo lugar.
-            </p>
 
-            <div class="stats">
-                <div>
-                    <h3>4</h3>
-                    <p>Objetivos</p>
-                </div>
+<p>
+Elegí tu objetivo y configurá tu camino fitness.
+</p>
 
-                <div>
-                    <h3>100%</h3>
-                    <p>Gratis</p>
-                </div>
 
-                <div>
-                    <h3>24/7</h3>
-                    <p>Acceso</p>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- ================= SLIDER (NUEVO) ================= -->
-        <div class="hero-image">
-
-            <div class="slider">
-                <img src="gym1.png" alt="">
-                <img src="gym2.png" alt="">
-                <img src="gym3.png" alt="">
-                <img src="gym4.png" alt="">
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
-<!-- ================= OBJETIVOS ================= -->
-<section class="container" id="objetivos">
 
-    <div class="section-title">
-        <h2>Objetivos</h2>
-        <p>Elegí tu enfoque de entrenamiento</p>
-    </div>
 
-    <div class="bento">
 
-        <a href="/dasbhord/ganar-musculo/index ganar musculo.html" class="card large">
-            <h3>Ganar músculo</h3>
-            <p>Fuerza e hipertrofia progresiva</p>
-        </a>
 
-        <a href="/dasbhord/perder-grasa/index perder grasa.html" class="card">
-            <h3>Perder grasa</h3>
-            <p>Definición y control calórico</p>
-        </a>
 
-        <a href="index recomposicion.html" class="card">
-            <h3>Recomposición</h3>
-            <p>Músculo y reducción de grasa</p>
-        </a>
 
-    </div>
 
-</section>
 
-<!-- ================= HERRAMIENTA ================= -->
-<section class="container" id="herramienta">
+<main class="container">
 
-    <div class="section-title">
-        <h2>Herramienta</h2>
-        <p>Control de progreso corporal</p>
-    </div>
 
-    <div class="bento">
+<div class="app-container">
 
-        <a href="Calculadora.html" class="card wide">
-            <h3>Calculadora Fitness</h3>
-            <p>IMC, calorías y macros personalizados</p>
-        </a>
 
-    </div>
 
-</section>
+<button id="backBtn" class="back-btn" onclick="volver()">
+← Atrás
+</button>
 
-<!-- ================= FOOTER ================= -->
+
+
+
+
+<div class="section-title">
+
+
+<div class="idx" id="paso">
+01
+</div>
+
+
+<div>
+
+<h2 id="titulo">
+Elegí tu objetivo
+</h2>
+
+
+<p id="descripcion">
+Seleccioná el objetivo que más se adapte a vos.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div id="app" class="bento"></div>
+
+
+
+</div>
+
+
+</main>
+
+
+
+
+
+
+
+
 <footer class="footer">
-    <p>© 2026 Fitness Life</p>
+
+<p>
+© 2026 FITNESS LIFE // TODOS LOS DERECHOS RESERVADOS.
+</p>
+
+
 </footer>
 
+
+
+
+
+
+
+
+
+<script>
+
+
+const app = document.getElementById("app");
+
+const titulo = document.getElementById("titulo");
+
+const descripcion = document.getElementById("descripcion");
+
+const paso = document.getElementById("paso");
+
+const backBtn = document.getElementById("backBtn");
+
+
+
+let historial = [];
+
+let objetivo = "";
+
+let lugar = "";
+
+
+
+
+
+
+
+
+function cambiarPantalla(html, numero, tituloTexto, descripcionTexto){
+
+
+historial.push({
+
+html: app.innerHTML,
+
+numero: paso.innerHTML,
+
+titulo: titulo.innerHTML,
+
+descripcion: descripcion.innerHTML
+
+});
+
+
+
+app.innerHTML = html;
+
+
+paso.innerHTML = numero;
+
+titulo.innerHTML = tituloTexto;
+
+descripcion.innerHTML = descripcionTexto;
+
+
+actualizarBoton();
+
+window.scrollTo({ top: 0, behavior: 'smooth' });
+
+}
+
+
+
+
+
+
+
+
+
+function iniciar(){
+
+
+historial=[];
+
+
+
+app.innerHTML = `
+
+
+
+
+
+
+
+<article class="card selection-card"
+onclick="seleccionarObjetivo('recomposicion')">
+
+
+
+<div class="card-img-container">
+
+<div class="slideshow">
+
+
+<img src="imagenes/recomposicion1.jpg">
+
+<img src="imagenes/recomposicion2.jpg">
+
+<img src="imagenes/recomposicion3.jpg">
+
+<img src="imagenes/recomposicion4.jpg">
+
+<img src="imagenes/recomposicion5.jpg">
+
+
+</div>
+
+</div>
+
+
+
+
+
+<span class="tag">
+EQUILIBRIO
+</span>
+
+
+
+
+<h2>
+Recomposición Corporal
+</h2>
+
+
+
+
+
+<p>
+Proceso enfocado en mejorar la composición del cuerpo,
+aumentando masa muscular mientras se reduce grasa.
+</p>
+
+
+
+
+
+<ul>
+
+<li>✓ Ganancia muscular progresiva</li>
+
+<li>✓ Reducción de grasa corporal</li>
+
+<li>✓ Mejor rendimiento físico</li>
+
+<li>✓ Transformación equilibrada</li>
+
+</ul>
+
+
+
+
+
+<button class="btn">
+Seleccionar
+</button>
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+<article class="card selection-card"
+onclick="seleccionarObjetivo('ganar-musculo')">
+
+
+
+
+
+<div class="card-img-container">
+
+<div class="slideshow">
+
+
+<img src="imagenes/musculo1.jpg">
+
+<img src="imagenes/musculo2.jpg">
+
+<img src="imagenes/musculo3.jpg">
+
+<img src="imagenes/musculo4.jpg">
+
+<img src="imagenes/musculo5.jpg">
+
+
+</div>
+
+</div>
+
+
+
+
+
+<span class="tag">
+HIPERTROFIA
+</span>
+
+
+
+
+
+<h2>
+Ganar Músculo
+</h2>
+
+
+
+
+
+<p>
+Objetivo centrado en aumentar tamaño muscular,
+fuerza y rendimiento mediante entrenamiento y nutrición.
+</p>
+
+
+
+
+
+<ul>
+
+<li>✓ Mayor volumen muscular</li>
+
+<li>✓ Progresión de cargas</li>
+
+<li>✓ Entrenamiento estructurado</li>
+
+<li>✓ Desarrollo de fuerza</li>
+
+</ul>
+
+
+
+
+
+<button class="btn">
+Seleccionar
+</button>
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+<article class="card wide selection-card"
+onclick="seleccionarObjetivo('perder-grasa')">
+
+
+
+
+
+<div class="card-img-container">
+
+<div class="slideshow">
+
+
+<img src="imagenes/grasa1.jpg">
+
+<img src="imagenes/grasa2.jpg">
+
+<img src="imagenes/grasa3.jpg">
+
+<img src="imagenes/grasa4.jpg">
+
+<img src="imagenes/grasa5.jpg">
+
+
+</div>
+
+</div>
+
+
+
+
+
+<span class="tag">
+DEFINICIÓN
+</span>
+
+
+
+
+
+<h2>
+Perder Grasa
+</h2>
+
+
+
+
+
+<p>
+Estrategia enfocada en disminuir grasa corporal
+manteniendo la mayor cantidad posible de músculo.
+</p>
+
+
+
+
+
+<ul>
+
+<li>✓ Déficit calórico controlado</li>
+
+<li>✓ Mantener fuerza</li>
+
+<li>✓ Mejor definición física</li>
+
+<li>✓ Hábitos sostenibles</li>
+
+</ul>
+
+
+
+
+
+<button class="btn btn-secondary">
+Seleccionar
+</button>
+
+
+
+
+</article>
+
+
+
+
+`;
+
+
+
+paso.innerHTML="01";
+
+titulo.innerHTML="Elegí tu objetivo";
+
+descripcion.innerHTML="Seleccioná el objetivo que más se adapte a vos.";
+
+
+actualizarBoton();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function seleccionarObjetivo(valor){
+
+
+objetivo = valor;
+
+
+
+cambiarPantalla(`
+
+
+
+<article class="card selection-card"
+onclick="abrirPlan()">
+
+
+
+<span class="tag">
+ESTRATEGIA
+</span>
+
+
+
+
+<h2>
+Plan
+</h2>
+
+
+
+
+<p>
+Información y estrategia completa según tu objetivo.
+</p>
+
+
+
+
+<button class="btn">
+Ver Plan
+</button>
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+<article class="card selection-card"
+onclick="abrirDieta()">
+
+
+
+<span class="tag">
+NUTRICIÓN
+</span>
+
+
+
+
+<h2>
+Dieta
+</h2>
+
+
+
+
+<p>
+Alimentación personalizada, calorías y macronutrientes.
+</p>
+
+
+
+
+<button class="btn">
+Ver Dieta
+</button>
+
+
+
+</article>
+
+
+
+
+
+
+
+
+<article class="card wide selection-card"
+onclick="mostrarRutinas()">
+
+
+
+<span class="tag">
+ENTRENAMIENTO
+</span>
+
+
+
+
+<h2>
+Rutinas
+</h2>
+
+
+
+
+<p>
+Configurá tu entrenamiento seleccionando lugar y días.
+</p>
+
+
+
+
+<button class="btn btn-secondary">
+Configurar Rutina
+</button>
+
+
+
+</article>
+
+
+
+`,
+"02",
+objetivo,
+"Elegí qué querés configurar."
+
+);
+
+
+
+}
+
+function abrirPlan(){
+
+
+window.location.href =
+"plan-" + objetivo + ".html";
+
+
+}
+
+
+
+
+
+
+
+
+function abrirDieta(){
+
+
+window.location.href =
+"dieta-" + objetivo + ".html";
+
+
+}
+
+
+
+
+
+
+
+
+
+function mostrarRutinas(){
+
+
+cambiarPantalla(`
+
+
+
+<article class="card selection-card"
+onclick="seleccionarLugar('casa')">
+
+
+
+<div class="card-img-container">
+
+<div class="slideshow">
+
+
+<img src="imagenes/casa1.jpg">
+
+<img src="imagenes/casa2.jpg">
+
+<img src="imagenes/casa3.jpg">
+
+<img src="imagenes/casa4.jpg">
+
+<img src="imagenes/casa5.jpg">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<span class="tag">
+HOME
+</span>
+
+
+
+
+
+<h2>
+Casa
+</h2>
+
+
+
+
+
+<p>
+Entrenamiento adaptado para realizar en casa,
+utilizando peso corporal, bandas, mancuernas
+o el equipamiento disponible.
+</p>
+
+
+
+
+
+<button class="btn">
+Elegir Casa
+</button>
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+<article class="card selection-card"
+onclick="seleccionarLugar('gym')">
+
+
+
+<div class="card-img-container">
+
+<div class="slideshow">
+
+
+<img src="imagenes/gym1.jpg">
+
+<img src="imagenes/gym2.jpg">
+
+<img src="imagenes/gym3.jpg">
+
+<img src="imagenes/gym4.jpg">
+
+<img src="imagenes/gym5.jpg">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<span class="tag">
+GYM
+</span>
+
+
+
+
+
+<h2>
+Gimnasio
+</h2>
+
+
+
+
+
+<p>
+Entrenamiento con máquinas, barras y pesas,
+orientado al desarrollo de fuerza y masa muscular.
+</p>
+
+
+
+
+
+<button class="btn btn-secondary">
+Elegir Gym
+</button>
+
+
+
+</article>
+
+
+
+`,
+"03",
+"Rutinas",
+"Elegí dónde vas a entrenar."
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function seleccionarLugar(valor){
+
+
+lugar = valor;
+
+
+
+cambiarPantalla(`
+
+
+
+<article class="card selection-card"
+onclick="abrirRutina(3)">
+
+
+
+<span class="tag">
+FRECUENCIA
+</span>
+
+
+
+
+<h2>
+3 días
+</h2>
+
+
+
+
+<p>
+Rutina equilibrada para personas con menor
+cantidad de días disponibles.
+</p>
+
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+<article class="card selection-card"
+onclick="abrirRutina(4)">
+
+
+
+<span class="tag">
+FRECUENCIA
+</span>
+
+
+
+
+<h2>
+4 días
+</h2>
+
+
+
+
+<p>
+Mayor distribución del entrenamiento semanal
+con más volumen de trabajo.
+</p>
+
+
+
+
+</article>
+
+
+
+
+
+
+
+
+
+<article class="card wide selection-card"
+onclick="abrirRutina(5)">
+
+
+
+<span class="tag">
+FRECUENCIA
+</span>
+
+
+
+
+<h2>
+5 días
+</h2>
+
+
+
+
+<p>
+Rutina avanzada con mayor frecuencia y enfoque
+en desarrollo muscular.
+</p>
+
+
+
+
+</article>
+
+
+
+`,
+"04",
+lugar,
+"Seleccioná cuántos días podés entrenar."
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function abrirRutina(dias){
+
+
+window.location.href =
+
+"rutina-" +
+lugar +
+"-" +
+dias +
+"-dias.html";
+
+
+}
+
+
+
+
+
+
+
+
+
+function volver(){
+
+
+if(historial.length > 0){
+
+
+
+let anterior = historial.pop();
+
+
+
+app.innerHTML = anterior.html;
+
+
+paso.innerHTML = anterior.numero;
+
+
+titulo.innerHTML = anterior.titulo;
+
+
+descripcion.innerHTML = anterior.descripcion;
+
+
+
+}
+
+
+
+actualizarBoton();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function actualizarBoton(){
+
+
+if(historial.length === 0){
+
+
+backBtn.style.display="none";
+
+
+}
+
+else{
+
+
+backBtn.style.display="block";
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+iniciar();
+
+
+
+</script>
+
+
 </body>
+
 </html>
