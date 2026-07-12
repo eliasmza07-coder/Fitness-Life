@@ -4,385 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness Life // Guía de Hipertrofia (Lunes a Lunes)</title>
-    <style>
-        :root {
-            --bg: #121214;
-            --card-bg: #1a1a1e;
-            --border: #2a2a30;
-            --ink: #f4f4f5;
-            --muted: #a1a1aa;
-            --accent: #f59e0b;
-            --accent-glow: rgba(245, 158, 11, 0.15);
-            --spray: #38bdf8;
-            --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            --radius: 12px;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--ink);
-            font-family: var(--font-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        .static-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 15% 15%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
-                        radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.04) 0%, transparent 40%);
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        .svg-defs {
-            width: 0; height: 0; position: absolute;
-        }
-
-        /* Header */
-        .logo-bar {
-            width: 100%;
-            border-bottom: 1px solid var(--border);
-            background: rgba(18, 18, 20, 0.8);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--ink);
-            font-weight: 800;
-            text-decoration: none;
-            font-size: 1.25rem;
-            letter-spacing: -0.02em;
-        }
-
-        .pulse-dot {
-            width: 8px; height: 8px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 12px var(--accent);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
-        }
-
-        .nav-badge {
-            font-size: 0.75rem;
-            font-weight: 700;
-            background: var(--accent-glow);
-            color: var(--accent);
-            padding: 0.35rem 0.75rem;
-            border-radius: 20px;
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            letter-spacing: 0.05em;
-        }
-
-        /* Hero */
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem 2rem 1.5rem;
-            width: 100%;
-        }
-
-        .hero-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .badge {
-            align-self: flex-start;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--spray);
-            background: rgba(56, 189, 248, 0.1);
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            letter-spacing: 0.05em;
-        }
-
-        .hero h1 {
-            font-size: 2.75rem;
-            font-weight: 900;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-        }
-
-        .hero p {
-            color: var(--muted);
-            max-width: 650px;
-            font-size: 1.05rem;
-            line-height: 1.5;
-        }
-
-        /* Rail / Progress indicator */
-        .rail {
-            max-width: 1200px;
-            margin: 0 auto 1rem auto;
-            padding: 0 1.5rem;
-            display: flex;
-            gap: 0.5rem;
-            width: 100%;
-        }
-
-        .stop {
-            height: 3px;
-            flex: 1;
-            background: var(--border);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .stop.active {
-            background: var(--accent);
-            box-shadow: 0 0 8px var(--accent-glow);
-        }
-
-        .stop.done {
-            background: var(--spray);
-        }
-
-        /* Container & Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem 4rem 1.5rem;
-            width: 100%;
-            flex: 1;
-        }
-
-        .app-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .back-btn {
-            align-self: flex-start;
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--ink);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .back-btn:hover {
-            background: var(--border);
-            border-color: var(--muted);
-        }
-
-        .section-title {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 1.25rem;
-        }
-
-        .section-title .idx {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--accent);
-            font-variant-numeric: tabular-nums;
-        }
-
-        .section-title h2 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-        }
-
-        .section-title p {
-            font-size: 0.9rem;
-            color: var(--muted);
-            margin-top: 0.25rem;
-        }
-
-        /* Bento Grid */
-        .bento {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-
-        .bento.cols-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        @media (max-width: 900px) {
-            .bento, .bento.cols-3 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .bento, .bento.cols-3 {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 { font-size: 2.2rem; }
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            border-color: rgba(245, 158, 11, 0.4);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-        }
-
-        .card.wide {
-            grid-column: span 2;
-        }
-
-        @media (max-width: 900px) {
-            .card.wide { grid-column: span 1; }
-        }
-
-        .card .tag {
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 0.08em;
-            margin-bottom: 0.75rem;
-        }
-
-        .card h2 {
-            font-size: 1.35rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .card p {
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.4;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn {
-            align-self: flex-start;
-            background: var(--accent);
-            color: #121214;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        .btn:hover { opacity: 0.9; }
-
-        .btn-secondary {
-            background: var(--spray);
-        }
-
-        /* Recipe specific cards */
-        .recipe-card {
-            cursor: default;
-        }
-
-        .recipe-img-container {
-            width: 100%;
-            height: 160px;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #27272a;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .recipe-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .macro-row {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--spray);
-            margin-top: 0.5rem;
-        }
-
-        .mono {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-        }
-
-        /* Footer */
-        .footer {
-            max-width: 1200px;
-            margin: auto auto 0 auto;
-            padding: 2rem 1.5rem;
-            border-top: 1px solid var(--border);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            color: var(--muted);
-        }
-
-        @media (max-width: 600px) {
-            .footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-        }
-
-        .tagmark {
-            color: var(--accent);
-            font-weight: 600;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -410,9 +32,9 @@
 
 <section class="hero">
     <div class="hero-grid">
-        <span class="badge">PLAN DE GANANCIA MUSCULAR (SUPERÁVIT CALÓRICO LIMPIO)</span>
-        <h1>Nutrición para<br>Ganar Músculo</h1>
-        <p>Menú optimizado con alto valor proteico, superávit calórico estratégico, carbohidratos de alta densidad, suplementación y alternativas reales para volumen.</p>
+        <span class="badge">PLAN DE VOLUMEN // GANANCIA MUSCULAR LIMPIA</span>
+        <h1>Nutrición de<br>Lunes a Lunes</h1>
+        <p>Superávit calórico optimizado con alto aporte proteico, carbohidratos densos intra y post-entreno, control de porciones y recuperación avanzada.</p>
     </div>
 </section>
 
@@ -430,7 +52,7 @@
             <div class="idx" id="paso-dia">01</div>
             <div>
                 <h2 id="titulo-principal">Seleccioná el día de la semana</h2>
-                <p id="desc-principal">Elegí una jornada para ver el desglose exacto de tus ingestas enfocadas en hipertrofia y ganancia de masa muscular.</p>
+                <p id="desc-principal">Elegí una jornada para ver el desglose exacto de tus ingestas enfocadas en volumen y desarrollo muscular.</p>
             </div>
         </div>
 
@@ -438,49 +60,49 @@
             <article class="card selection-card" onclick="pickDia(this,'lunes')">
                 <span class="tag">DÍA 1</span>
                 <h2>Lunes</h2>
-                <p>Arranque de semana potente: Carne roja magra, arroz y pasta de maní.</p>
+                <p>Arranque pesado: Carne vacuna, arroz y huevos enteros.</p>
                 <button class="btn">Ver Ingestas</button>
             </article>
 
             <article class="card selection-card" onclick="pickDia(this,'martes')">
                 <span class="tag">DÍA 2</span>
                 <h2>Martes</h2>
-                <p>Día de empuje/pecho: Pollo, batata y frutos secos.</p>
+                <p>Empuje superior: Pollo, papa al horno y batido denso.</p>
                 <button class="btn">Ver Ingestas</button>
             </article>
 
             <article class="card selection-card" onclick="pickDia(this,'miercoles')">
                 <span class="tag">DÍA 3</span>
                 <h2>Miércoles</h2>
-                <p>Mitad de volumen: Pescado graso, puré de papa y avena extra.</p>
+                <p>Mitad de semana: Atún, fideos integrales y frutos secos.</p>
                 <button class="btn">Ver Ingestas</button>
             </article>
 
             <article class="card selection-card" onclick="pickDia(this,'jueves')">
                 <span class="tag">DÍA 4</span>
                 <h2>Jueves</h2>
-                <p>Alta densidad calórica: Milanesas al horno gruesas con arroz y palta.</p>
+                <p>Pierna intensa: Lomo vacuno, puré de mandioca y queso.</p>
                 <button class="btn">Ver Ingestas</button>
             </article>
 
             <article class="card selection-card" onclick="pickDia(this,'viernes')">
                 <span class="tag">DÍA 5</span>
                 <h2>Viernes</h2>
-                <p>Cierre intenso: Lomo vacuno con fideos y huevos enteros.</p>
+                <p>Cierre fuerte: Pechuga, arroz con arvejas y pan integral.</p>
                 <button class="btn">Ver Ingestas</button>
             </article>
 
             <article class="card selection-card" onclick="pickDia(this,'sabado')">
                 <span class="tag">DÍA 6</span>
                 <h2>Sábado</h2>
-                <p>Superávit social: Comida libre inteligente alta en calorías limpias.</p>
+                <p>Volumen extra: Hamburguesas caseras dobles con pan fit.</p>
                 <button class="btn">Ver Ingestas</button>
             </article>
 
             <article class="card wide selection-card" onclick="pickDia(this,'domingo')">
                 <span class="tag">DÍA 7</span>
                 <h2>Domingo</h2>
-                <p>Recarga total: Asado completo con mandioca y postre proteico.</p>
+                <p>Supercompensación: Asado jugoso con batatas y palta.</p>
                 <button class="btn btn-secondary">Ver Ingestas</button>
             </article>
         </div>
@@ -510,46 +132,46 @@ const railDia2 = document.getElementById("railDia2");
 
 const menuSemanal = {
     lunes: [
-        { tipo: "Desayuno", nombre: "Café con leche entera + Tostadas con huevos y palta", foto: "img/desayuno-palta.jpg", desc: "1 taza de café con leche entera + 3 rebanadas de pan integral con 3 huevos enteros revueltos y 50g de palta.", macros: "P 24g · C 38g · G 18g", suplemento: "💊 1 Multivitamínico + 5g de Creatina Monohidrato.", alternativa: "Alternativa: Cambiar los huevos por 150g de queso Paraguay y jamón magro." },
-        { tipo: "Almuerzo", nombre: "Bife de chorizo con arroz y aceite de oliva", foto: "img/almuerzo-lomo.jpg", desc: "200g de carne vacuna magra a la plancha, 220g de arroz cocido y ensalada completa con 2 cucharadas de aceite de oliva.", macros: "P 54g · C 62g · G 20g", suplemento: "Ninguno.", alternativa: "Alternativa: Sustituir la carne por 200g de pechuga de pollo con puré de papa." },
-        { tipo: "Merienda", nombre: "Licuado hipercalórico de avena y maní", foto: "img/merienda-batido-mani.jpg", desc: "300ml de leche entera licuada con 1 banana grande, 50g de avena y 20g de pasta de maní.", macros: "P 22g · C 64g · G 16g", suplemento: "💊 Opcional: 1 scoop de Whey Protein.", alternativa: "Alternativa: Yogur entero (200g) con 40g de granola y un puñado de pasas." },
-        { tipo: "Cena", nombre: "Tortilla cuádruple de acelga con mandioca", foto: "img/receta-tortilla-mandioca.jpg", desc: "Tortilla con 4 huevos enteros, acelga y queso Paraguay. Acompañar con 150g de mandioca hervida.", macros: "P 31g · C 48g · G 18g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Cambiar la mandioca por 250g de papa al horno con oliva." }
+        { tipo: "Desayuno", nombre: "Avena con huevos revueltos y tostadas", foto: "img/desayuno-pancakes.jpg", desc: "1 taza de leche entera con 50g de avena + 2 rebanadas de pan integral con queso y 3 huevos enteros revueltos.", macros: "P 28g · C 52g · G 18g", suplemento: "💊 1 Multivitamínico + 1 Vitamina D3.", alternativa: "Alternativa: Licuado de leche, banana y mantequilla de maní." },
+        { tipo: "Almuerzo", nombre: "Bife de chorizo con abundante arroz", foto: "img/almuerzo-lomo.jpg", desc: "180g de carne vacuna a la plancha, 220g de arroz blanco cocido y ensalada de zanahoria con aceite de oliva.", macros: "P 48g · C 68g · G 14g", suplemento: "💊 5g de Creatina Monohidrato.", alternativa: "Alternativa: Sustituir la carne por 190g de pechuga de pollo." },
+        { tipo: "Merienda", nombre: "Yogur entero con granola y banana", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur entero (200g) con 40g de granola y 1 banana mediana picada.", macros: "P 16g · C 55g · G 6g", suplemento: "Ninguno.", alternativa: "Alternativa: 2 tostadas integrales con manteca de maní y 1 vaso de leche." },
+        { tipo: "Cena", nombre: "Tortilla cuádruple de acelga y papa", foto: "img/receta-tortilla-mandioca.jpg", desc: "Tortilla densa con 4 huevos enteros, acelga y 150g de papa hervida integrada.", macros: "P 30g · C 42g · G 18g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: 180g de merluza con puré de papa y aceite de oliva." }
     ],
     martes: [
-        { tipo: "Desayuno", nombre: "Pancakes gigantes de avena y banana", foto: "img/desayuno-pancakes.jpg", desc: "Mezcla de 60g de avena, 3 huevos enteros y chorrito de leche entera a la sartén. Servir con miel.", macros: "P 22g · C 52g · G 14g", suplemento: "💊 1 Multivitamínico + 5g de Creatina.", alternativa: "Alternativa: Tostadas integrales con pasta de maní y rodajas de banana." },
-        { tipo: "Almuerzo", nombre: "Pechuga XXL con batata y puré", foto: "img/receta-pollo-arroz.jpg", desc: "200g de pechuga de pollo a la plancha, 250g de batata horneada y ensalada con aceite de oliva.", macros: "P 52g · C 55g · G 10g", suplemento: "Ninguno.", alternativa: "Alternativa: Reemplazar el pollo por 200g de carne de cerdo magra." },
-        { tipo: "Merienda", nombre: "Yogur entero con frutos secos y avena", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur entero (200g) con 40g de avena y 25g de almendras o nueces.", macros: "P 18g · C 38g · G 16g", suplemento: "Ninguno.", alternativa: "Alternativa: 1 vaso grande de leche con 2 tostadas de pan integral con queso." },
-        { tipo: "Cena", nombre: "Atún con arroz y mix de verduras", foto: "img/cena-pollo-verde.jpg", desc: "2 latas de atún al agua escurridas, 180g de arroz hervido, mix de lechuga, tomate y zanahoria con aceite de oliva.", macros: "P 50g · C 46g · G 8g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: 200g de merluza al horno con guarnición de puré." }
+        { tipo: "Desayuno", nombre: "Licuado hipercalórico de banana y maní", foto: "img/receta-batido.jpg", desc: "300ml de leche entera, 1 banana grande, 30g de avena y 1 cucharada colmada de manteca de maní.", macros: "P 18g · C 58g · G 14g", suplemento: "💊 Opcional: 1 scoop de Whey Protein.", alternativa: "Alternativa: Tostadas con queso y huevos duros." },
+        { tipo: "Almuerzo", nombre: "Pollo jugoso con batatas al horno", foto: "img/receta-pollo-arroz.jpg", desc: "190g de pechuga de pollo a la plancha, 220g de batata horneada en cubos con aceite de oliva.", macros: "P 50g · C 52g · G 12g", suplemento: "💊 5g de Creatina.", alternativa: "Alternativa: 190g de carne de cerdo magra al horno." },
+        { tipo: "Merienda", nombre: "Pan integral con queso Paraguay y frutos secos", foto: "img/merienda-queso.jpg", desc: "2 rebanadas gruesas de pan integral con 70g de queso Paraguay + un puñado de almendras (20g).", macros: "P 22g · C 28g · G 12g", suplemento: "Ninguno.", alternativa: "Alternativa: Yogur firme entero con pasas de uva." },
+        { tipo: "Cena", nombre: "Carne picada magra con fideos", foto: "img/almuerzo-carne-batata.jpg", desc: "170g de carne picada salteada con cebolla y tomate natural, servida sobre 160g de fideos al dente.", macros: "P 44g · C 46g · G 13g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Atún enlatado al aceite con arroz." }
     ],
     miercoles: [
-        { tipo: "Desayuno", nombre: "Mate cocido / Café con leche entera + Tostadas con queso y huevo", foto: "img/desayuno-tostadas.jpg", desc: "1 taza de infusión con leche entera + 3 rebanadas de pan integral con queso Paraguay en fetas y 2 huevos duros.", macros: "P 22g · C 36g · G 14g", suplemento: "💊 1 Multivitamínico + 5g de Creatina.", alternativa: "Alternativa: Panqueque rápido de huevo y avena con dulce de leche fit." },
-        { tipo: "Almuerzo", nombre: "Filet de salmón / pescado blanco con puré de papa", foto: "img/receta-pescado-batata.jpg", desc: "200g de pescado a la plancha con oliva, acompañado de un plato abundante de puré de papa con leche entera.", macros: "P 44g · C 42g · G 12g", suplemento: "Ninguno.", alternativa: "Alternativa: Cambiar por pechuga de pollo con fideos." },
-        { tipo: "Merienda", nombre: "Yogur entero con maní y banana", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur entero con 1 banana rodajada y 25g de maní tostado.", macros: "P 16g · C 42g · G 14g", suplemento: "Ninguno.", alternativa: "Alternativa: 2 barritas de cereal con frutos secos + 1 vaso de leche." },
-        { tipo: "Cena", nombre: "Omelette grande de jamón y queso con pan", foto: "img/cena-omelette.jpg", desc: "Batido de 4 huevos enteros con abundante jamón magro y queso Paraguay. Acompañar con 2 pancitos integrales.", macros: "P 38g · C 28g · G 22g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Revuelto de 3 huevos con cubos de carne salteada y verduras." }
+        { tipo: "Desayuno", nombre: "Café con leche entera + Tostadas con huevo", foto: "img/desayuno-tostadas.jpg", desc: "1 taza grande de café con leche entera + 2 rebanadas de pan integral con 2 huevos revueltos.", macros: "P 20g · C 30g · G 12g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Panqueques de avena y huevo rápidos." },
+        { tipo: "Almuerzo", nombre: "Atún con arroz y palta", foto: "img/receta-pescado-batata.jpg", desc: "2 latas de atún al agua (escurridas), 200g de arroz blanco y 50g de palta en rodajas con aceite de oliva.", macros: "P 46g · C 50g · G 14g", suplemento: "💊 5g de Creatina.", alternativa: "Alternativa: Filet de merluza grande con puré de papa." },
+        { tipo: "Merienda", nombre: "Yogur entero con maní tostado y miel", foto: "img/merienda-mani.jpg", desc: "1 pote de yogur entero + 20g de maní tostado y un hilito de miel por encima.", macros: "P 15g · C 28g · G 10g", suplemento: "Ninguno.", alternativa: "Alternativa: Vaso de leche con barrita de cereal proteica." },
+        { tipo: "Cena", nombre: "Omelette grande de jamón y queso", foto: "img/cena-omelette.jpg", desc: "Batido de 4 huevos enteros con fetas de jamón magro y queso Paraguay fundido.", macros: "P 34g · C 4g · G 24g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Pechuga de pollo a la plancha con puré mixto." }
     ],
     jueves: [
-        { tipo: "Desayuno", nombre: "Café con leche entera + Tostadas con manteca de maní", foto: "img/merienda-mani.jpg", desc: "1 taza de café con leche entera + 3 rebanadas de pan integral untadas con 25g de manteca de maní natural.", macros: "P 16g · C 38g · G 16g", suplemento: "💊 1 Multivitamínico + 5g de Creatina.", alternativa: "Alternativa: Tostadas con queso crema entero y miel." },
-        { tipo: "Almuerzo", nombre: "Milanesas de carne al horno con arroz y palta", foto: "img/almuerzo-carne-batata.jpg", desc: "3 unidades de milanesas de carne magra al horno + 180g de arroz hervido + 50g de palta en rodajas.", macros: "P 48g · C 54g · G 18g", suplemento: "Ninguno.", alternativa: "Alternativa: Milanesas de pollo gigantes con puré de zapallo y papa." },
-        { tipo: "Merienda", nombre: "Fruta grande + Puñado generoso de frutos secos", foto: "img/merienda-frutos.jpg", desc: "1 banana grande y 30g de almendras/nueces.", macros: "P 8g · C 32g · G 16g", suplemento: "Ninguno.", alternativa: "Alternativa: Yogur entero con cereales y pasas." },
-        { tipo: "Cena", nombre: "Salteño de carne magra con vegetales y fideos", foto: "img/almuerzo-lomo.jpg", desc: "180g de carne picada magra o tiritas de lomo salteadas con cebolla, morrón y acompañadas con 140g de fideos.", macros: "P 45g · C 46g · G 14g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Pollo desmenuzado en salsa con gran porción de fideos." }
+        { tipo: "Desayuno", nombre: "Café con leche + Pan con manteca de maní", foto: "img/merienda-mani.jpg", desc: "1 taza de leche entera con café + 2 tostadas integrales untadas con 25g de manteca de maní.", macros: "P 16g · C 32g · G 16g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Tostadas con queso crema entero y dulce de leche fit." },
+        { tipo: "Almuerzo", nombre: "Bife vacuno tierno con puré de mandioca", foto: "img/almuerzo-lomo.jpg", desc: "170g de corte tierno a la plancha, acompañado de 180g de puré de mandioca con un chorrito de aceite de oliva.", macros: "P 45g · C 56g · G 12g", suplemento: "💊 5g de Creatina.", alternativa: "Alternativa: Milanesas de carne al horno con papas doradas." },
+        { tipo: "Merienda", nombre: "Fruta grande con frutos secos", foto: "img/merienda-frutos.jpg", desc: "1 banana grande y 25g de nueces o almendras.", macros: "P 6g · C 30g · G 14g", suplemento: "Ninguno.", alternativa: "Alternativa: 1 manzana con un vaso de yogur entero." },
+        { tipo: "Cena", nombre: "Revuelto de zapallitos con doble huevo", foto: "img/cena-zapallito.jpg", desc: "200g de zapallitos salteados integrados con 4 huevos enteros batidos.", macros: "P 28g · C 9g · G 18g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Zapallitos rellenos con carne picada y queso." }
     ],
     viernes: [
-        { tipo: "Desayuno", nombre: "Yogur entero con avena y miel", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur entero con 40g de avena en hojuelas y 1 cucharada sopera de miel pura.", macros: "P 14g · C 46g · G 6g", suplemento: "💊 1 Multivitamínico + 5g de Creatina.", alternativa: "Alternativa: 3 tostadas integrales con queso Paraguay y mermelada." },
-        { tipo: "Almuerzo", nombre: "Bife de lomo con fideos al dente y queso rallado", foto: "img/almuerzo-lomo.jpg", desc: "180g de carne vacuna a la plancha, 180g de fideos tirabuzón con salsa natural y 20g de queso rallado por encima.", macros: "P 52g · C 60g · G 14g", suplemento: "Ninguno.", alternativa: "Alternativa: Sustituir lomo por pechuga de pollo grillada con guarnición doble." },
-        { tipo: "Merienda", nombre: "Infusión con pan integral y pasta de maní", foto: "img/desayuno-tostadas.jpg", desc: "Té o café con leche entera + 2 rebanadas de pan integral con 20g de pasta de maní.", macros: "P 12g · C 28g · G 12g", suplemento: "Ninguno.", alternativa: "Alternativa: 1 vaso de leche chocolatada casera con 1 fruta." },
-        { tipo: "Cena", nombre: "Pechuga XXL con ensalada mixta y mandioca", foto: "img/cena-pollo-verde.jpg", desc: "200g de pechuga a la plancha con lechuga, tomate y 120g de mandioca hervida.", macros: "P 50g · C 34g · G 6g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Carne de cerdo magra a la plancha con papa hervida." }
+        { tipo: "Desayuno", nombre: "Yogur con avena y pasas", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur entero con 40g de avena tradicional y un puñado de pasas de uva.", macros: "P 15g · C 42g · G 4g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Infusión con 2 tostadas y huevo revuelto." },
+        { tipo: "Almuerzo", nombre: "Pechuga grillada con fideos y salsa", foto: "img/receta-pollo-arroz.jpg", desc: "180g de pollo a la plancha, 180g de fideos tirabuzón con salsa de tomate natural y queso rallado.", macros: "P 54g · C 52g · G 10g", suplemento: "💊 5g de Creatina.", alternativa: "Alternativa: Carne vacuna magra con arroz hervido." },
+        { tipo: "Merienda", nombre: "Infusión con pan integral y queso", foto: "img/desayuno-tostadas.jpg", desc: "Té o café con leche entera + 2 rebanadas de pan integral con queso Paraguay.", macros: "P 14g · C 26g · G 8g", suplemento: "Ninguno.", alternativa: "Alternativa: Vaso de leche chocolatada con edulcorante." },
+        { tipo: "Cena", nombre: "Cerdo magro a la plancha con ensalada", foto: "img/cena-pollo-verde.jpg", desc: "180g de pechito de cerdo desgrasado a la plancha con ensalada de lechuga, tomate y choclo.", macros: "P 46g · C 14g · G 10g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Pescado al horno con ensalada de papa y huevo." }
     ],
     sabado: [
-        { tipo: "Desayuno", nombre: "Pancakes de avena, huevo y banana", foto: "img/desayuno-pancakes.jpg", desc: "Mezcla de 50g de avena, 3 huevos enteros y media banana pisada a la sartén. Servir con maní picado.", macros: "P 22g · C 42g · G 14g", suplemento: "💊 1 Multivitamínico + 5g de Creatina.", alternativa: "Alternativa: Tostadas francesas con leche entera y azúcar mascabo." },
-        { tipo: "Almuerzo", nombre: "Comida Social / Libre de Volumen (Burguer Gigante)", foto: "img/almuerzo-libre.jpg", desc: "Hamburguesa doble casera con pan de campo, doble carne magra, queso cheddar y papas al horno.", macros: "P 48g · C 75g · G 28g", suplemento: "Ninguno.", alternativa: "Alternativa: Pizzas caseras con base de masa integral y extra mozzarella." },
-        { tipo: "Merienda", nombre: "Batido proteico reforzado con banana", foto: "img/merienda-batido-mani.jpg", desc: "1.5 scoop de proteína en polvo con leche entera y 1 banana mediana.", macros: "P 38g · C 36g · G 5g", suplemento: "💊 Opcional: Whey protein.", alternativa: "Alternativa: 1 yogur bebible entero + 1 puñado de frutos secos." },
-        { tipo: "Cena", nombre: "Tortilla de papa grande con jamón y huevo", foto: "img/receta-tortilla-mandioca.jpg", desc: "2 papas medianas en cubos salteadas/horneadas y mezcladas con 4 huevos enteros y cubitos de jamón.", macros: "P 28g · C 46g · G 18g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Revuelto gramajo completo con bastones de papa y huevo." }
+        { tipo: "Desayuno", nombre: "Pancakes altos en calorías", foto: "img/desayuno-pancakes.jpg", desc: "Mezcla de 60g de avena, 3 huevos enteros y un chorro de leche entera en la sartén.", macros: "P 26g · C 42g · G 15g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Tostadas francesas con miel." },
+        { tipo: "Almuerzo", nombre: "Hamburguesas caseras dobles", foto: "img/almuerzo-libre.jpg", desc: "2 medallones de carne vacuna magra caseros en pan integral grande con queso, tomate y lechuga, más porción de papas al horno.", macros: "P 45g · C 60g · G 20g", suplemento: "Ninguno.", alternativa: "Alternativa: Asado casero con mandioca." },
+        { tipo: "Merienda", nombre: "Batido de proteína potente", foto: "img/merienda-batido-mani.jpg", desc: "1 scoop y medio de proteína con leche entera y hielo (o licuado de frutilla con leche y galletitas).", macros: "P 32g · C 22g · G 4g", suplemento: "💊 Opcional: Whey protein.", alternativa: "Alternativa: Yogur bebible entero con frutos secos." },
+        { tipo: "Cena", nombre: "Tortilla de papa abundante", foto: "img/receta-tortilla-mandioca.jpg", desc: "2 papas medianas hervidas en cubos mezcladas con 4 huevos batidos en sartén + ensalada verde.", macros: "P 28g · C 44g · G 16g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Revuelto gramajo con bastoncitos de papa al horno." }
     ],
     domingo: [
-        { tipo: "Desayuno", nombre: "Café con leche entera + Tostadas con palta y huevos", foto: "img/desayuno-palta.jpg", desc: "1 infusión con leche entera + 3 rebanadas de pan integral con 60g de palta y 2 huevos revueltos.", macros: "P 18g · C 36g · G 18g", suplemento: "💊 1 Multivitamínico + 5g de Creatina.", alternativa: "Alternativa: Tostadas con queso Paraguay y rodajas de tomate con oliva." },
-        { tipo: "Almuerzo", nombre: "Asado vacuno completo con mandioca y ensalada", foto: "img/almuerzo-carne-batata.jpg", desc: "220g de asado o vacío con buen porcentaje de carne, plato de ensalada y 150g de mandioca hervida.", macros: "P 58g · C 42g · G 18g", suplemento: "Ninguno.", alternativa: "Alternativa: Pollo al horno con papas doradas en cantidad." },
-        { tipo: "Merienda", nombre: "Yogur entero con frutos secos y cereales", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur entero + 30g de frutos secos y cereales integrales azucarados.", macros: "P 16g · C 30g · G 14g", suplemento: "Ninguno.", alternativa: "Alternativa: Infusión con 2 galletas grandes untadas con manteca de maní." },
-        { tipo: "Cena", nombre: "Sopa paraguaya tradicional hiperproteica", foto: "img/cena-omelette.jpg", desc: "Porción generosa de sopa paraguaya sustanciosa con harina de maíz, cebolla rehogada, abundante queso Paraguay y leche, junto a ensalada verde.", macros: "P 22g · C 38g · G 16g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Guiso de arroz con pollo desmenuzado en porción alta." }
+        { tipo: "Desayuno", nombre: "Café con leche + Tostadas con palta y huevo", foto: "img/desayuno-palta.jpg", desc: "1 taza de leche entera con café + 2 rebanadas de pan integral con 50g de palta pisada y 2 huevos revueltos.", macros: "P 18g · C 32g · G 18g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Tostadas con queso crema y jamón." },
+        { tipo: "Almuerzo", nombre: "Asado vacuno con batatas y ensalada", foto: "img/almuerzo-carne-batata.jpg", desc: "190g de corte vacuno asado o al horno, porción de batatas asadas y plato de ensalada mixta.", macros: "P 52g · C 28g · G 14g", suplemento: "Ninguno.", alternativa: "Alternativa: Pollo al horno entero con papa y calabaza." },
+        { tipo: "Merienda", nombre: "Yogur entero con frutos secos", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur entero + 20g de maní o nueces picadas.", macros: "P 16g · C 14g · G 12g", suplemento: "Ninguno.", alternativa: "Alternativa: Infusión con galletas de arroz y manteca de maní." },
+        { tipo: "Cena", nombre: "Sopa paraguaya tradicional fortalecida", foto: "img/cena-omelette.jpg", desc: "Porción generosa de sopa paraguaya casera con harina de maíz, cebolla rehogada y abundante queso Paraguay, acompañada de ensalada.", macros: "P 22g · C 35g · G 16g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Sopa crema de verduras con trozos de pollo." }
     ]
 };
 
@@ -582,7 +204,7 @@ function pickDia(el, dia) {
 function cargarDia(dia) {
     const listado = menuSemanal[dia];
     tituloPrincipal.innerText = diaLabel[dia];
-    descPrincipal.innerText = "Ingestas con porciones de volumen calórico limpio, macros altos, alternativas y suplementos para hipertrofia.";
+    descPrincipal.innerText = "Ingestas hipercalóricas con porciones densas, macros, alternativas y suplementos para hipertrofia.";
     pasoDia.innerText = "02";
     backBtn.style.display = "block";
     railDia1.classList.add("done"); railDia1.classList.remove("active");
@@ -617,7 +239,7 @@ function volverSelector() {
     vistaComidas.style.display = "none";
     selectorDias.style.display = "grid";
     tituloPrincipal.innerText = "Seleccioná el día de la semana";
-    descPrincipal.innerText = "Elegí una jornada para ver el desglose exacto de tus ingestas enfocadas en hipertrofia y ganancia de masa muscular.";
+    descPrincipal.innerText = "Elegí una jornada para ver el desglose exacto de tus ingestas enfocadas en volumen y desarrollo muscular.";
     pasoDia.innerText = "01";
     backBtn.style.display = "none";
     railDia1.classList.remove("done"); railDia1.classList.add("active");
@@ -627,6 +249,7 @@ function volverSelector() {
 
 attachInteractivity(selectorDias);
 </script>
+<script src="background.js"></script>
 
 </body>
 </html>
