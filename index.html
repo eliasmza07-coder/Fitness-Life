@@ -1,1095 +1,355 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Fitness Life — Configurador</title>
-
-<link rel="stylesheet" href="styles.css">
-
+<link rel="stylesheet" href="styles index.css">
 </head>
-
-
 <body>
 
+<div class="static-bg" aria-hidden="true"></div>
+
+<!-- signature spray filter, used across the whole app -->
+<svg class="svg-defs" aria-hidden="true">
+  <defs>
+    <filter id="roughEdge" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018 0.09" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
 
 <header class="logo-bar">
-
-<div class="header-inner">
-
-<a href="index.html" class="brand">
-
-<span class="pulse-dot"></span>
-
-Fitness Life
-
-</a>
-
-
-<div class="nav-badge">
-PROGRAMA // 01
-</div>
-
-
-</div>
-
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="pulse-dot"></span>
+      Fitness Life
+    </a>
+    <div class="nav-badge">PROGRAMA // 01</div>
+  </div>
 </header>
 
-
-
-
-
 <section class="hero">
-
-<div class="hero-grid">
-
-<span class="badge">
-PLAN PERSONALIZADO
-</span>
-
-
-<h1>
-Construí tu transformación
-</h1>
-
-
-<p>
-Elegí tu objetivo y configurá tu camino fitness.
-</p>
-
-
-</div>
-
+  <div class="hero-grid">
+    <span class="badge">PLAN PERSONALIZADO</span>
+    <h1>Construí tu<br>transformación</h1>
+    <p>Elegí tu objetivo y configurá tu camino fitness. Cuatro pasos, sin vueltas.</p>
+  </div>
 </section>
 
-
-
-
-
-
-
-
+<!-- progress rail: 4 steps in this flow (objetivo → sección → lugar/rutina → días) -->
+<div class="rail" aria-hidden="true">
+  <div class="stop active"></div>
+  <div class="stop"></div>
+  <div class="stop"></div>
+  <div class="stop"></div>
+</div>
 
 <main class="container">
+  <div class="app-container">
+    <button id="backBtn" class="back-btn" onclick="volver()">← Atrás</button>
 
+    <div class="section-title">
+      <div class="idx" id="paso">01</div>
+      <div>
+        <h2 id="titulo">Elegí tu objetivo</h2>
+        <p id="descripcion">Seleccioná el objetivo que más se adapte a vos.</p>
+      </div>
+    </div>
 
-<div class="app-container">
-
-
-
-<button id="backBtn" class="back-btn" onclick="volver()">
-← Atrás
-</button>
-
-
-
-
-
-<div class="section-title">
-
-
-<div class="idx" id="paso">
-01
-</div>
-
-
-<div>
-
-<h2 id="titulo">
-Elegí tu objetivo
-</h2>
-
-
-<p id="descripcion">
-Seleccioná el objetivo que más se adapte a vos.
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div id="app" class="bento"></div>
-
-
-
-</div>
-
-
+    <div id="app" class="bento"></div>
+  </div>
 </main>
 
-
-
-
-
-
-
-
 <footer class="footer">
-
-<p>
-© 2026 FITNESS LIFE // TODOS LOS DERECHOS RESERVADOS.
-</p>
-
-
+  <p>© 2026 FITNESS LIFE // TODOS LOS DERECHOS RESERVADOS.</p>
+  <p class="tagmark">hecho a pulso 🖤</p>
 </footer>
 
-
-
-
-
-
-
-
-
 <script>
-
-
 const app = document.getElementById("app");
-
 const titulo = document.getElementById("titulo");
-
 const descripcion = document.getElementById("descripcion");
-
 const paso = document.getElementById("paso");
-
 const backBtn = document.getElementById("backBtn");
-
-
+const railStops = document.querySelectorAll(".rail .stop");
 
 let historial = [];
-
 let objetivo = "";
-
 let lugar = "";
 
-
-
-
-
-
-
-
-function cambiarPantalla(html, numero, tituloTexto, descripcionTexto){
-
-
-historial.push({
-
-html: app.innerHTML,
-
-numero: paso.innerHTML,
-
-titulo: titulo.innerHTML,
-
-descripcion: descripcion.innerHTML
-
-});
-
-
-
-app.innerHTML = html;
-
-
-paso.innerHTML = numero;
-
-titulo.innerHTML = tituloTexto;
-
-descripcion.innerHTML = descripcionTexto;
-
-
-actualizarBoton();
-
-window.scrollTo({ top: 0, behavior: 'smooth' });
-
+/* ---------- confirmation stamp (signature interaction) ---------- */
+function pick(el, cb) {
+  if (el.dataset.locked) return;
+  el.dataset.locked = "1";
+  const stamp = document.createElement("div");
+  stamp.className = "spray-stamp";
+  stamp.innerHTML = '<span class="mark">✓ ELEGIDO</span>';
+  el.appendChild(stamp);
+  requestAnimationFrame(() => stamp.classList.add("show"));
+  setTimeout(() => { cb(); }, 260);
 }
 
-
-
-
-
-
-
-
-
-function iniciar(){
-
-
-historial=[];
-
-
-
-app.innerHTML = `
-
-
-
-
-
-
-
-<article class="card selection-card"
-onclick="seleccionarObjetivo('recomposicion')">
-
-
-
-<div class="card-img-container">
-
-<div class="slideshow">
-
-
-<img src="recomposicion1.png">
-
-<img src="recomposicion2.png">
-
-<img src="recomposicion3.png">
-
-<img src="recomposicion4.png">
-
-<img src="recomposicion5.png">
-
-
-</div>
-
-</div>
-
-
-
-
-
-<span class="tag">
-EQUILIBRIO
-</span>
-
-
-
-
-<h2>
-Recomposición Corporal
-</h2>
-
-
-
-
-
-<p>
-Proceso enfocado en mejorar la composición del cuerpo,
-aumentando masa muscular mientras se reduce grasa.
-</p>
-
-
-
-
-
-<ul>
-
-<li>✓ Ganancia muscular progresiva</li>
-
-<li>✓ Reducción de grasa corporal</li>
-
-<li>✓ Mejor rendimiento físico</li>
-
-<li>✓ Transformación equilibrada</li>
-
-</ul>
-
-
-
-
-
-<button class="btn">
-Seleccionar
-</button>
-
-
-
-</article>
-
-
-
-
-
-
-
-
-
-<article class="card selection-card"
-onclick="seleccionarObjetivo('ganar-musculo')">
-
-
-
-
-
-<div class="card-img-container">
-
-<div class="slideshow">
-
-
-<img src="imagenes/musculo1.jpg">
-
-<img src="imagenes/musculo2.jpg">
-
-<img src="imagenes/musculo3.jpg">
-
-<img src="imagenes/musculo4.jpg">
-
-<img src="imagenes/musculo5.jpg">
-
-
-</div>
-
-</div>
-
-
-
-
-
-<span class="tag">
-HIPERTROFIA
-</span>
-
-
-
-
-
-<h2>
-Ganar Músculo
-</h2>
-
-
-
-
-
-<p>
-Objetivo centrado en aumentar tamaño muscular,
-fuerza y rendimiento mediante entrenamiento y nutrición.
-</p>
-
-
-
-
-
-<ul>
-
-<li>✓ Mayor volumen muscular</li>
-
-<li>✓ Progresión de cargas</li>
-
-<li>✓ Entrenamiento estructurado</li>
-
-<li>✓ Desarrollo de fuerza</li>
-
-</ul>
-
-
-
-
-
-<button class="btn">
-Seleccionar
-</button>
-
-
-
-</article>
-
-
-
-
-
-
-
-
-
-<article class="card wide selection-card"
-onclick="seleccionarObjetivo('perder-grasa')">
-
-
-
-
-
-<div class="card-img-container">
-
-<div class="slideshow">
-
-
-<img src="imagenes/grasa1.jpg">
-
-<img src="imagenes/grasa2.jpg">
-
-<img src="imagenes/grasa3.jpg">
-
-<img src="imagenes/grasa4.jpg">
-
-<img src="imagenes/grasa5.jpg">
-
-
-</div>
-
-</div>
-
-
-
-
-
-<span class="tag">
-DEFINICIÓN
-</span>
-
-
-
-
-
-<h2>
-Perder Grasa
-</h2>
-
-
-
-
-
-<p>
-Estrategia enfocada en disminuir grasa corporal
-manteniendo la mayor cantidad posible de músculo.
-</p>
-
-
-
-
-
-<ul>
-
-<li>✓ Déficit calórico controlado</li>
-
-<li>✓ Mantener fuerza</li>
-
-<li>✓ Mejor definición física</li>
-
-<li>✓ Hábitos sostenibles</li>
-
-</ul>
-
-
-
-
-
-<button class="btn btn-secondary">
-Seleccionar
-</button>
-
-
-
-
-</article>
-
-
-
-
-`;
-
-
-
-paso.innerHTML="01";
-
-titulo.innerHTML="Elegí tu objetivo";
-
-descripcion.innerHTML="Seleccioná el objetivo que más se adapte a vos.";
-
-
-actualizarBoton();
-
-
-
+/* strips the stamp/lock/hover-tilt leftovers before a screen gets saved
+   into history, so going back never shows a stale "ELEGIDO" stuck on a card */
+function cleanSnapshot(html) {
+  const tmp = document.createElement("div");
+  tmp.innerHTML = html;
+  tmp.querySelectorAll(".spray-stamp").forEach((s) => s.remove());
+  tmp.querySelectorAll("[data-locked]").forEach((e) => e.removeAttribute("data-locked"));
+  tmp.querySelectorAll("[data-bound]").forEach((e) => e.removeAttribute("data-bound"));
+  tmp.querySelectorAll(".card").forEach((e) => { e.style.transform = ""; });
+  return tmp.innerHTML;
 }
 
-
-
-
-
-
-
-
-
-function seleccionarObjetivo(valor){
-
-
-objetivo = valor;
-
-
-
-cambiarPantalla(`
-
-
-
-<article class="card selection-card"
-onclick="abrirPlan()">
-
-
-
-<span class="tag">
-ESTRATEGIA
-</span>
-
-
-
-
-<h2>
-Plan
-</h2>
-
-
-
-
-<p>
-Información y estrategia completa según tu objetivo.
-</p>
-
-
-
-
-<button class="btn">
-Ver Plan
-</button>
-
-
-
-</article>
-
-
-
-
-
-
-
-
-
-<article class="card selection-card"
-onclick="abrirDieta()">
-
-
-
-<span class="tag">
-NUTRICIÓN
-</span>
-
-
-
-
-<h2>
-Dieta
-</h2>
-
-
-
-
-<p>
-Alimentación personalizada, calorías y macronutrientes.
-</p>
-
-
-
-
-<button class="btn">
-Ver Dieta
-</button>
-
-
-
-</article>
-
-
-
-
-
-
-
-
-<article class="card wide selection-card"
-onclick="mostrarRutinas()">
-
-
-
-<span class="tag">
-ENTRENAMIENTO
-</span>
-
-
-
-
-<h2>
-Rutinas
-</h2>
-
-
-
-
-<p>
-Configurá tu entrenamiento seleccionando lugar y días.
-</p>
-
-
-
-
-<button class="btn btn-secondary">
-Configurar Rutina
-</button>
-
-
-
-</article>
-
-
-
-`,
-"02",
-objetivo,
-"Elegí qué querés configurar."
-
-);
-
-
-
+/* ---------- tilt + keyboard access on every card ---------- */
+function attachTilt() {
+  document.querySelectorAll(".card").forEach((card) => {
+    if (card.dataset.bound) return;
+    card.dataset.bound = "1";
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("role", "button");
+    card.addEventListener("mousemove", (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(700px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) translateY(-4px)`;
+    });
+    card.addEventListener("mouseleave", () => { card.style.transform = ""; });
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); card.click(); }
+    });
+  });
 }
 
-function abrirPlan(){
-
-
-window.location.href =
-"plan-" + objetivo + ".html";
-
-
+function actualizarRail(numero) {
+  const n = parseInt(numero, 10);
+  railStops.forEach((s, i) => {
+    s.classList.remove("done", "active");
+    if (i + 1 < n) s.classList.add("done");
+    else if (i + 1 === n) s.classList.add("active");
+  });
 }
 
-
-
-
-
-
-
-
-function abrirDieta(){
-
-
-window.location.href =
-"dieta-" + objetivo + ".html";
-
-
+function actualizarBoton() {
+  backBtn.style.display = historial.length === 0 ? "none" : "block";
 }
 
-
-
-
-
-
-
-
-
-function mostrarRutinas(){
-
-
-cambiarPantalla(`
-
-
-
-<article class="card selection-card"
-onclick="seleccionarLugar('casa')">
-
-
-
-<div class="card-img-container">
-
-<div class="slideshow">
-
-
-<img src="imagenes/casa1.jpg">
-
-<img src="imagenes/casa2.jpg">
-
-<img src="imagenes/casa3.jpg">
-
-<img src="imagenes/casa4.jpg">
-
-<img src="imagenes/casa5.jpg">
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<span class="tag">
-HOME
-</span>
-
-
-
-
-
-<h2>
-Casa
-</h2>
-
-
-
-
-
-<p>
-Entrenamiento adaptado para realizar en casa,
-utilizando peso corporal, bandas, mancuernas
-o el equipamiento disponible.
-</p>
-
-
-
-
-
-<button class="btn">
-Elegir Casa
-</button>
-
-
-
-</article>
-
-
-
-
-
-
-
-
-
-<article class="card selection-card"
-onclick="seleccionarLugar('gym')">
-
-
-
-<div class="card-img-container">
-
-<div class="slideshow">
-
-
-<img src="imagenes/gym1.jpg">
-
-<img src="imagenes/gym2.jpg">
-
-<img src="imagenes/gym3.jpg">
-
-<img src="imagenes/gym4.jpg">
-
-<img src="imagenes/gym5.jpg">
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<span class="tag">
-GYM
-</span>
-
-
-
-
-
-<h2>
-Gimnasio
-</h2>
-
-
-
-
-
-<p>
-Entrenamiento con máquinas, barras y pesas,
-orientado al desarrollo de fuerza y masa muscular.
-</p>
-
-
-
-
-
-<button class="btn btn-secondary">
-Elegir Gym
-</button>
-
-
-
-</article>
-
-
-
-`,
-"03",
-"Rutinas",
-"Elegí dónde vas a entrenar."
-
-);
-
-
-
+/* ---------- animated screen swap ---------- */
+function cambiarPantalla(html, numero, tituloTexto, descripcionTexto, dir = "fwd") {
+  historial.push({
+    html: cleanSnapshot(app.innerHTML),
+    numero: paso.innerHTML,
+    titulo: titulo.innerHTML,
+    descripcion: descripcion.innerHTML,
+  });
+
+  app.classList.add("app-exit");
+  if (dir === "back") app.classList.add("dir-back");
+
+  setTimeout(() => {
+    app.innerHTML = html;
+    app.classList.remove("app-exit", "dir-back");
+    paso.innerHTML = numero;
+    titulo.innerHTML = tituloTexto;
+    descripcion.innerHTML = descripcionTexto;
+    actualizarBoton();
+    actualizarRail(numero);
+    attachTilt();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, 210);
 }
 
-
-
-
-
-
-
-
-
-function seleccionarLugar(valor){
-
-
-lugar = valor;
-
-
-
-cambiarPantalla(`
-
-
-
-<article class="card selection-card"
-onclick="abrirRutina(3)">
-
-
-
-<span class="tag">
-FRECUENCIA
-</span>
-
-
-
-
-<h2>
-3 días
-</h2>
-
-
-
-
-<p>
-Rutina equilibrada para personas con menor
-cantidad de días disponibles.
-</p>
-
-
-
-
-</article>
-
-
-
-
-
-
-
-
-
-<article class="card selection-card"
-onclick="abrirRutina(4)">
-
-
-
-<span class="tag">
-FRECUENCIA
-</span>
-
-
-
-
-<h2>
-4 días
-</h2>
-
-
-
-
-<p>
-Mayor distribución del entrenamiento semanal
-con más volumen de trabajo.
-</p>
-
-
-
-
-</article>
-
-
-
-
-
-
-
-
-
-<article class="card wide selection-card"
-onclick="abrirRutina(5)">
-
-
-
-<span class="tag">
-FRECUENCIA
-</span>
-
-
-
-
-<h2>
-5 días
-</h2>
-
-
-
-
-<p>
-Rutina avanzada con mayor frecuencia y enfoque
-en desarrollo muscular.
-</p>
-
-
-
-
-</article>
-
-
-
-`,
-"04",
-lugar,
-"Seleccioná cuántos días podés entrenar."
-
-);
-
-
-
+function iniciar() {
+  historial = [];
+  app.innerHTML = `
+    <article class="card selection-card" onclick="pick(this, () => seleccionarObjetivo('recomposicion'))">
+      <div class="card-img-container">
+        <div class="slideshow">
+          <img src="recomposicion1.png">
+          <img src="recomposicion2.png">
+          <img src="recomposicion3.png">
+          <img src="recomposicion4.png">
+          <img src="recomposicion5.png">
+        </div>
+      </div>
+      <span class="tag">EQUILIBRIO</span>
+      <h2>Recomposición Corporal</h2>
+      <p>Proceso enfocado en mejorar la composición del cuerpo, aumentando masa muscular mientras se reduce grasa.</p>
+      <ul>
+        <li>✓ Ganancia muscular progresiva</li>
+        <li>✓ Reducción de grasa corporal</li>
+        <li>✓ Mejor rendimiento físico</li>
+        <li>✓ Transformación equilibrada</li>
+      </ul>
+      <button class="btn">Seleccionar</button>
+    </article>
+
+    <article class="card selection-card" onclick="pick(this, () => seleccionarObjetivo('ganar-musculo'))">
+      <div class="card-img-container">
+        <div class="slideshow">
+          <img src="imagenes/musculo1.jpg">
+          <img src="imagenes/musculo2.jpg">
+          <img src="imagenes/musculo3.jpg">
+          <img src="imagenes/musculo4.jpg">
+          <img src="imagenes/musculo5.jpg">
+        </div>
+      </div>
+      <span class="tag">HIPERTROFIA</span>
+      <h2>Ganar Músculo</h2>
+      <p>Objetivo centrado en aumentar tamaño muscular, fuerza y rendimiento mediante entrenamiento y nutrición.</p>
+      <ul>
+        <li>✓ Mayor volumen muscular</li>
+        <li>✓ Progresión de cargas</li>
+        <li>✓ Entrenamiento estructurado</li>
+        <li>✓ Desarrollo de fuerza</li>
+      </ul>
+      <button class="btn">Seleccionar</button>
+    </article>
+
+    <article class="card wide selection-card" onclick="pick(this, () => seleccionarObjetivo('perder-grasa'))">
+      <div class="card-img-container">
+        <div class="slideshow">
+          <img src="imagenes/grasa1.jpg">
+          <img src="imagenes/grasa2.jpg">
+          <img src="imagenes/grasa3.jpg">
+          <img src="imagenes/grasa4.jpg">
+          <img src="imagenes/grasa5.jpg">
+        </div>
+      </div>
+      <span class="tag">DEFINICIÓN</span>
+      <h2>Perder Grasa</h2>
+      <p>Estrategia enfocada en disminuir grasa corporal manteniendo la mayor cantidad posible de músculo.</p>
+      <ul>
+        <li>✓ Déficit calórico controlado</li>
+        <li>✓ Mantener fuerza</li>
+        <li>✓ Mejor definición física</li>
+        <li>✓ Hábitos sostenibles</li>
+      </ul>
+      <button class="btn btn-secondary">Seleccionar</button>
+    </article>
+  `;
+
+  paso.innerHTML = "01";
+  titulo.innerHTML = "Elegí tu objetivo";
+  descripcion.innerHTML = "Seleccioná el objetivo que más se adapte a vos.";
+  actualizarBoton();
+  actualizarRail("01");
+  attachTilt();
 }
 
+function seleccionarObjetivo(valor) {
+  objetivo = valor;
+  cambiarPantalla(`
+    <article class="card selection-card" onclick="pick(this, abrirPlan)">
+      <span class="tag">ESTRATEGIA</span>
+      <h2>Plan</h2>
+      <p>Información y estrategia completa según tu objetivo.</p>
+      <button class="btn">Ver Plan</button>
+    </article>
 
+    <article class="card selection-card" onclick="pick(this, abrirDieta)">
+      <span class="tag">NUTRICIÓN</span>
+      <h2>Dieta</h2>
+      <p>Alimentación personalizada, calorías y macronutrientes.</p>
+      <button class="btn">Ver Dieta</button>
+    </article>
 
-
-
-
-
-function abrirRutina(dias){
-
-
-window.location.href =
-
-"rutina-" +
-objetivo +
-"-" +
-lugar +
-"-" +
-dias +
-"-dias.html";
-
-
+    <article class="card wide selection-card" onclick="pick(this, mostrarRutinas)">
+      <span class="tag">ENTRENAMIENTO</span>
+      <h2>Rutinas</h2>
+      <p>Configurá tu entrenamiento seleccionando lugar y días.</p>
+      <button class="btn btn-secondary">Configurar Rutina</button>
+    </article>
+  `, "02", objetivo, "Elegí qué querés configurar.");
 }
 
+function abrirPlan() { window.location.href = "plan-" + objetivo + ".html"; }
+function abrirDieta() { window.location.href = "dieta-" + objetivo + ".html"; }
 
+function mostrarRutinas() {
+  cambiarPantalla(`
+    <article class="card selection-card" onclick="pick(this, () => seleccionarLugar('casa'))">
+      <div class="card-img-container">
+        <div class="slideshow">
+          <img src="imagenes/casa1.jpg">
+          <img src="imagenes/casa2.jpg">
+          <img src="imagenes/casa3.jpg">
+          <img src="imagenes/casa4.jpg">
+          <img src="imagenes/casa5.jpg">
+        </div>
+      </div>
+      <span class="tag">HOME</span>
+      <h2>Casa</h2>
+      <p>Entrenamiento adaptado para realizar en casa, utilizando peso corporal, bandas, mancuernas o el equipamiento disponible.</p>
+      <button class="btn">Elegir Casa</button>
+    </article>
 
-
-
-
-
-
-
-
-
-function volver(){
-
-
-if(historial.length > 0){
-
-
-
-let anterior = historial.pop();
-
-
-
-app.innerHTML = anterior.html;
-
-
-paso.innerHTML = anterior.numero;
-
-
-titulo.innerHTML = anterior.titulo;
-
-
-descripcion.innerHTML = anterior.descripcion;
-
-
-
+    <article class="card selection-card" onclick="pick(this, () => seleccionarLugar('gym'))">
+      <div class="card-img-container">
+        <div class="slideshow">
+          <img src="imagenes/gym1.jpg">
+          <img src="imagenes/gym2.jpg">
+          <img src="imagenes/gym3.jpg">
+          <img src="imagenes/gym4.jpg">
+          <img src="imagenes/gym5.jpg">
+        </div>
+      </div>
+      <span class="tag">GYM</span>
+      <h2>Gimnasio</h2>
+      <p>Entrenamiento con máquinas, barras y pesas, orientado al desarrollo de fuerza y masa muscular.</p>
+      <button class="btn btn-secondary">Elegir Gym</button>
+    </article>
+  `, "03", "Rutinas", "Elegí dónde vas a entrenar.");
 }
 
+function seleccionarLugar(valor) {
+  lugar = valor;
+  cambiarPantalla(`
+    <article class="card selection-card" onclick="pick(this, () => abrirRutina(3))">
+      <span class="tag">FRECUENCIA</span>
+      <h2>3 días</h2>
+      <p>Rutina equilibrada para personas con menor cantidad de días disponibles.</p>
+    </article>
 
+    <article class="card selection-card" onclick="pick(this, () => abrirRutina(4))">
+      <span class="tag">FRECUENCIA</span>
+      <h2>4 días</h2>
+      <p>Mayor distribución del entrenamiento semanal con más volumen de trabajo.</p>
+    </article>
 
-actualizarBoton();
-
-
-
+    <article class="card wide selection-card" onclick="pick(this, () => abrirRutina(5))">
+      <span class="tag">FRECUENCIA</span>
+      <h2>5 días</h2>
+      <p>Rutina avanzada con mayor frecuencia y enfoque en desarrollo muscular.</p>
+    </article>
+  `, "04", lugar, "Seleccioná cuántos días podés entrenar.");
 }
 
-
-
-
-
-
-
-
-
-function actualizarBoton(){
-
-
-if(historial.length === 0){
-
-
-backBtn.style.display="none";
-
-
+function abrirRutina(dias) {
+  window.location.href = "rutina-" + lugar + "-" + dias + "-dias.html";
 }
 
-else{
-
-
-backBtn.style.display="block";
-
-
+function volver() {
+  if (historial.length > 0) {
+    const anterior = historial.pop();
+    app.classList.add("app-exit", "dir-back");
+    setTimeout(() => {
+      app.innerHTML = anterior.html;
+      app.classList.remove("app-exit", "dir-back");
+      paso.innerHTML = anterior.numero;
+      titulo.innerHTML = anterior.titulo;
+      descripcion.innerHTML = anterior.descripcion;
+      actualizarBoton();
+      actualizarRail(anterior.numero);
+      attachTilt();
+    }, 210);
+  }
 }
-
-
-}
-
-
-
-
-
-
-
 
 iniciar();
-
-
-
 </script>
-
-
+<script src="background.js"></script>
 </body>
-
 </html>
