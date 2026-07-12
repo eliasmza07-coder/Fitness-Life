@@ -1,256 +1,511 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Fitness Life // Guía de Recomposición Corporal (Lunes a Lunes)</title>
+
     <link rel="stylesheet" href="styles.css">
+
 </head>
+
+
 
 <body>
 
+
+
 <div class="static-bg" aria-hidden="true"></div>
 
+
+
 <svg class="svg-defs" aria-hidden="true">
+
   <defs>
+
     <filter id="roughEdge" x="-30%" y="-30%" width="160%" height="160%">
+
       <feTurbulence type="fractalNoise" baseFrequency="0.018 0.09" numOctaves="2" seed="7" result="noise"/>
+
       <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+
     </filter>
+
   </defs>
+
 </svg>
 
+
+
 <header class="logo-bar">
+
     <div class="header-inner">
+
         <a href="index.html" class="brand">
+
             <span class="pulse-dot"></span>
+
             Fitness Life
+
         </a>
+
         <div class="nav-badge">RECOMPOSICIÓN // 07 DÍAS</div>
+
     </div>
+
 </header>
 
+
+
 <section class="hero">
+
     <div class="hero-grid">
+
         <span class="badge">PLAN DE RECOMPOSICIÓN CORPORAL (GANAR MÚSCULO / PERDER GRASA)</span>
+
         <h1>Nutrición de<br>Lunes a Lunes</h1>
+
         <p>Menú optimizado con alto valor proteico, carbohidratos estratégicos peri-entreno, control de porciones, suplementación y alternativas reales.</p>
+
     </div>
+
 </section>
 
+
+
 <div class="rail" aria-hidden="true">
+
   <div class="stop active" id="railDia1"></div>
+
   <div class="stop" id="railDia2"></div>
+
 </div>
 
+
+
 <main class="container">
+
     <div class="app-container">
 
-        <button id="backBtn" class="back-btn" onclick="volverSelector()">← Atrás</button>
+
+
+        <button id="backBtn" class="back-btn" onclick="volverSelector()" style="display: none;">← Atrás</button>
+
+
 
         <div class="section-title">
+
             <div class="idx" id="paso-dia">01</div>
+
             <div>
+
                 <h2 id="titulo-principal">Seleccioná el día de la semana</h2>
+
                 <p id="desc-principal">Elegí una jornada para ver el desglose exacto de tus ingestas enfocadas en recomposición corporal.</p>
+
             </div>
+
         </div>
+
+
 
         <div class="bento cols-3" id="selector-dias">
+
             <article class="card selection-card" onclick="pickDia(this,'lunes')">
+
                 <span class="tag">DÍA 1</span>
+
                 <h2>Lunes</h2>
+
                 <p>Enfoque clásico post-fin de semana: Pollo, arroz e hinojo/acelga.</p>
+
                 <button class="btn">Ver Ingestas</button>
+
             </article>
+
+
 
             <article class="card selection-card" onclick="pickDia(this,'martes')">
+
                 <span class="tag">DÍA 2</span>
+
                 <h2>Martes</h2>
+
                 <p>Día de pierna/espalda: Carne magra, batata y lácteos.</p>
+
                 <button class="btn">Ver Ingestas</button>
+
             </article>
+
+
 
             <article class="card selection-card" onclick="pickDia(this,'miercoles')">
+
                 <span class="tag">DÍA 3</span>
+
                 <h2>Miércoles</h2>
+
                 <p>Mitad de semana: Pescado blanco, puré de zapallo y mandioca.</p>
+
                 <button class="btn">Ver Ingestas</button>
+
             </article>
+
+
 
             <article class="card selection-card" onclick="pickDia(this,'jueves')">
+
                 <span class="tag">DÍA 4</span>
+
                 <h2>Jueves</h2>
+
                 <p>Alta saciedad: Milanesas al horno con ensalada mixta.</p>
+
                 <button class="btn">Ver Ingestas</button>
+
             </article>
+
+
 
             <article class="card selection-card" onclick="pickDia(this,'viernes')">
+
                 <span class="tag">DÍA 5</span>
+
                 <h2>Viernes</h2>
+
                 <p>Cierre hábil: Bife vacuno con fideos integrales al dente.</p>
+
                 <button class="btn">Ver Ingestas</button>
+
             </article>
+
+
 
             <article class="card selection-card" onclick="pickDia(this,'sabado')">
+
                 <span class="tag">DÍA 6</span>
+
                 <h2>Sábado</h2>
+
                 <p>Flexibilidad inteligente: Comida social con base proteica alta.</p>
+
                 <button class="btn">Ver Ingestas</button>
+
             </article>
+
+
 
             <article class="card wide selection-card" onclick="pickDia(this,'domingo')">
+
                 <span class="tag">DÍA 7</span>
+
                 <h2>Domingo</h2>
+
                 <p>Recarga y preparación: Asado magro o pollo al horno con palta.</p>
+
                 <button class="btn btn-secondary">Ver Ingestas</button>
+
             </article>
+
         </div>
+
+
 
         <div id="vista-comidas" style="display: none; margin-top: 1.5rem;">
+
             <div class="bento" id="grilla-platos"></div>
+
         </div>
 
+
+
     </div>
+
 </main>
 
+
+
 <footer class="footer">
+
     <p>© 2026 FITNESS LIFE // TODOS LOS DERECHOS RESERVADOS.</p>
+
     <p class="tagmark">comé fuerte, entrená más fuerte 🖤</p>
+
 </footer>
 
+
+
 <script>
+
 const selectorDias = document.getElementById("selector-dias");
+
 const vistaComidas = document.getElementById("vista-comidas");
+
 const tituloPrincipal = document.getElementById("titulo-principal");
+
 const descPrincipal = document.getElementById("desc-principal");
+
 const pasoDia = document.getElementById("paso-dia");
+
 const backBtn = document.getElementById("backBtn");
+
 const grillaPlatos = document.getElementById("grilla-platos");
+
 const railDia1 = document.getElementById("railDia1");
+
 const railDia2 = document.getElementById("railDia2");
 
+
+
 const menuSemanal = {
+
     lunes: [
+
         { tipo: "Desayuno", nombre: "Café con leche + Tostadas con revuelto de huevos", foto: "img/desayuno-tostadas.jpg", desc: "1 taza de café con leche descremada + 2 rebanadas de pan integral con 2 huevos enteros revueltos.", macros: "P 16g · C 28g · G 10g", suplemento: "💊 1 Multivitamínico + 1 comprimido de Vitamina D3.", alternativa: "Alternativa: Cambiar los huevos revueltos por 1 taza de yogur griego con 20g de avena." },
+
         { tipo: "Almuerzo", nombre: "Pechuga grillada con arroz e hinojo", foto: "img/receta-pollo-arroz.jpg", desc: "160g de pechuga de pollo a la plancha, 150g de arroz cocido y ensalada de lechuga, tomate e hinojo con 1 cucharada de aceite de oliva.", macros: "P 45g · C 48g · G 12g", suplemento: "💊 5g de Creatina Monohidrato (post-entreno).", alternativa: "Alternativa: Sustituir el pollo por 160g de carne magra (nalga/paleta) o pescado." },
+
         { tipo: "Merienda", nombre: "Yogur descremado con avena", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur descremado (200g) con 30g de avena tradicional.", macros: "P 14g · C 26g · G 2g", suplemento: "Ninguno.", alternativa: "Alternativa: 1 vaso de leche descremada + 1 fruta mediana (banana o manzana)." },
+
         { tipo: "Cena", nombre: "Tortilla de acelga con huevo y mandioca", foto: "img/receta-tortilla-mandioca.jpg", desc: "Tortilla con 3 huevos enteros y un buen puñado de acelga. Acompañar con 100g de mandioca hervida.", macros: "P 23g · C 34g · G 13g", suplemento: "💊 1 cápsula de Omega 3 (aceite de pescado).", alternativa: "Alternativa: Cambiar la mandioca por un plato hondo de puré de zapallo o calabaza." }
+
     ],
+
     martes: [
+
         { tipo: "Desayuno", nombre: "Licuado proteico de banana", foto: "img/receta-batido.jpg", desc: "250ml de leche descremada licuada con 1 banana chica y 20g de avena.", macros: "P 12g · C 36g · G 3g", suplemento: "💊 Opcional: 1 scoop de Whey Protein si el presupuesto lo permite.", alternativa: "Alternativa: Infusión con 2 tostadas de pan integral y queso untable magro." },
+
         { tipo: "Almuerzo", nombre: "Bife de nalga con batata al horno", foto: "img/almuerzo-carne-batata.jpg", desc: "150g de carne vacuna magra a la plancha, 180g de batata horneada en cubos y ensalada de zanahoria rallada.", macros: "P 40g · C 40g · G 9g", suplemento: "💊 5g de Creatina Monohidrato.", alternativa: "Alternativa: Reemplazar la batata por 180g de papa hervida o arroz." },
+
         { tipo: "Merienda", nombre: "Queso Paraguay y fruta", foto: "img/merienda-queso.jpg", desc: "60g de queso Paraguay fresco acompañado de 1 manzana mediana.", macros: "P 14g · C 22g · G 5g", suplemento: "Ninguno.", alternativa: "Alternativa: 1 pote de yogur firme descremado + un puñado de pasas de uva." },
+
         { tipo: "Cena", nombre: "Pollo desmenuzado con ensalada verde", foto: "img/cena-pollo-verde.jpg", desc: "150g de pollo hervido desmenuzado con mix de lechuga, pepino y tomate. Aceite de oliva y limón.", macros: "P 41g · C 5g · G 5g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: 160g de merluza o atún al agua enlatado con verduras." }
+
     ],
+
     miercoles: [
+
         { tipo: "Desayuno", nombre: "Mate cocido o té + Tostadas con huevo duro", foto: "img/desayuno-tostadas.jpg", desc: "1 taza de infusión + 2 rebanadas de pan integral con 1 huevo duro picado por encima.", macros: "P 10g · C 24g · G 5g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Tostadas con queso Paraguay en fetas finas." },
+
         { tipo: "Almuerzo", nombre: "Filet de pescado al limón con puré de zapallo", foto: "img/receta-pescado-batata.jpg", desc: "170g de merluza a la plancha con limón, acompañado de un plato hondo generoso de puré de zapallo.", macros: "P 37g · C 20g · G 5g", suplemento: "💊 5g de Creatina.", alternativa: "Alternativa: Cambiar el pescado blanco por pechuga de pollo." },
+
         { tipo: "Merienda", nombre: "Yogur con maní tostado", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur descremado + 15g de maní tostado sin sal.", macros: "P 13g · C 14g · G 8g", suplemento: "Ninguno.", alternativa: "Alternativa: Infusión con 1 barrita de cereal proteica o almendras (15g)." },
+
         { tipo: "Cena", nombre: "Omelette de queso y tomate", foto: "img/cena-omelette.jpg", desc: "Batido de 3 huevos enteros con un cubito de queso Paraguay magro y rodajas de tomate.", macros: "P 24g · C 5g · G 16g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Revuelto de 2 huevos + 2 claras con jamón magro y espinaca." }
+
     ],
+
     jueves: [
+
         { tipo: "Desayuno", nombre: "Café con leche + Pan integral con manteca de maní", foto: "img/merienda-mani.jpg", desc: "1 taza de café con leche descremada + 2 rebanadas de pan integral con 15g de manteca de maní.", macros: "P 10g · C 26g · G 10g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Tostadas con queso untable y mermelada sin azúcar." },
+
         { tipo: "Almuerzo", nombre: "Milanesas de pollo al horno con arroz", foto: "img/receta-pollo-arroz.jpg", desc: "2 unidades de milanesas de pollo horneadas (rebozado integral, cero fritura) + 140g de arroz hervido.", macros: "P 37g · C 44g · G 8g", suplemento: "💊 5g de Creatina.", alternativa: "Alternativa: Milanesas de carne magra al horno." },
+
         { tipo: "Merienda", nombre: "Fruta fresca + Frutos secos", foto: "img/merienda-frutos.jpg", desc: "1 banana mediana y 15g de almendras.", macros: "P 4g · C 25g · G 8g", suplemento: "Ninguno.", alternativa: "Alternativa: 1 pera + 1 vaso de yogur descremado." },
+
         { tipo: "Cena", nombre: "Revuelto de zapallito con huevo", foto: "img/cena-zapallito.jpg", desc: "220g de zapallitos en cubos salteados e integrados con 3 huevos enteros batidos al final.", macros: "P 21g · C 8g · G 13g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Zapallitos rellenos con atún o carne picada magra." }
+
     ],
+
     viernes: [
+
         { tipo: "Desayuno", nombre: "Yogur con avena tradicional", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur descremado con 30g de avena en hojuelas.", macros: "P 12g · C 28g · G 2g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: 2 tostadas de pan integral con un huevo revuelto." },
+
         { tipo: "Almuerzo", nombre: "Bife de chorizo magro con fideos integrales", foto: "img/almuerzo-lomo.jpg", desc: "140g de carne vacuna a la plancha, 140g de fideos tirabuzón integrales con salsa de tomate natural.", macros: "P 39g · C 40g · G 8g", suplemento: "💊 5g de Creatina.", alternativa: "Alternativa: Sustituir fideos integrales por fideos comunes al dente." },
+
         { tipo: "Merienda", nombre: "Infusión con tostada y queso", foto: "img/desayuno-tostadas.jpg", desc: "Té o café con leche descremada + 1 rebanada de pan integral con queso Paraguay.", macros: "P 8g · C 14g · G 4g", suplemento: "Ninguno.", alternativa: "Alternativa: 1 vaso de leche con cacao amargo y edulcorante." },
+
         { tipo: "Cena", nombre: "Pechuga grillada con ensalada mixta", foto: "img/cena-pollo-verde.jpg", desc: "150g de pechuga a la plancha con lechuga, tomate y rodajas de cebolla.", macros: "P 40g · C 6g · G 4g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: 150g de carne de cerdo magra (pechito desgrasado) a la plancha." }
+
     ],
+
     sabado: [
+
         { tipo: "Desayuno", nombre: "Pancakes fit de avena y huevo", foto: "img/desayuno-pancakes.jpg", desc: "Mezcla de 40g de avena, 2 huevos enteros y chorrito de leche a la sartén antiadherente.", macros: "P 16g · C 28g · G 10g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Tostadas francesas integrales." },
+
         { tipo: "Almuerzo", nombre: "Comida Social / Libre (Regla 80/20)", foto: "img/almuerzo-libre.jpg", desc: "Disfrutá una comida de salida controlando que la mitad de tu plato o tu elección contenga una buena fuente de proteína magra.", macros: "P 35g · C 50g · G 16g", suplemento: "Ninguno.", alternativa: "Alternativa: Hamburguesa casera con pan integral y carne magra." },
+
         { tipo: "Merienda", nombre: "Batido de proteína rápido", foto: "img/merienda-batido-mani.jpg", desc: "1 scoop de proteína en polvo con agua y hielo (o 1 vaso grande de licuado de frutilla con leche descremada).", macros: "P 24g · C 6g · G 1g", suplemento: "💊 Opcional: Whey protein.", alternativa: "Alternativa: 1 yogur bebible descremado." },
+
         { tipo: "Cena", nombre: "Tortilla de papa pequeña con huevo", foto: "img/receta-tortilla-mandioca.jpg", desc: "1 papa mediana hervida en cubos mezclada con 3 huevos batidos en la sartén + ensalada verde.", macros: "P 21g · C 28g · G 12g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Revuelto gramajo fit con bastoncitos de papa al horno y huevo." }
+
     ],
+
     domingo: [
+
         { tipo: "Desayuno", nombre: "Mate cocido / Café + Tostadas con palta y huevo", foto: "img/desayuno-palta.jpg", desc: "1 infusión + 2 rebanadas de pan integral con 40g de palta pisada y 1 huevo revuelto arriba.", macros: "P 11g · C 26g · G 11g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Tostadas con queso crema y rodajas de tomate." },
+
         { tipo: "Almuerzo", nombre: "Asado vacuno magro con ensalada", foto: "img/almuerzo-carne-batata.jpg", desc: "160g de corte magro al horno o parrilla (vacío o lomito bien desgrasado) con plato grande de ensalada mixta.", macros: "P 43g · C 6g · G 10g", suplemento: "Ninguno.", alternativa: "Alternativa: Pollo entero al horno sin piel con ensalada de estación." },
+
         { tipo: "Merienda", nombre: "Yogur con frutos secos", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur descremado + 15g de maní o nueces picadas.", macros: "P 14g · C 12g · G 8g", suplemento: "Ninguno.", alternativa: "Alternativa: Infusión con 2 galletas de arroz untadas con manteca de maní." },
+
         { tipo: "Cena", nombre: "Sopa paraguaya fit liviana", foto: "img/cena-omelette.jpg", desc: "Porción controlada de sopa paraguaya liviana elaborada con harina de maíz, cebolla rehogada en aceite de oliva y queso Paraguay magro, junto a ensalada de lechuga.", macros: "P 16g · C 24g · G 10g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Sopa de verduras con trozos de pollo desmenuzado." }
+
     ]
+
 };
+
+
 
 const diaLabel = { lunes:"LUNES", martes:"MARTES", miercoles:"MIÉRCOLES", jueves:"JUEVES", viernes:"VIERNES", sabado:"SÁBADO", domingo:"DOMINGO" };
 
+
+
 function attachInteractivity(scope) {
+
     scope.querySelectorAll(".card").forEach((card) => {
+
         if (card.dataset.bound) return;
+
         card.dataset.bound = "1";
+
         card.setAttribute("tabindex", "0");
+
         card.setAttribute("role", "button");
+
         card.addEventListener("mousemove", (e) => {
+
             const r = card.getBoundingClientRect();
+
             const x = (e.clientX - r.left) / r.width - 0.5;
+
             const y = (e.clientY - r.top) / r.height - 0.5;
+
             card.style.transform = `perspective(700px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg) translateY(-4px)`;
+
         });
+
         card.addEventListener("mouseleave", () => { card.style.transform = ""; });
+
         card.addEventListener("keydown", (e) => {
+
             if (e.key === "Enter" || e.key === " ") { e.preventDefault(); card.click(); }
+
         });
+
     });
+
 }
+
+
 
 /* light press feedback for day navigation (not a final "commit", so no stamp) */
+
 function pickDia(el, dia) {
+
     el.style.transform = "scale(.97)";
+
     setTimeout(() => { cargarDia(dia); }, 140);
+
 }
+
+
 
 function cargarDia(dia) {
+
     const listado = menuSemanal[dia];
+
     tituloPrincipal.innerText = diaLabel[dia];
+
     descPrincipal.innerText = "Ingestas con porciones de comida real, macros, alternativas y suplementos para recomposición.";
+
     pasoDia.innerText = "02";
+
     backBtn.style.display = "block";
+
     railDia1.classList.add("done"); railDia1.classList.remove("active");
+
     railDia2.classList.add("active");
 
+
+
     let html = "";
+
     listado.forEach((plato) => {
+
         html += `
+
         <article class="card recipe-card">
+
             <div class="recipe-img-container">
+
                 <img src="${plato.foto}" alt="${plato.nombre}" class="recipe-photo">
+
             </div>
+
             <span class="tag">${plato.tipo.toUpperCase()}</span>
+
             <h3>${plato.nombre}</h3>
+
             <div class="macro-row"><span>${plato.macros}</span></div>
+
             <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--muted);">${plato.desc}</p>
+
             <p style="margin-top: 0.6rem; font-size: 0.85rem; color: var(--ink);" class="mono">${plato.suplemento}</p>
+
             <p style="margin-top: 0.4rem; font-size: 0.85rem; color: var(--spray); font-style: italic;">🔄 ${plato.alternativa}</p>
+
         </article>
+
         `;
+
     });
 
+
+
     grillaPlatos.innerHTML = html;
+
     selectorDias.style.display = "none";
+
     vistaComidas.style.display = "block";
+
     attachInteractivity(vistaComidas);
+
     window.scrollTo({ top: 0, behavior: "smooth" });
+
 }
+
+
 
 function volverSelector() {
+
     selectorDias.querySelectorAll(".card").forEach((c) => { c.style.transform = ""; });
+
     vistaComidas.style.display = "none";
+
     selectorDias.style.display = "grid";
+
     tituloPrincipal.innerText = "Seleccioná el día de la semana";
+
     descPrincipal.innerText = "Elegí una jornada para ver el desglose exacto de tus ingestas enfocadas en recomposición corporal.";
+
     pasoDia.innerText = "01";
+
     backBtn.style.display = "none";
+
     railDia1.classList.remove("done"); railDia1.classList.add("active");
+
     railDia2.classList.remove("active");
+
     window.scrollTo({ top: 0, behavior: "smooth" });
+
 }
 
+
+
 attachInteractivity(selectorDias);
+
 </script>
+
 <script src="background.js"></script>
 
+
+
 </body>
+
 </html>
