@@ -1,129 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitness Life // Guía de Definición y Pérdida de Grasa (Lunes a Lunes)</title>
+    <title>Fitness Life // Guía de Definición (Lunes a Lunes)</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<!-- LOGO BAR -->
+<div class="static-bg" aria-hidden="true"></div>
+
+<svg class="svg-defs" aria-hidden="true">
+  <defs>
+    <filter id="roughEdge" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018 0.09" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
 <header class="logo-bar">
     <div class="header-inner">
         <a href="index.html" class="brand">
             <span class="pulse-dot"></span>
             Fitness Life
         </a>
-        <div class="nav-badge">
-            PÉRDIDA DE GRASA // 07 DÍAS
-        </div>
+        <div class="nav-badge">DEFINICIÓN // 07 DÍAS</div>
     </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
     <div class="hero-grid">
-        <span class="badge">
-            PLAN DE DÉFICIT CALÓRICO Y SACIEDAD (PERDER GRASA / PRESERVAR MÚSCULO)
-        </span>
-        <h1>
-            Nutrición de Lunes a Lunes
-        </h1>
-        <p>
-            Menú optimizado con alto contenido de fibra y proteína magra, control estricto de carbohidratos, máxima saciedad y bajas calorías.
-        </p>
+        <span class="badge">PLAN DE DÉFICIT CALÓRICO // PÉRDIDA DE GRASA</span>
+        <h1>Nutrición de<br>Lunes a Lunes</h1>
+        <p>Déficit calórico optimizado con alta saciedad, control estricto de carbohidratos, proteínas magras maximizadas y micronutrición esencial.</p>
     </div>
 </section>
 
-<!-- MAIN CONTAINER -->
+<div class="rail" aria-hidden="true">
+  <div class="stop active" id="railDia1"></div>
+  <div class="stop" id="railDia2"></div>
+</div>
+
 <main class="container">
     <div class="app-container">
 
-        <!-- BOTÓN DE RETROCESO GLOBAL -->
-        <button id="backBtn" class="back-btn" onclick="volverSelector()" style="display: none;">
-            ← Atrás
-        </button>
+        <button id="backBtn" class="back-btn" onclick="volverSelector()" style="display: none;">← Atrás</button>
 
-        <!-- NAVEGACIÓN RÁPIDA DE DÍAS -->
         <div class="section-title">
             <div class="idx" id="paso-dia">01</div>
             <div>
                 <h2 id="titulo-principal">Seleccioná el día de la semana</h2>
-                <p id="desc-principal">Elegí una jornada para ver el desglose exacto de tus ingestas enfocadas en definición y déficit calórico.</p>
+                <p id="desc-principal">Elegí una jornada para ver el desglose exacto de tus ingestas enfocadas en pérdida de grasa y control calórico.</p>
             </div>
         </div>
 
-        <!-- SELECTOR DE DÍAS (BENTO) -->
         <div class="bento cols-3" id="selector-dias">
-            <article class="card selection-card" onclick="cargarDia('lunes')">
+            <article class="card selection-card" onclick="pickDia(this,'lunes')">
                 <span class="tag">DÍA 1</span>
                 <h2>Lunes</h2>
-                <p>Arranque limpio: Pollo, ensalada verde abundante y porción controlada de arroz.</p>
+                <p>Arranque limpio: Pollo a la plancha, acelga y caldo depurativo.</p>
                 <button class="btn">Ver Ingestas</button>
             </article>
 
-            <article class="card selection-card" onclick="cargarDia('martes')">
+            <article class="card selection-card" onclick="pickDia(this,'martes')">
                 <span class="tag">DÍA 2</span>
                 <h2>Martes</h2>
-                <p>Control de carbohidratos: Carne magra, vegetales salteados y zapallo.</p>
+                <p>Control glucémico: Carne magra, zapallo y ensalada verde.</p>
                 <button class="btn">Ver Ingestas</button>
             </article>
 
-            <article class="card selection-card" onclick="cargarDia('miercoles')">
+            <article class="card selection-card" onclick="pickDia(this,'miercoles')">
                 <span class="tag">DÍA 3</span>
                 <h2>Miércoles</h2>
-                <p>Liviano y saciante: Pescado blanco al limón con espinaca y puré de calabaza.</p>
+                <p>Día liviano: Pescado blanco al limón con espinaca salteada.</p>
                 <button class="btn">Ver Ingestas</button>
             </article>
 
-            <article class="card selection-card" onclick="cargarDia('jueves')">
+            <article class="card selection-card" onclick="pickDia(this,'jueves')">
                 <span class="tag">DÍA 4</span>
                 <h2>Jueves</h2>
-                <p>Proteína alta: Milanesas de pollo al horno (sin aceite) con ensalada mixta.</p>
+                <p>Alta saciedad: Huevos, vegetales asados y atún al agua.</p>
                 <button class="btn">Ver Ingestas</button>
             </article>
 
-            <article class="card selection-card" onclick="cargarDia('viernes')">
+            <article class="card selection-card" onclick="pickDia(this,'viernes')">
                 <span class="tag">DÍA 5</span>
                 <h2>Viernes</h2>
-                <p>Cierre de semana hábil: Bife magro con wok de vegetales crujientes.</p>
+                <p>Corte hábil: Bife vacuno magro con porción justa de vegetales.</p>
                 <button class="btn">Ver Ingestas</button>
             </article>
 
-            <article class="card selection-card" onclick="cargarDia('sabado')">
+            <article class="card selection-card" onclick="pickDia(this,'sabado')">
                 <span class="tag">DÍA 6</span>
                 <h2>Sábado</h2>
-                <p>Flexibilidad en déficit: Opciones sociales ligeras con base proteica alta.</p>
+                <p>Social estricto: Proteína magra alta y cero carbohidratos refinados.</p>
                 <button class="btn">Ver Ingestas</button>
             </article>
 
-            <article class="card wide selection-card" onclick="cargarDia('domingo')">
+            <article class="card wide selection-card" onclick="pickDia(this,'domingo')">
                 <span class="tag">DÍA 7</span>
                 <h2>Domingo</h2>
-                <p>Depuración dominical: Pollo al horno sin piel y vegetales grillados.</p>
+                <p>Reset semanal: Caldo de huesos, pollo al horno y ensalada mixta.</p>
                 <button class="btn btn-secondary">Ver Ingestas</button>
             </article>
         </div>
 
-        <!-- CONTENEDOR DINÁMICO DE COMIDAS CON FOTOS -->
         <div id="vista-comidas" style="display: none; margin-top: 1.5rem;">
-            <div class="bento" id="grilla-platos">
-                <!-- Se inyecta por JS -->
-            </div>
+            <div class="bento" id="grilla-platos"></div>
         </div>
 
     </div>
 </main>
 
-<!-- FOOTER -->
 <footer class="footer">
     <p>© 2026 FITNESS LIFE // TODOS LOS DERECHOS RESERVADOS.</p>
+    <p class="tagmark">comé fuerte, entrená más fuerte 🖤</p>
 </footer>
 
-<!-- SCRIPT DE INTERACCIÓN APP -->
 <script>
 const selectorDias = document.getElementById("selector-dias");
 const vistaComidas = document.getElementById("vista-comidas");
@@ -132,285 +127,91 @@ const descPrincipal = document.getElementById("desc-principal");
 const pasoDia = document.getElementById("paso-dia");
 const backBtn = document.getElementById("backBtn");
 const grillaPlatos = document.getElementById("grilla-platos");
+const railDia1 = document.getElementById("railDia1");
+const railDia2 = document.getElementById("railDia2");
 
 const menuSemanal = {
     lunes: [
-        { 
-            tipo: "Desayuno", 
-            nombre: "Café o té con infusión + Revuelto de claras con un huevo", 
-            foto: "img/desayuno-tostadas.jpg", 
-            desc: "1 taza de café o té con leche descremada + 1 rebanada de pan integral con revuelto de 3 claras y 1 huevo entero.", 
-            macros: "P 18g · C 14g · G 6g",
-            suplemento: "💊 1 Multivitamínico.",
-            alternativa: "Alternativa: 1 pote de yogur descremado con 15g de avena."
-        },
-        { 
-            tipo: "Almuerzo", 
-            nombre: "Pechuga a la plancha con ensalada verde y poco arroz", 
-            foto: "img/receta-pollo-arroz.jpg", 
-            desc: "160g de pechuga de pollo a la plancha, solo 80g de arroz integral cocido y gran plato de lechuga, pepino y apio con limón.", 
-            macros: "P 44g · C 22g · G 4g",
-            suplemento: "💊 Opcional: Té verde sin azúcar.",
-            alternativa: "Alternativa: 160g de merluza con ensalada mixta."
-        },
-        { 
-            tipo: "Merienda", 
-            nombre: "Yogur firme descremado", 
-            foto: "img/merienda-yogur.jpg", 
-            desc: "1 pote de yogur firme descremado (150g) sin azúcar agregada + 1 infusión.", 
-            macros: "P 9g · C 12g · G 1g",
-            suplemento: "Ninguno.",
-            alternativa: "Alternativa: 1 vaso de leche descremada con edulcorante."
-        },
-        { 
-            tipo: "Cena", 
-            nombre: "Tortilla de claras y acelga sin almidón", 
-            foto: "img/receta-tortilla-mandioca.jpg", 
-            desc: "Tortilla elaborada con 1 huevo entero y 4 claras batidas con abundante acelga picada. Sin guarnición de hidratos pesados.", 
-            macros: "P 22g · C 4g · G 6g",
-            suplemento: "💊 1 cápsula de Omega 3.",
-            alternativa: "Alternativa: 150g de pollo hervido desmenuzado con zapallitos salteados."
-        }
+        { tipo: "Desayuno", nombre: "Café negro o té + Huevos revueltos", foto: "img/desayuno-tostadas.jpg", desc: "1 taza de infusión sin azúcar + 2 huevos enteros revueltos en sartén antiadherente sin aceite.", macros: "P 14g · C 1g · G 10g", suplemento: "💊 1 Multivitamínico + Té verde.", alternativa: "Alternativa: 1 infusión con 1 pote de yogur descremado." },
+        { tipo: "Almuerzo", nombre: "Pechuga grillada con brócoli y acelga", foto: "img/receta-pollo-arroz.jpg", desc: "170g de pechuga de pollo a la plancha, plato abundante de brócoli al vapor y acelga con unas gotas de limón.", macros: "P 46g · C 6g · G 3g", suplemento: "💊 1 comprimido de Omega 3.", alternativa: "Alternativa: 170g de carne blanca de pescado con espinaca." },
+        { tipo: "Merienda", nombre: "Yogur descremado solo", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur firme descremado (200g) sin agregados.", macros: "P 12g · C 12g · G 1g", suplemento: "Ninguno.", alternativa: "Alternativa: 1 infusión con 1 clara de huevo extra dura." },
+        { tipo: "Cena", nombre: "Caldo depurativo con pollo desmenuzado", foto: "img/cena-pollo-verde.jpg", desc: "1 taza grande de caldo de verduras casero liviano con 100g de pollo hervido desmenuzado.", macros: "P 25g · C 3g · G 2g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Ensalada verde grande con 1 lata de atún al agua." }
     ],
     martes: [
-        { 
-            tipo: "Desayuno", 
-            nombre: "Infusión con pan integral y queso magro", 
-            foto: "img/merienda-queso.jpg", 
-            desc: "1 taza de té o café descremado + 1 tostada de pan integral con 30g de queso Paraguay magro en fetas.", 
-            macros: "P 10g · C 14g · G 3g",
-            suplemento: "💊 1 Multivitamínico.",
-            alternativa: "Alternativa: Mate cocido con 2 galletas de arroz y queso untable descremado."
-        },
-        { 
-            tipo: "Almuerzo", 
-            nombre: "Bife de nalga desgrasado con puré de zapallo", 
-            foto: "img/almuerzo-carne-batata.jpg", 
-            desc: "140g de carne vacuna muy magra a la plancha, acompañado de un plato hondo de puré de zapallo o calabaza (sin papa).", 
-            macros: "P 38g · C 14g · G 5g",
-            suplemento: "Ninguno.",
-            alternativa: "Alternativa: 150g de carne de cerdo magra con ensalada."
-        },
-        { 
-            tipo: "Merienda", 
-            nombre: "Infusión con fruta baja en azúcar", 
-            foto: "img/merienda-queso.jpg", 
-            desc: "Té o café + 1 mandarina o 1 taza de frutillas frescas.", 
-            macros: "P 2g · C 12g · G 0g",
-            suplemento: "Ninguno.",
-            alternativa: "Alternativa: 1 yogur descremado bebible chico."
-        },
-        { 
-            tipo: "Cena", 
-            nombre: "Atún al agua con ensalada de hojas verdes", 
-            foto: "img/cena-pollo-verde.jpg", 
-            desc: "1 lata grande de atún al agua (escurrido) mezclado con lechuga, espinaca, rodajas de tomate y pepino. Aderezo de limón y vinagre.", 
-            macros: "P 32g · C 4g · G 2g",
-            suplemento: "💊 1 cápsula de Omega 3.",
-            alternativa: "Alternativa: 150g de pechuga de pollo a la plancha con rúcula."
-        }
+        { tipo: "Desayuno", nombre: "Infusión con tostada única y queso magro", foto: "img/desayuno-tostadas.jpg", desc: "1 taza de café o mate cocido con edulcorante + 1 rebanada de pan integral con una feta fina de queso Paraguay.", macros: "P 6g · C 12g · G 2g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: 2 claras de huevo revueltas con infusión." },
+        { tipo: "Almuerzo", nombre: "Bife de nalga con puré de zapallo liviano", foto: "img/almuerzo-carne-batata.jpg", desc: "150g de carne vacuna muy magra a la plancha + un plato hondo de puré de zapallo sin crema ni manteca.", macros: "P 38g · C 12g · G 5g", suplemento: "Ninguno.", alternativa: "Alternativa: 150g de pechuga de pollo con ensalada de pepino." },
+        { tipo: "Merienda", nombre: "Infusión y gelatina light", foto: "img/merienda-queso.jpg", desc: "1 taza de té o café + 1 vaso de gelatina dietética o sin azúcar.", macros: "P 2g · C 1g · G 0g", suplemento: "Ninguno.", alternativa: "Alternativa: 1 vaso de leche descremada." },
+        { tipo: "Cena", nombre: "Atún al agua con mix de lechuga y tomate", foto: "img/cena-pollo-verde.jpg", desc: "2 latas de atún al agua bien escurridas acompañadas de un bol grande de lechuga, rodajas de tomate y limón.", macros: "P 44g · C 5g · G 2g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: 150g de merluza a la plancha con espinaca." }
     ],
     miercoles: [
-        { 
-            tipo: "Desayuno", 
-            nombre: "Café con leche descremada + 1 huevo duro", 
-            foto: "img/desayuno-tostadas.jpg", 
-            desc: "1 taza de café con leche descremada + 1 huevo duro cortado en rodajas sobre 1 galleta de arroz.", 
-            macros: "P 10g · C 10g · G 5g",
-            suplemento: "💊 1 Multivitamínico.",
-            alternativa: "Alternativa: Infusión con 2 claras revueltas."
-        },
-        { 
-            tipo: "Almuerzo", 
-            nombre: "Merluza al horno con espinaca salteada", 
-            foto: "img/receta-pescado-batata.jpg", 
-            desc: "180g de filet de merluza al horno con hierbas y limón, acompañado de un bol grande de espinaca salteada con ajo en spray.", 
-            macros: "P 36g · C 3g · G 3g",
-            suplemento: "Ninguno.",
-            alternativa: "Alternativa: 160g de pollo grillado con acelga hervida."
-        },
-        { 
-            tipo: "Merienda", 
-            nombre: "Yogur descremado con un toque de chía", 
-            foto: "img/merienda-yogur.jpg", 
-            desc: "1 pote de yogur descremado con media cucharadita de semillas de chía.", 
-            macros: "P 8g · C 12g · G 2g",
-            suplemento: "Ninguno.",
-            alternativa: "Alternativa: Infusión con 3 almendras."
-        },
-        { 
-            tipo: "Cena", 
-            nombre: "Revuelto light de zapallito con claras", 
-            foto: "img/cena-zapallito.jpg", 
-            desc: "250g de zapallitos en cubos cocidos al vapor y revueltos con 1 huevo entero y 2 claras.", 
-            macros: "P 16g · C 7g · G 6g",
-            suplemento: "💊 1 cápsula de Omega 3.",
-            alternativa: "Alternativa: Sopa liviana de verduras con tiritas de pollo."
-        }
+        { tipo: "Desayuno", nombre: "Mate cocido o té + Huevo duro", foto: "img/desayuno-tostadas.jpg", desc: "1 taza de infusión sin azúcar + 1 huevo duro picado con sal y pimienta.", macros: "P 7g · C 0g · G 5g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Infusión con 2 rebanadas de pepino y queso untable." },
+        { tipo: "Almuerzo", nombre: "Filet de merluza al limón con espinaca", foto: "img/receta-pescado-batata.jpg", desc: "180g de merluza al horno o plancha con jugo de limón puro + abundante espinaca hervida.", macros: "P 39g · C 4g · G 2g", suplemento: "Ninguno.", alternativa: "Alternativa: 160g de pechuga de pollo con ensalada verde." },
+        { tipo: "Merienda", nombre: "Yogur descremado con infusión", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur descremado + 1 taza de té verde tibio.", macros: "P 12g · C 12g · G 1g", suplemento: "Ninguno.", alternativa: "Alternativa: Infusión sola con dos nueces." },
+        { tipo: "Cena", nombre: "Omelette de claras con tomate", foto: "img/cena-omelette.jpg", desc: "Batido de 1 huevo entero y 3 claras con rodajas finas de tomate y orégano.", macros: "P 20g · C 3g · G 5g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Zapallitos salteados con 2 claras de huevo." }
     ],
     jueves: [
-        { 
-            tipo: "Desayuno", 
-            nombre: "Infusión con tostada integral y mermelada light", 
-            foto: "img/merienda-mani.jpg", 
-            desc: "Té o café con leche descremada + 1 rebanada de pan integral con queso untable magro y mermelada sin azúcar.", 
-            macros: "P 6g · C 16g · G 2g",
-            suplemento: "💊 1 Multivitamínico.",
-            alternativa: "Alternativa: 1 vaso de licuado de frutilla con agua y edulcorante."
-        },
-        { 
-            tipo: "Almuerzo", 
-            nombre: "Milanesa de pollo al horno con ensalada mixta", 
-            foto: "img/receta-pollo-arroz.jpg", 
-            desc: "1 unidad grande o 2 chicas de milanesas de pollo horneadas (rebozado fino, cero aceite) + gran ensalada de tomate y lechuga.", 
-            macros: "P 30g · C 10g · G 5g",
-            suplemento: "Ninguno.",
-            alternativa: "Alternativa: 150g de carne magra al horno con ensalada."
-        },
-        { 
-            tipo: "Merienda", 
-            nombre: "Infusión + 2 galletas de arroz con queso magro", 
-            foto: "img/desayuno-tostadas.jpg", 
-            desc: "Té o café + 2 galletas de arroz untadas con una fina capa de queso Paraguay magro.", 
-            macros: "P 5g · C 14g · G 1g",
-            suplemento: "Ninguno.",
-            alternativa: "Alternativa: 1 pote de yogur descremado bebible."
-        },
-        { 
-            tipo: "Cena", 
-            nombre: "Pechuga desmenuzada con mix de verduras grilladas", 
-            foto: "img/cena-pollo-verde.jpg", 
-            desc: "150g de pechuga a la plancha trozada con berenjena y zucchini grillados al horno.", 
-            macros: "P 38g · C 8g · G 3g",
-            suplemento: "💊 1 cápsula de Omega 3.",
-            alternativa: "Alternativa: Pescado blanco con ensalada de pepino y tomate."
-        }
+        { tipo: "Desayuno", nombre: "Café con leche descremada + 1 tostada", foto: "img/merienda-mani.jpg", desc: "1 taza de café con leche descremada + 1 rebanada de pan integral tostado.", macros: "P 6g · C 14g · G 1g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Infusión con 1 huevo duro." },
+        { tipo: "Almuerzo", nombre: "Pechuga al horno con ensalada mixta baja en calorías", foto: "img/receta-pollo-arroz.jpg", desc: "160g de pollo horneado sin piel con lechuga, repollo cortado fino y cebolla.", macros: "P 42g · C 5g · G 3g", suplemento: "Ninguno.", alternativa: "Alternativa: 150g de carne vacuna magra con lechuga." },
+        { tipo: "Merienda", nombre: "Infusión con 1 fruta chica", foto: "img/merienda-frutos.jpg", desc: "1 infusión sin azúcar y 1 manzana verde mediana.", macros: "P 1g · C 18g · G 0g", suplemento: "Ninguno.", alternativa: "Alternativa: 1 infusión con gelatina dietética." },
+        { tipo: "Cena", nombre: "Zapallitos salteados livianos", foto: "img/cena-zapallito.jpg", desc: "250g de zapallitos en cubos cocidos a la sartén con condimentos naturales y 1 huevo entero integrado.", macros: "P 10g · C 8g · G 5g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Sopa de verduras liviana con trocitos de pollo." }
     ],
     viernes: [
-        { 
-            tipo: "Desayuno", 
-            nombre: "Yogur descremado con cereales inflados sin azúcar", 
-            foto: "img/merienda-yogur.jpg", 
-            desc: "1 pote de yogur descremado + 15g de cereal inflado sin azúcar.", 
-            macros: "P 9g · C 15g · G 1g",
-            suplemento: "💊 1 Multivitamínico.",
-            alternativa: "Alternativa: Tostada integral con un huevo revuelto."
-        },
-        { 
-            tipo: "Almuerzo", 
-            nombre: "Bife de chorizo magro con wok de vegetales", 
-            foto: "img/almuerzo-lomo.jpg", 
-            desc: "140g de carne vacuna magra a la plancha, acompañado de un salteado de cebolla, morrón y repollo con salsa de soja light.", 
-            macros: "P 40g · C 9g · G 6g",
-            suplemento: "Ninguno.",
-            alternativa: "Alternativa: 150g de pechuga de pollo con ensalada."
-        },
-        { 
-            tipo: "Merienda", 
-            nombre: "Infusión con fruta fresca", 
-            foto: "img/desayuno-tostadas.jpg", 
-            desc: "Té o café descremado + 1 manzana verde mediana.", 
-            macros: "P 1g · C 19g · G 0g",
-            suplemento: "Ninguno.",
-            alternativa: "Alternativa: 1 mandarina y infusión."
-        },
-        { 
-            tipo: "Cena", 
-            nombre: "Brochette de pollo y vegetales", 
-            foto: "img/cena-pollo-verde.jpg", 
-            desc: "150g de pollo en cubos alternado con cebolla y morrón a la plancha o horno + ensalada verde.", 
-            macros: "P 39g · C 5g · G 3g",
-            suplemento: "💊 1 cápsula de Omega 3.",
-            alternativa: "Alternativa: 160g de merluza con limón y brócoli al vapor."
-        }
+        { tipo: "Desayuno", nombre: "Yogur descremado con infusión", foto: "img/merienda-yogur.jpg", desc: "1 taza de té o café + 1 pote de yogur descremado firme.", macros: "P 12g · C 12g · G 1g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Infusión con 2 claras revueltas." },
+        { tipo: "Almuerzo", nombre: "Bife vacuno magro con ensalada de apio y lechuga", foto: "img/almuerzo-lomo.jpg", desc: "150g de corte vacuno magro a la plancha con ensalada crujiente de apio y hojas de lechuga.", macros: "P 39g · C 3g · G 5g", suplemento: "Ninguno.", alternativa: "Alternativa: 160g de pechuga de pollo a la plancha." },
+        { tipo: "Merienda", nombre: "Té verde y infusión ligera", foto: "img/desayuno-tostadas.jpg", desc: "1 taza grande de té verde con edulcorante.", macros: "P 0g · C 0g · G 0g", suplemento: "Ninguno.", alternativa: "Alternativa: 1 vaso de agua fría con limón." },
+        { tipo: "Cena", nombre: "Pechuga grillada con rodajas de pepino", foto: "img/cena-pollo-verde.jpg", desc: "150g de pechuga de pollo a la plancha con ensalada fina de pepino y vinagre de manzana.", macros: "P 40g · C 3g · G 3g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: 160g de merluza con ensalada verde." }
     ],
     sabado: [
-        { 
-            tipo: "Desayuno", 
-            nombre: "Omelette exprés de claras con tomate", 
-            foto: "img/desayuno-pancakes.jpg", 
-            desc: "Batido de 3 claras y 1 huevo entero con rodajas finas de tomate a la sartén antiadherente + infusión.", 
-            macros: "P 14g · C 3g · G 5g",
-            suplemento: "💊 1 Multivitamínico.",
-            alternativa: "Alternativa: 1 yogur firme descremado con infusión."
-        },
-        { 
-            tipo: "Almuerzo", 
-            nombre: "Comida Social Controlada en Déficit", 
-            foto: "img/almuerzo-libre.jpg", 
-            desc: "Priorizá carnes magras o pollo a la parrilla en tu salida social, acompañándolo exclusivamente con ensaladas y evitando salsas pesadas o frituras.", 
-            macros: "P 35g · C 15g · G 10g",
-            suplemento: "Ninguno.",
-            alternativa: "Alternativa: Hamburguesa sin pan o al plato con ensalada mixta."
-        },
-        { 
-            tipo: "Merienda", 
-            nombre: "Batido ligero de proteína con agua", 
-            foto: "img/merienda-batido-mani.jpg", 
-            desc: "1 scoop de proteína de suero de leche aislado disuelto en agua con hielo.", 
-            macros: "P 24g · C 1g · G 1g",
-            suplemento: "💊 Whey protein aislado.",
-            alternativa: "Alternativa: 1 pote de yogur descremado."
-        },
-        { 
-            tipo: "Cena", 
-            nombre: "Pizzeta fit de zapallito o berenjena", 
-            foto: "img/cena-omelette.jpg", 
-            desc: "Rodajas grandes de berenjena al horno como base, cubiertas con salsa de tomate natural y 40g de queso Paraguay magro derretido.", 
-            macros: "P 14g · C 8g · G 5g",
-            suplemento: "💊 1 cápsula de Omega 3.",
-            alternativa: "Alternativa: Ensalada completa con atún y huevo duro."
-        }
+        { tipo: "Desayuno", nombre: "Café solo + 2 huevos duros", foto: "img/desayuno-pancakes.jpg", desc: "1 taza de café negro o té + 2 huevos duros enteros.", macros: "P 14g · C 0g · G 10g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Infusión con 1 yogur descremado." },
+        { tipo: "Almuerzo", nombre: "Pechuga al limón con brócoli abundante", foto: "img/almuerzo-libre.jpg", desc: "170g de pechuga de pollo a la plancha con un plato muy grande de brócoli hervido sin aceite.", macros: "P 45g · C 6g · G 3g", suplemento: "Ninguno.", alternativa: "Alternativa: 170g de pescado blanco con espinaca." },
+        { tipo: "Merienda", nombre: "Batido ligero de proteína con agua", foto: "img/merienda-batido-mani.jpg", desc: "1 scoop de proteína isolada disuelta en agua fría con hielo.", macros: "P 24g · C 1g · G 1g", suplemento: "Ninguno.", alternativa: "Alternativa: 1 yogur descremado bebible." },
+        { tipo: "Cena", nombre: "Tortilla de acelga sin hidratos", foto: "img/receta-tortilla-mandioca.jpg", desc: "Tortilla hecha exclusivamente con 3 claras, 1 huevo entero y un bol lleno de acelga.", macros: "P 18g · C 3g · G 5g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Revuelto de zapallitos con dos claras." }
     ],
     domingo: [
-        { 
-            tipo: "Desayuno", 
-            nombre: "Infusión con tostada y huevo revuelto liviano", 
-            foto: "img/desayuno-palta.jpg", 
-            desc: "1 taza de infusión con leche descremada + 1 rebanada de pan integral con 1 huevo revuelto pequeño.", 
-            macros: "P 9g · C 14g · G 5g",
-            suplemento: "💊 1 Multivitamínico.",
-            alternativa: "Alternativa: Tostada con queso Paraguay magro."
-        },
-        { 
-            tipo: "Almuerzo", 
-            nombre: "Pollo al horno sin piel con ensalada completa", 
-            foto: "img/almuerzo-carne-batata.jpg", 
-            desc: "160g de pollo al horno (retirando totalmente la piel) con un plato gigante de ensalada mixta con lechuga, tomate y zanahoria rallada.", 
-            macros: "P 42g · C 8g · G 5g",
-            suplemento: "Ninguno.",
-            alternativa: "Alternativa: 160g de vacío bien desgrasado al horno con ensalada."
-        },
-        { 
-            tipo: "Merienda", 
-            nombre: "Infusión con gelatina light", 
-            foto: "img/merienda-yogur.jpg", 
-            desc: "Té o café + 1 vaso grande de gelatina dietética o sin azúcar.", 
-            macros: "P 2g · C 1g · G 0g",
-            suplemento: "Ninguno.",
-            alternativa: "Alternativa: 1 vaso de yogur descremado."
-        },
-        { 
-            tipo: "Cena", 
-            nombre: "Caldo de verduras con pollo desmenuzado", 
-            foto: "img/cena-omelette.jpg", 
-            desc: "Plato hondo de caldo casero de verduras desgrasado con 100g de pollo hervido desmenuzado en su interior.", 
-            macros: "P 28g · C 4g · G 2g",
-            suplemento: "💊 1 cápsula de Omega 3.",
-            alternativa: "Alternativa: Zapallitos rellenos con atún al agua."
-        }
+        { tipo: "Desayuno", nombre: "Infusión liviana + Huevo revuelto", foto: "img/desayuno-palta.jpg", desc: "1 taza de infusión sin azúcar + 1 huevo entero y 1 clara revueltos.", macros: "P 10g · C 0g · G 5g", suplemento: "💊 1 Multivitamínico.", alternativa: "Alternativa: Infusión con 1 rebanada de pan integral." },
+        { tipo: "Almuerzo", nombre: "Pollo al horno sin piel con ensalada verde", foto: "img/almuerzo-carne-batata.jpg", desc: "170g de pollo al horno doradito sin grasa visible, servido con abundante mix de hojas verdes.", macros: "P 44g · C 3g · G 4g", suplemento: "Ninguno.", alternativa: "Alternativa: 160g de bife de carne magra con lechuga." },
+        { tipo: "Merienda", nombre: "Yogur descremado y té", foto: "img/merienda-yogur.jpg", desc: "1 pote de yogur descremado firme + 1 taza de té.", macros: "P 12g · C 12g · G 1g", suplemento: "Ninguno.", alternativa: "Alternativa: Gelatina light con infusión." },
+        { tipo: "Cena", nombre: "Caldo depurativo liviano", foto: "img/cena-omelette.jpg", desc: "2 platos hondos de caldo de verduras casero claro y sin agregados de fideos ni arroz.", macros: "P 4g · C 6g · G 1g", suplemento: "💊 1 cápsula de Omega 3.", alternativa: "Alternativa: Ensalada de lechuga con 1 huevo duro picado." }
     ]
 };
 
+const diaLabel = { lunes:"LUNES", martes:"MARTES", miercoles:"MIÉRCOLES", jueves:"JUEVES", viernes:"VIERNES", sabado:"SÁBADO", domingo:"DOMINGO" };
+
+function attachInteractivity(scope) {
+    scope.querySelectorAll(".card").forEach((card) => {
+        if (card.dataset.bound) return;
+        card.dataset.bound = "1";
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+        card.addEventListener("mousemove", (e) => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width - 0.5;
+            const y = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = `perspective(700px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg) translateY(-4px)`;
+        });
+        card.addEventListener("mouseleave", () => { card.style.transform = ""; });
+        card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); card.click(); }
+        });
+    });
+}
+
+function pickDia(el, dia) {
+    el.style.transform = "scale(.97)";
+    setTimeout(() => { cargarDia(dia); }, 140);
+}
+
 function cargarDia(dia) {
     const listado = menuSemanal[dia];
-    tituloPrincipal.innerText = dia.toUpperCase();
-    descPrincipal.innerText = "Ingestas bajas en calorías, altas en volumen y saciedad orientadas a la pérdida de grasa.";
+    tituloPrincipal.innerText = diaLabel[dia];
+    descPrincipal.innerText = "Ingestas en déficit calórico con alta saciedad, macros reducidos, alternativas y suplementos.";
     pasoDia.innerText = "02";
     backBtn.style.display = "block";
-    
+    railDia1.classList.add("done"); railDia1.classList.remove("active");
+    railDia2.classList.add("active");
+
     let html = "";
-    listado.forEach(plato => {
+    listado.forEach((plato) => {
         html += `
         <article class="card recipe-card">
             <div class="recipe-img-container">
@@ -418,12 +219,10 @@ function cargarDia(dia) {
             </div>
             <span class="tag">${plato.tipo.toUpperCase()}</span>
             <h3>${plato.nombre}</h3>
-            <div class="macro-row">
-                <span>${plato.macros}</span>
-            </div>
-            <p style="margin-top: 0.8rem; font-size: 0.95rem;">${plato.desc}</p>
-            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #00bcd4;" class="mono">${plato.suplemento}</p>
-            <p style="margin-top: 0.4rem; font-size: 0.85rem; color: #8bc34a; font-style: italic;">🔄 ${plato.alternativa}</p>
+            <div class="macro-row"><span>${plato.macros}</span></div>
+            <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--muted);">${plato.desc}</p>
+            <p style="margin-top: 0.6rem; font-size: 0.85rem; color: var(--ink);" class="mono">${plato.suplemento}</p>
+            <p style="margin-top: 0.4rem; font-size: 0.85rem; color: var(--spray); font-style: italic;">🔄 ${plato.alternativa}</p>
         </article>
         `;
     });
@@ -431,19 +230,26 @@ function cargarDia(dia) {
     grillaPlatos.innerHTML = html;
     selectorDias.style.display = "none";
     vistaComidas.style.display = "block";
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    attachInteractivity(vistaComidas);
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function volverSelector() {
+    selectorDias.querySelectorAll(".card").forEach((c) => { c.style.transform = ""; });
     vistaComidas.style.display = "none";
     selectorDias.style.display = "grid";
     tituloPrincipal.innerText = "Seleccioná el día de la semana";
-    descPrincipal.innerText = "Elegí una jornada para ver el desglose exacto de tus ingestas enfocadas en definición y déficit calórico.";
+    descPrincipal.innerText = "Elegí una jornada para ver el desglose exacto de tus ingestas enfocadas en pérdida de grasa y control calórico.";
     pasoDia.innerText = "01";
     backBtn.style.display = "none";
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    railDia1.classList.remove("done"); railDia1.classList.add("active");
+    railDia2.classList.remove("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+attachInteractivity(selectorDias);
 </script>
+<script src="background.js"></script>
 
 </body>
 </html>
