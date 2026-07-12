@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fitness Life — Configurador</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles index.css">
 </head>
 <body>
 
@@ -79,7 +79,6 @@ let historial = [];
 let objetivo = "";
 let lugar = "";
 
-/* ---------- confirmation stamp (signature interaction) ---------- */
 function pick(el, cb) {
   if (el.dataset.locked) return;
   el.dataset.locked = "1";
@@ -91,8 +90,6 @@ function pick(el, cb) {
   setTimeout(() => { cb(); }, 260);
 }
 
-/* strips the stamp/lock/hover-tilt leftovers before a screen gets saved
-   into history, so going back never shows a stale "ELEGIDO" stuck on a card */
 function cleanSnapshot(html) {
   const tmp = document.createElement("div");
   tmp.innerHTML = html;
@@ -103,7 +100,6 @@ function cleanSnapshot(html) {
   return tmp.innerHTML;
 }
 
-/* ---------- tilt + keyboard access on every card ---------- */
 function attachTilt() {
   document.querySelectorAll(".card").forEach((card) => {
     if (card.dataset.bound) return;
@@ -136,7 +132,6 @@ function actualizarBoton() {
   backBtn.style.display = historial.length === 0 ? "none" : "block";
 }
 
-/* ---------- animated screen swap ---------- */
 function cambiarPantalla(html, numero, tituloTexto, descripcionTexto, dir = "fwd") {
   historial.push({
     html: cleanSnapshot(app.innerHTML),
@@ -328,7 +323,8 @@ function seleccionarLugar(valor) {
 }
 
 function abrirRutina(dias) {
-  window.location.href = "rutina-" + lugar + "-" + dias + "-dias.html";
+  // AQUÍ ESTÁ EL CAMBIO CLAVE: junta objetivo + lugar + días
+  window.location.href = `rutina-${objetivo}-${lugar}-${dias}-dias.html`;
 }
 
 function volver() {
