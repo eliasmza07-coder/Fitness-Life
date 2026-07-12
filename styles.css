@@ -661,7 +661,7 @@ a { text-decoration: none; color: inherit; }
   100% { transform: translate(30%, 30%); opacity: 0; }
 }
 
-/* ================= IMAGE AREA — WORK-LIGHT SCAN EFFECT (CORREGIDO) ================= */
+/* ================= IMAGE AREA — GARAGE INSTRUMENT PANEL ================= */
 .card-img-container,
 .recipe-img-container {
   height: 200px;
@@ -669,19 +669,22 @@ a { text-decoration: none; color: inherit; }
   border-radius: 6px;
   overflow: hidden;
   margin-bottom: 16px;
-  background: #000;
+  background: #111;
   border: 1px solid var(--border);
   position: relative;
 }
 
-/* Eliminamos el before/after conflictivos del contenedor principal 
-   y usamos una capa de brillo integrada o efectos seguros en el hover. */
-.card-img-container::after,
-.card-img-container::before {
-  display: none !important;
+/* Textura sutil y viñeta técnica */
+.card-img-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+  pointer-events: none;
+  z-index: 3;
 }
 
-/* Imágenes del carrusel con opacidad y z-index explícitos para forzar el bucle */
+/* Imágenes del carrusel / slideshow */
 .card-img-slideshow img,
 .slideshow img,
 .recipe-photo {
@@ -691,21 +694,19 @@ a { text-decoration: none; color: inherit; }
   height: 100%;
   object-fit: cover;
   z-index: 2;
-  filter: none;
   opacity: 0;
   transform: scale(1.04);
   animation: plateSlideEffect 20s infinite cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity, transform;
 }
 
-/* Delays para las 5 imágenes en secuencia */
+/* Delays secuenciales para las imágenes */
 .card-img-slideshow img:nth-child(1), .slideshow img:nth-child(1) { animation-delay: 0s; }
 .card-img-slideshow img:nth-child(2), .slideshow img:nth-child(2) { animation-delay: 4s; }
 .card-img-slideshow img:nth-child(3), .slideshow img:nth-child(3) { animation-delay: 8s; }
 .card-img-slideshow img:nth-child(4), .slideshow img:nth-child(4) { animation-delay: 12s; }
 .card-img-slideshow img:nth-child(5), .slideshow img:nth-child(5) { animation-delay: 16s; }
 
-/* Animación limpia con un rango de opacidad seguro de 0 a 1 */
 @keyframes plateSlideEffect {
   0%   { opacity: 0; transform: scale(1.06); }
   6%   { opacity: 1; transform: scale(1.02); }
@@ -714,14 +715,12 @@ a { text-decoration: none; color: inherit; }
   100% { opacity: 0; }
 }
 
-/* Efecto Hover limpio y sin capas fantasma que bloqueen clics */
 .recipe-card:hover .recipe-photo,
 .card:hover .card-img-slideshow img {
   transform: scale(1.03);
   filter: brightness(1.08) contrast(105%);
   transition: filter var(--t-med), transform var(--t-med);
 }
-
 /* ================= TAGS / TEXT ================= */
 .tag {
   display: inline-flex;
