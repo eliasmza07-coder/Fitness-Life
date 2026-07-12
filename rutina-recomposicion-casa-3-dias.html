@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fitness Life — Rutina Casa · Recomposición · 5 Días</title>
+<title>Fitness Life — Rutina Casa · Recomposición · 3 Días</title>
 <link rel="stylesheet" href="styles.css">
 <style>
+  /* --- estilos adicionales solo para elementos nuevos de esta página (tablas, tabs) --- */
   .day-tabs { display:flex; flex-wrap:wrap; gap:.6rem; margin: 1.5rem 0 2rem; }
   .day-tab {
     font: inherit; cursor:pointer; padding:.7rem 1.3rem; border-radius:999px;
@@ -40,10 +41,6 @@
 
   .two-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; }
   @media (min-width: 780px){ .two-col { grid-template-columns: 1fr 1fr; } }
-
-  .week-map { display:grid; grid-template-columns: repeat(7, 1fr); gap:.4rem; margin-top:.8rem; }
-  .week-map div { text-align:center; font-size:.7rem; padding:.5rem .2rem; border-radius:8px; border:1px solid rgba(127,127,127,.25); opacity:.75; }
-  .week-map div.on { opacity:1; font-weight:700; border-color:currentColor; }
 </style>
 </head>
 <body>
@@ -65,15 +62,15 @@
       <span class="pulse-dot"></span>
       Fitness Life
     </a>
-    <div class="nav-badge">RUTINA // CASA · 5 DÍAS</div>
+    <div class="nav-badge">RUTINA // CASA · 3 DÍAS</div>
   </div>
 </header>
 
 <section class="hero">
   <div class="hero-grid">
     <span class="badge">RECOMPOSICIÓN CORPORAL</span>
-    <h1>Rutina en casa<br>5 días por semana</h1>
-    <p>Empuje / Tracción / Pierna + Superior / Inferior. La frecuencia más alta de las tres, con más volumen y especialización por grupo muscular.</p>
+    <h1>Rutina en casa<br>3 días por semana</h1>
+    <p>Full body x3 con progresión de cargas. Pensada para ganar músculo y perder grasa a la vez, entrenando en días alternos.</p>
   </div>
 </section>
 
@@ -82,30 +79,17 @@
     <a href="index.html" class="back-btn" style="display:block;">← Volver</a>
 
     <div class="section-title">
-      <div class="idx">5D</div>
+      <div class="idx">3D</div>
       <div>
-        <h2>Push / Pull / Legs + Superior / Inferior</h2>
-        <p>Cada grupo muscular se entrena directamente al menos dos veces por semana. Recomendada solo si podés sostener 5 sesiones consistentes.</p>
+        <h2>Full Body x3 — Lunes / Miércoles / Viernes</h2>
+        <p>Entrená los mismos 3 días cada semana, dejando al menos un día de descanso entre sesiones.</p>
       </div>
-    </div>
-
-    <div class="info-card">
-      <h4>Distribución sugerida en la semana</h4>
-      <div class="week-map">
-        <div class="on">Lun<br>Empuje</div>
-        <div class="on">Mar<br>Tracción</div>
-        <div class="on">Mié<br>Pierna</div>
-        <div>Jue<br>Descanso</div>
-        <div class="on">Vie<br>Superior</div>
-        <div class="on">Sáb<br>Inferior</div>
-        <div>Dom<br>Libre</div>
-      </div>
-      <p style="margin-top:.7rem; opacity:.75; font-size:.85rem;">Si necesitás mover el descanso a otro día, hacelo, pero no encadenes los dos días de pierna (Pierna e Inferior) seguidos.</p>
     </div>
 
     <div class="two-col">
       <div class="info-card">
         <h4>Equipo recomendado</h4>
+        <p>Podés hacer toda la rutina solo con el cuerpo, pero rinde mucho más con:</p>
         <div class="chip-row">
           <span class="chip">Par de mancuernas ajustables</span>
           <span class="chip">Banda elástica de resistencia</span>
@@ -116,8 +100,9 @@
       <div class="info-card">
         <h4>Cómo progresar</h4>
         <ul>
-          <li>Doble progresión en todos los ejercicios principales; dejá 1-2 reps en reserva.</li>
-          <li>Con 5 días de volumen, prestá especial atención a señales de sobreentrenamiento (sueño, apetito, ánimo): si aparecen, bajá una serie por ejercicio esa semana.</li>
+          <li>Doble progresión: subí repeticiones hasta el techo del rango y luego subí el peso, volviendo al piso del rango.</li>
+          <li>Dejá 1-2 repeticiones en reserva (RIR 1-2) en la mayoría de las series.</li>
+          <li>Si un ejercicio deja de progresar 2-3 semanas, cambialo por su alternativa.</li>
         </ul>
       </div>
     </div>
@@ -126,96 +111,64 @@
       <h4>Calentamiento (5-8 min, antes de cada día)</h4>
       <ul>
         <li>Saltos de tijera o soga imaginaria — 1 min</li>
-        <li>Movilidad articular específica del día (hombros en días de torso, cadera y tobillo en días de pierna)</li>
-        <li>2 series livianas del primer ejercicio del día</li>
+        <li>Círculos de brazos y rotación de cadera — 30 seg cada uno</li>
+        <li>Sentadilla con peso corporal — 15 reps</li>
+        <li>Perro-pájaro (bird dog) — 8 reps por lado</li>
+        <li>2 series livianas del primer ejercicio del día, sin llegar al fallo</li>
       </ul>
     </div>
 
     <div class="day-tabs" id="dayTabs">
-      <button class="day-tab active" data-day="1">Empuje</button>
-      <button class="day-tab" data-day="2">Tracción</button>
-      <button class="day-tab" data-day="3">Pierna</button>
-      <button class="day-tab" data-day="4">Superior</button>
-      <button class="day-tab" data-day="5">Inferior</button>
+      <button class="day-tab active" data-day="1">Día 1</button>
+      <button class="day-tab" data-day="2">Día 2</button>
+      <button class="day-tab" data-day="3">Día 3</button>
     </div>
 
     <div id="panels">
 
-      <!-- EMPUJE -->
+      <!-- DÍA 1 -->
       <div class="day-panel active" data-day="1">
-        <div class="block-title"><span class="n">01</span><h3>Día 1 — Empuje (pecho, hombro, tríceps)</h3></div>
+        <div class="block-title"><span class="n">A</span><h3>Día 1 — Full Body A (énfasis piernas y empuje)</h3></div>
         <table class="routine-table">
           <thead><tr><th>Ejercicio</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa</th></tr></thead>
           <tbody>
-            <tr><td>Press de banca en el piso con mancuernas</td><td>4 x 8-10</td><td>90 seg</td><td class="alt">Flexiones estándar, tempo lento</td></tr>
-            <tr><td>Press militar con mancuernas</td><td>4 x 10-12</td><td>90 seg</td><td class="alt">Press pike con pies elevados</td></tr>
-            <tr><td>Flexiones con pies elevados</td><td>3 x 10-12</td><td>75 seg</td><td class="alt">Press de banca con pausa de 1 seg abajo</td></tr>
-            <tr><td>Elevaciones laterales con mancuernas</td><td>3 x 15</td><td>60 seg</td><td class="alt">Elevaciones laterales con banda</td></tr>
-            <tr><td>Extensión de tríceps sobre la cabeza</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Fondos en silla</td></tr>
-            <tr><td>Press cerrado (flexión con manos juntas)</td><td>3 x 10-12</td><td>60 seg</td><td class="alt">Extensión de tríceps con banda</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- TRACCIÓN -->
-      <div class="day-panel" data-day="2">
-        <div class="block-title"><span class="n">02</span><h3>Día 2 — Tracción (espalda, bíceps)</h3></div>
-        <table class="routine-table">
-          <thead><tr><th>Ejercicio</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa</th></tr></thead>
-          <tbody>
-            <tr><td>Remo con mancuerna a un brazo</td><td>4 x 10-12 por lado</td><td>90 seg</td><td class="alt">Remo con banda a dos manos</td></tr>
-            <tr><td>Remo invertido bajo mesa firme</td><td>4 x 8-12</td><td>90 seg</td><td class="alt">Remo con banda, torso inclinado</td></tr>
-            <tr><td>Pullover con mancuerna</td><td>3 x 12-15</td><td>75 seg</td><td class="alt">Face pull con banda</td></tr>
-            <tr><td>Face pull con banda</td><td>3 x 15</td><td>60 seg</td><td class="alt">Y-raise con mancuernas livianas</td></tr>
-            <tr><td>Curl de bíceps con mancuernas</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Curl con banda elástica</td></tr>
-            <tr><td>Curl martillo con mancuernas</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Curl martillo con banda</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- PIERNA -->
-      <div class="day-panel" data-day="3">
-        <div class="block-title"><span class="n">03</span><h3>Día 3 — Pierna completa</h3></div>
-        <table class="routine-table">
-          <thead><tr><th>Ejercicio</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa</th></tr></thead>
-          <tbody>
-            <tr><td>Sentadilla goblet con mancuerna</td><td>4 x 10-12</td><td>90 seg</td><td class="alt">Sentadilla con mochila al pecho</td></tr>
-            <tr><td>Peso muerto rumano con mancuernas</td><td>4 x 10-12</td><td>90 seg</td><td class="alt">Buenos días con mochila cargada</td></tr>
-            <tr><td>Zancadas alternas con mancuernas</td><td>3 x 12 por pierna</td><td>75 seg</td><td class="alt">Zancadas estáticas sin peso</td></tr>
-            <tr><td>Hip thrust con mancuerna</td><td>3 x 12-15</td><td>75 seg</td><td class="alt">Puente de glúteo unilateral</td></tr>
-            <tr><td>Elevación de talones de pie</td><td>4 x 15-20</td><td>45 seg</td><td class="alt">Elevación de talones a una pierna</td></tr>
+            <tr><td>Sentadilla goblet con mancuerna</td><td>4 x 10-12</td><td>90 seg</td><td class="alt">Sentadilla con mochila cargada al pecho</td></tr>
+            <tr><td>Flexiones de brazos (push-ups)</td><td>4 x AMRAP (dejando 2 en reserva)</td><td>90 seg</td><td class="alt">Flexiones con rodillas apoyadas o inclinadas sobre una silla</td></tr>
+            <tr><td>Zancadas alternas con mancuernas</td><td>3 x 10 por pierna</td><td>75 seg</td><td class="alt">Zancadas búlgaras con pie trasero en la silla</td></tr>
+            <tr><td>Press militar con mancuernas (sentado o parado)</td><td>3 x 10-12</td><td>75 seg</td><td class="alt">Press pike (flexión con cadera elevada)</td></tr>
             <tr><td>Plancha frontal</td><td>3 x 30-45 seg</td><td>45 seg</td><td class="alt">Plancha con rodillas apoyadas</td></tr>
+            <tr><td>Elevaciones de talones (pantorrillas) de pie</td><td>3 x 15-20</td><td>45 seg</td><td class="alt">Igual, apoyando manos en la pared para más rango</td></tr>
           </tbody>
         </table>
       </div>
 
-      <!-- SUPERIOR -->
-      <div class="day-panel" data-day="4">
-        <div class="block-title"><span class="n">04</span><h3>Día 4 — Superior (volumen extra torso)</h3></div>
+      <!-- DÍA 2 -->
+      <div class="day-panel" data-day="2">
+        <div class="block-title"><span class="n">B</span><h3>Día 2 — Full Body B (énfasis espalda y cadera)</h3></div>
         <table class="routine-table">
           <thead><tr><th>Ejercicio</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa</th></tr></thead>
           <tbody>
-            <tr><td>Remo con banda a dos manos</td><td>4 x 10-12</td><td>90 seg</td><td class="alt">Remo con mancuerna a un brazo</td></tr>
-            <tr><td>Flexiones estándar</td><td>4 x AMRAP (2 en reserva)</td><td>90 seg</td><td class="alt">Flexiones inclinadas sobre silla</td></tr>
-            <tr><td>Press militar con mancuernas</td><td>3 x 10-12</td><td>75 seg</td><td class="alt">Press pike</td></tr>
-            <tr><td>Elevaciones laterales con mancuernas</td><td>3 x 15</td><td>60 seg</td><td class="alt">Elevaciones laterales con banda</td></tr>
-            <tr><td>Curl de bíceps con mancuernas</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Curl con banda</td></tr>
-            <tr><td>Fondos en silla (tríceps)</td><td>3 x 10-15</td><td>60 seg</td><td class="alt">Extensión de tríceps sobre la cabeza</td></tr>
+            <tr><td>Peso muerto rumano con mancuernas</td><td>4 x 10-12</td><td>90 seg</td><td class="alt">Puente de glúteo a una pierna</td></tr>
+            <tr><td>Remo con banda elástica (o mancuerna a un brazo apoyado en silla)</td><td>4 x 10-12 por lado</td><td>75 seg</td><td class="alt">Remo invertido bajo una mesa firme</td></tr>
+            <tr><td>Puente de glúteo con mancuerna en la cadera</td><td>3 x 12-15</td><td>75 seg</td><td class="alt">Puente de glúteo a una pierna sin peso</td></tr>
+            <tr><td>Face pull con banda (tirón a la cara)</td><td>3 x 15</td><td>60 seg</td><td class="alt">Y-raise con mancuernas livianas, torso inclinado</td></tr>
+            <tr><td>Curl de bíceps con mancuernas o banda</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Curl isométrico manteniendo 20 seg a 90°</td></tr>
+            <tr><td>Plancha lateral</td><td>3 x 25-30 seg por lado</td><td>45 seg</td><td class="alt">Plancha lateral con rodilla apoyada</td></tr>
           </tbody>
         </table>
       </div>
 
-      <!-- INFERIOR -->
-      <div class="day-panel" data-day="5">
-        <div class="block-title"><span class="n">05</span><h3>Día 5 — Inferior (volumen extra piernas y core)</h3></div>
+      <!-- DÍA 3 -->
+      <div class="day-panel" data-day="3">
+        <div class="block-title"><span class="n">C</span><h3>Día 3 — Full Body C (énfasis general y core)</h3></div>
         <table class="routine-table">
           <thead><tr><th>Ejercicio</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa</th></tr></thead>
           <tbody>
-            <tr><td>Sentadilla búlgara con mancuernas</td><td>4 x 10 por pierna</td><td>90 seg</td><td class="alt">Zancada estática con mochila</td></tr>
-            <tr><td>Peso muerto rumano a una pierna</td><td>3 x 10 por pierna</td><td>75 seg</td><td class="alt">Peso muerto rumano bipodal</td></tr>
-            <tr><td>Sentadilla sumo con mancuerna</td><td>3 x 12-15</td><td>75 seg</td><td class="alt">Sentadilla sumo con mochila</td></tr>
-            <tr><td>Puente de glúteo a una pierna</td><td>3 x 12-15 por lado</td><td>60 seg</td><td class="alt">Puente de glúteo bipodal con pausa</td></tr>
-            <tr><td>Elevaciones de piernas acostado</td><td>3 x 15</td><td>45 seg</td><td class="alt">Rodillas al pecho, ritmo controlado</td></tr>
+            <tr><td>Sentadilla búlgara con mancuernas</td><td>3 x 10 por pierna</td><td>90 seg</td><td class="alt">Zancada estática con mochila cargada</td></tr>
+            <tr><td>Flexiones con pies elevados (declinadas)</td><td>3 x 8-12</td><td>90 seg</td><td class="alt">Flexiones estándar más lentas (3 seg de bajada)</td></tr>
+            <tr><td>Remo renegado con mancuernas (plancha + remo)</td><td>3 x 8 por lado</td><td>75 seg</td><td class="alt">Remo con banda de pie, sin plancha</td></tr>
+            <tr><td>Hip thrust unilateral</td><td>3 x 12 por pierna</td><td>75 seg</td><td class="alt">Puente de glúteo bipodal con pausa de 2 seg arriba</td></tr>
+            <tr><td>Elevaciones de piernas colgado o acostado</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Rodillas al pecho acostado, ritmo controlado</td></tr>
             <tr><td>Mountain climbers</td><td>3 x 30 seg</td><td>45 seg</td><td class="alt">Rodilla a codo alterna, ritmo lento</td></tr>
           </tbody>
         </table>
@@ -226,9 +179,8 @@
     <div class="info-card">
       <h4>Enfriamiento (3-5 min, después de cada día)</h4>
       <ul>
+        <li>Estiramiento de cuádriceps y isquiotibiales — 30 seg por lado</li>
         <li>Estiramiento de pectoral en marco de puerta — 30 seg por lado</li>
-        <li>Estiramiento de isquiotibiales y cuádriceps — 30 seg por lado</li>
-        <li>Estiramiento de dorsal ancho — 30 seg</li>
         <li>Respiración diafragmática — 1 min</li>
       </ul>
     </div>
@@ -236,10 +188,10 @@
     <div class="info-card">
       <h4>Notas para recomposición corporal</h4>
       <ul>
-        <li>Con 5 días de entrenamiento el volumen es alto: cuidá especialmente el sueño (7-9 h) y la ingesta de proteína (1.6-2.2 g por kg de peso).</li>
-        <li>Si tres semanas seguidas sentís fatiga acumulada, tomá una semana de descarga: mismos ejercicios, 40-50% menos de series.</li>
-        <li>Rotá las alternativas de cada ejercicio cada 4-6 semanas para variar el estímulo y evitar el estancamiento.</li>
-        <li>La recomposición es lenta por definición: priorizá la consistencia semana a semana por encima de cambios bruscos de dieta o rutina.</li>
+        <li>Mantené un déficit calórico leve (300-500 kcal por debajo de mantenimiento) o comé en mantenimiento si sos principiante.</li>
+        <li>Priorizá proteína: aproximadamente 1.6-2.2 g por kg de peso corporal por día.</li>
+        <li>Dormí 7-9 horas; es donde se consolida la recuperación muscular.</li>
+        <li>Si te estanca el progreso, revisá primero sueño y proteína antes de cambiar la rutina.</li>
       </ul>
     </div>
 
