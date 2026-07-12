@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fitness Life — Rutina Gym · Recomposición · 3 Días</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .day-tabs { display:flex; flex-wrap:wrap; gap:.6rem; margin: 1.5rem 0 2rem; }
+  .day-tab {
+    font: inherit; cursor:pointer; padding:.7rem 1.3rem; border-radius:999px;
+    border:1px solid rgba(127,127,127,.35); background:transparent; color:inherit;
+    opacity:.6; transition: opacity .2s ease, transform .2s ease;
+  }
+  .day-tab:hover { opacity:.85; }
+  .day-tab.active { opacity:1; border-color:currentColor; font-weight:700; transform: translateY(-1px); }
+  .day-panel { display:none; }
+  .day-panel.active { display:block; animation: fadeIn .35s ease; }
+  @keyframes fadeIn { from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  .block-title { display:flex; align-items:baseline; gap:.6rem; margin: 2rem 0 .8rem; }
+  .block-title .n { font-size:.75rem; letter-spacing:.12em; opacity:.55; }
+  .block-title h3 { margin:0; font-size:1.2rem; }
+
+  .routine-table { width:100%; border-collapse:collapse; margin-bottom:1rem; }
+  .routine-table th, .routine-table td { text-align:left; padding:.65rem .5rem; border-bottom:1px solid rgba(127,127,127,.25); vertical-align:top; }
+  .routine-table th { font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; opacity:.6; font-weight:600; }
+  .routine-table td.alt { font-size:.85rem; opacity:.75; font-style:italic; }
+  .routine-table tr:last-child td { border-bottom:none; }
+
+  .info-card {
+    border:1px solid rgba(127,127,127,.3); border-radius:14px; padding:1.2rem 1.4rem; margin-bottom:1.2rem;
+  }
+  .info-card h4 { margin:0 0 .5rem; font-size:1rem; }
+  .info-card ul { margin:.3rem 0 0; padding-left:1.1rem; }
+  .info-card li { margin-bottom:.35rem; }
+
+  .chip-row { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.6rem; }
+  .chip { font-size:.75rem; padding:.3rem .7rem; border:1px solid rgba(127,127,127,.35); border-radius:999px; opacity:.75; }
+  .chip.free { }
+  .chip.machine { border-style:dashed; }
+
+  .two-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; }
+  @media (min-width: 780px){ .two-col { grid-template-columns: 1fr 1fr; } }
+
+  .legend { display:flex; gap:1.2rem; font-size:.75rem; opacity:.7; margin-bottom:1rem; flex-wrap:wrap; }
+  .legend span { display:flex; align-items:center; gap:.4rem; }
+  .dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
+  .dot.free { background:currentColor; }
+  .dot.machine { border:1.5px solid currentColor; background:transparent; }
+</style>
+</head>
+<body>
+
+<div class="static-bg" aria-hidden="true"></div>
+
+<svg class="svg-defs" aria-hidden="true">
+  <defs>
+    <filter id="roughEdge" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018 0.09" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="logo-bar">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="pulse-dot"></span>
+      Fitness Life
+    </a>
+    <div class="nav-badge">RUTINA // GYM · 3 DÍAS</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <span class="badge">RECOMPOSICIÓN CORPORAL</span>
+    <h1>Rutina de gimnasio<br>3 días por semana</h1>
+    <p>Full body x3 con barra, mancuernas y máquinas guiadas. Cada ejercicio principal tiene su versión con y sin máquina, para que la rutina se adapte a lo que esté libre ese día.</p>
+  </div>
+</section>
+
+<main class="container">
+  <div class="app-container">
+    <a href="index.html" class="back-btn" style="display:block;">← Volver</a>
+
+    <div class="section-title">
+      <div class="idx">3D</div>
+      <div>
+        <h2>Full Body x3 — Lunes / Miércoles / Viernes</h2>
+        <p>Entrená los mismos 3 días cada semana, dejando al menos un día de descanso entre sesiones.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="info-card">
+        <h4>Equipo que vas a usar</h4>
+        <div class="chip-row">
+          <span class="chip free">Barra + discos</span>
+          <span class="chip free">Mancuernas</span>
+          <span class="chip machine">Máquina de prensa / press</span>
+          <span class="chip machine">Polea / cable</span>
+          <span class="chip machine">Máquinas de aislamiento</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <h4>Cómo progresar</h4>
+        <ul>
+          <li>Doble progresión: subí repeticiones hasta el techo del rango y luego el peso, volviendo al piso del rango.</li>
+          <li>Dejá 1-2 repeticiones en reserva (RIR 1-2) en la mayoría de las series.</li>
+          <li>Si el ejercicio con barra/mancuerna está ocupado, usá directamente la versión en máquina de esa fila sin perder la sesión.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h4>Calentamiento (5-8 min, antes de cada día)</h4>
+      <ul>
+        <li>5 min de cardio suave (bici, cinta o remo) para elevar temperatura corporal</li>
+        <li>Movilidad de hombro y cadera — 1 min cada uno</li>
+        <li>1-2 series de aproximación con poco peso en el primer ejercicio del día</li>
+      </ul>
+    </div>
+
+    <div class="legend">
+      <span><span class="dot free"></span> Ejercicio principal (barra/mancuerna)</span>
+      <span><span class="dot machine"></span> Alternativa en máquina/polea</span>
+    </div>
+
+    <div class="day-tabs" id="dayTabs">
+      <button class="day-tab active" data-day="1">Día 1</button>
+      <button class="day-tab" data-day="2">Día 2</button>
+      <button class="day-tab" data-day="3">Día 3</button>
+    </div>
+
+    <div id="panels">
+
+      <!-- DÍA 1 -->
+      <div class="day-panel active" data-day="1">
+        <div class="block-title"><span class="n">A</span><h3>Día 1 — Full Body A (piernas y empuje)</h3></div>
+        <table class="routine-table">
+          <thead><tr><th>Ejercicio principal</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa en máquina</th></tr></thead>
+          <tbody>
+            <tr><td>Sentadilla con barra</td><td>4 x 8-10</td><td>2 min</td><td class="alt">Prensa de piernas (leg press) 45°</td></tr>
+            <tr><td>Press de banca con barra</td><td>4 x 8-10</td><td>2 min</td><td class="alt">Press de pecho en máquina (chest press)</td></tr>
+            <tr><td>Zancadas con mancuernas</td><td>3 x 10 por pierna</td><td>90 seg</td><td class="alt">Zancadas en máquina Smith</td></tr>
+            <tr><td>Press militar con mancuernas</td><td>3 x 10-12</td><td>90 seg</td><td class="alt">Press de hombro en máquina</td></tr>
+            <tr><td>Extensión de cuádriceps en máquina</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Sentadilla búlgara con mancuernas (sin máquina)</td></tr>
+            <tr><td>Plancha con disco sobre la espalda</td><td>3 x 30-45 seg</td><td>45 seg</td><td class="alt">Crunch en máquina abdominal</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- DÍA 2 -->
+      <div class="day-panel" data-day="2">
+        <div class="block-title"><span class="n">B</span><h3>Día 2 — Full Body B (espalda y cadera)</h3></div>
+        <table class="routine-table">
+          <thead><tr><th>Ejercicio principal</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa en máquina</th></tr></thead>
+          <tbody>
+            <tr><td>Peso muerto rumano con barra</td><td>4 x 10-12</td><td>2 min</td><td class="alt">Máquina de hip thrust o curl femoral</td></tr>
+            <tr><td>Remo con barra</td><td>4 x 10-12</td><td>90 seg</td><td class="alt">Remo en máquina (seated row)</td></tr>
+            <tr><td>Jalón al pecho con agarre ancho</td><td>3 x 10-12</td><td>90 seg</td><td class="alt">Dominadas asistidas en máquina</td></tr>
+            <tr><td>Curl femoral acostado o sentado (máquina)</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Peso muerto rumano a una pierna con mancuerna (sin máquina)</td></tr>
+            <tr><td>Curl de bíceps con barra o mancuernas</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Curl en polea baja</td></tr>
+            <tr><td>Plancha lateral</td><td>3 x 25-30 seg por lado</td><td>45 seg</td><td class="alt">Máquina de aductor/abductor (accesorio de core-cadera)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- DÍA 3 -->
+      <div class="day-panel" data-day="3">
+        <div class="block-title"><span class="n">C</span><h3>Día 3 — Full Body C (general y core)</h3></div>
+        <table class="routine-table">
+          <thead><tr><th>Ejercicio principal</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa en máquina</th></tr></thead>
+          <tbody>
+            <tr><td>Sentadilla búlgara con mancuernas</td><td>3 x 10 por pierna</td><td>90 seg</td><td class="alt">Prensa de piernas a una pierna</td></tr>
+            <tr><td>Press inclinado con mancuernas</td><td>3 x 8-12</td><td>90 seg</td><td class="alt">Press de pecho inclinado en máquina</td></tr>
+            <tr><td>Remo en polea baja (sentado)</td><td>3 x 10-12</td><td>90 seg</td><td class="alt">Remo con mancuerna a un brazo (sin máquina)</td></tr>
+            <tr><td>Hip thrust con barra</td><td>3 x 10-12</td><td>90 seg</td><td class="alt">Máquina de hip thrust</td></tr>
+            <tr><td>Elevación de talones de pie (máquina o con barra)</td><td>3 x 15-20</td><td>45 seg</td><td class="alt">Elevación de talones sentado en máquina</td></tr>
+            <tr><td>Elevaciones de piernas colgado</td><td>3 x 12-15</td><td>45 seg</td><td class="alt">Máquina de abdominales con polea</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="info-card">
+      <h4>Enfriamiento (3-5 min, después de cada día)</h4>
+      <ul>
+        <li>Estiramiento de cuádriceps y isquiotibiales — 30 seg por lado</li>
+        <li>Estiramiento de pectoral en marco o polea — 30 seg por lado</li>
+        <li>Caminata suave en cinta — 2-3 min</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <h4>Notas para recomposición corporal</h4>
+      <ul>
+        <li>Mantené un déficit calórico leve (300-500 kcal por debajo de mantenimiento) o comé en mantenimiento si sos principiante.</li>
+        <li>Priorizá proteína: aproximadamente 1.6-2.2 g por kg de peso corporal por día.</li>
+        <li>Dormí 7-9 horas; es donde se consolida la recuperación muscular.</li>
+        <li>Registrá los pesos de cada sesión (libreta o app) para saber si estás progresando semana a semana.</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <p>© 2026 FITNESS LIFE // TODOS LOS DERECHOS RESERVADOS.</p>
+  <p class="tagmark">hecho a pulso 🖤</p>
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.day-tab');
+  const panels = document.querySelectorAll('.day-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const day = tab.dataset.day;
+      tabs.forEach(t => t.classList.toggle('active', t === tab));
+      panels.forEach(p => p.classList.toggle('active', p.dataset.day === day));
+      window.scrollTo({ top: document.getElementById('dayTabs').offsetTop - 100, behavior: 'smooth' });
+    });
+  });
+</script>
+<script src="background.js"></script>
+</body>
+</html>
