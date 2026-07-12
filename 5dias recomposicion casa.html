@@ -1,208 +1,268 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rutina híbrida avanzada de 5 días para casa. Fusión de Push/Pull/Legs y Torso/Pierna.">
-    <title>Fitness Life | Rutina 5 Días — Avanzada Híbrida</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fitness Life — Rutina Casa · Recomposición · 5 Días</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .day-tabs { display:flex; flex-wrap:wrap; gap:.6rem; margin: 1.5rem 0 2rem; }
+  .day-tab {
+    font: inherit; cursor:pointer; padding:.7rem 1.3rem; border-radius:999px;
+    border:1px solid rgba(127,127,127,.35); background:transparent; color:inherit;
+    opacity:.6; transition: opacity .2s ease, transform .2s ease;
+  }
+  .day-tab:hover { opacity:.85; }
+  .day-tab.active { opacity:1; border-color:currentColor; font-weight:700; transform: translateY(-1px); }
+  .day-panel { display:none; }
+  .day-panel.active { display:block; animation: fadeIn .35s ease; }
+  @keyframes fadeIn { from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
 
+  .block-title { display:flex; align-items:baseline; gap:.6rem; margin: 2rem 0 .8rem; }
+  .block-title .n { font-size:.75rem; letter-spacing:.12em; opacity:.55; }
+  .block-title h3 { margin:0; font-size:1.2rem; }
+
+  .routine-table { width:100%; border-collapse:collapse; margin-bottom:1rem; }
+  .routine-table th, .routine-table td { text-align:left; padding:.65rem .5rem; border-bottom:1px solid rgba(127,127,127,.25); vertical-align:top; }
+  .routine-table th { font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; opacity:.6; font-weight:600; }
+  .routine-table td.alt { font-size:.85rem; opacity:.75; font-style:italic; }
+  .routine-table tr:last-child td { border-bottom:none; }
+
+  .info-card {
+    border:1px solid rgba(127,127,127,.3); border-radius:14px; padding:1.2rem 1.4rem; margin-bottom:1.2rem;
+  }
+  .info-card h4 { margin:0 0 .5rem; font-size:1rem; }
+  .info-card ul { margin:.3rem 0 0; padding-left:1.1rem; }
+  .info-card li { margin-bottom:.35rem; }
+
+  .chip-row { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.6rem; }
+  .chip { font-size:.75rem; padding:.3rem .7rem; border:1px solid rgba(127,127,127,.35); border-radius:999px; opacity:.75; }
+
+  .two-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; }
+  @media (min-width: 780px){ .two-col { grid-template-columns: 1fr 1fr; } }
+
+  .week-map { display:grid; grid-template-columns: repeat(7, 1fr); gap:.4rem; margin-top:.8rem; }
+  .week-map div { text-align:center; font-size:.7rem; padding:.5rem .2rem; border-radius:8px; border:1px solid rgba(127,127,127,.25); opacity:.75; }
+  .week-map div.on { opacity:1; font-weight:700; border-color:currentColor; }
+</style>
+</head>
 <body>
 
-<!-- LOGO BAR -->
+<div class="static-bg" aria-hidden="true"></div>
+
+<svg class="svg-defs" aria-hidden="true">
+  <defs>
+    <filter id="roughEdge" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018 0.09" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
 <header class="logo-bar">
-    <a href="../index.html" class="logo-container">
-        <img src="logo.png" class="logo" alt="Fitness Life">
-        <span class="brand">Fitness Life</span>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="pulse-dot"></span>
+      Fitness Life
     </a>
-    <nav class="nav-links">
-        <a>Objetivo</a>
-        <a class="active">Entrenamiento</a>
-        <a>Plan</a>
-        <a>Dieta</a>
-    </nav>
+    <div class="nav-badge">RUTINA // CASA · 5 DÍAS</div>
+  </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-    <div class="hero-grid">
-        <div class="hero-content">
-            <span class="badge mono">CASA · 5 DÍAS · HÍBRIDO PHAT</span>
-            <h1>Frecuencia alta y máximo volumen.</h1>
-            <p>
-                Combinación de 3 días de aislamiento funcional (Empuje/Tirón/Piernas) enfocados en hipertrofia masiva, junto a 2 días de estímulo compuesto global (Torso/Pierna).
-            </p>
-            <div class="stats">
-                <div>
-                    <h3 class="mono">5 / sem</h3>
-                    <p>frecuencia</p>
-                </div>
-                <div>
-                    <h3 class="mono">40–50</h3>
-                    <p>minutos por sesión</p>
-                </div>
-                <div>
-                    <h3 class="mono">60–90 s</h3>
-                    <p>tiempos cortos</p>
-                </div>
-            </div>
-            <a href="#dia1" class="btn">Empezar el Ciclo</a>
-        </div>
-        <img src="img/rutina-5-dias-hero.jpg" alt="Rutina 5 días" class="exercise-img" style="aspect-ratio:auto;height:360px;margin-bottom:0;">
-    </div>
+  <div class="hero-grid">
+    <span class="badge">RECOMPOSICIÓN CORPORAL</span>
+    <h1>Rutina en casa<br>5 días por semana</h1>
+    <p>Empuje / Tracción / Pierna + Superior / Inferior. La frecuencia más alta de las tres, con más volumen y especialización por grupo muscular.</p>
+  </div>
 </section>
 
 <main class="container">
+  <div class="app-container">
+    <a href="index.html" class="back-btn" style="display:block;">← Volver</a>
 
-<nav class="day-nav" aria-label="Días de la rutina" style="font-size: 0.85rem;">
-    <a href="#dia1">D1·Empuje</a>
-    <a href="#dia2">D2·Tirón</a>
-    <a href="#dia3">D3·Pierna</a>
-    <a href="#dia4">D4·Torso</a>
-    <a href="#dia5">D5·Inferior</a>
-</nav>
+    <div class="section-title">
+      <div class="idx">5D</div>
+      <div>
+        <h2>Push / Pull / Legs + Superior / Inferior</h2>
+        <p>Cada grupo muscular se entrena directamente al menos dos veces por semana. Recomendada solo si podés sostener 5 sesiones consistentes.</p>
+      </div>
+    </div>
 
-<section class="bento">
-    <div class="card">
-        <span class="tag">Nivel</span>
-        <h3>Avanzado</h3>
-        <p>Recomendado únicamente si tolerás altos volúmenes de trabajo en el hogar.</p>
+    <div class="info-card">
+      <h4>Distribución sugerida en la semana</h4>
+      <div class="week-map">
+        <div class="on">Lun<br>Empuje</div>
+        <div class="on">Mar<br>Tracción</div>
+        <div class="on">Mié<br>Pierna</div>
+        <div>Jue<br>Descanso</div>
+        <div class="on">Vie<br>Superior</div>
+        <div class="on">Sáb<br>Inferior</div>
+        <div>Dom<br>Libre</div>
+      </div>
+      <p style="margin-top:.7rem; opacity:.75; font-size:.85rem;">Si necesitás mover el descanso a otro día, hacelo, pero no encadenes los dos días de pierna (Pierna e Inferior) seguidos.</p>
     </div>
-    <div class="card">
-        <span class="tag">Distribución semanal</span>
-        <h3>3 + 2 con descansos</h3>
-        <p>Estructura óptima: D1, D2, D3 / Descanso / D4, D5 / Descanso. Evita la fatiga del sistema nervioso.</p>
-    </div>
-</section>
 
-<!-- DÍA 1 -->
-<section class="section-title" id="dia1">
-    <span class="idx mono">01</span>
-    <div>
-        <h2>Día 1 — Empuje (Push)</h2>
-        <p>Pecho, hombros y tríceps al fallo controlado.</p>
+    <div class="two-col">
+      <div class="info-card">
+        <h4>Equipo recomendado</h4>
+        <div class="chip-row">
+          <span class="chip">Par de mancuernas ajustables</span>
+          <span class="chip">Banda elástica de resistencia</span>
+          <span class="chip">Silla o banco estable</span>
+          <span class="chip">Mochila (para lastrar si no hay mancuernas)</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <h4>Cómo progresar</h4>
+        <ul>
+          <li>Doble progresión en todos los ejercicios principales; dejá 1-2 reps en reserva.</li>
+          <li>Con 5 días de volumen, prestá especial atención a señales de sobreentrenamiento (sueño, apetito, ánimo): si aparecen, bajá una serie por ejercicio esa semana.</li>
+        </ul>
+      </div>
     </div>
-</section>
-<section class="bento">
-    <div class="routine-block">
-        <span class="variant-tag">Sin pesas</span>
-        <div class="exercise-row"><span>Flexiones de pecho</span><span class="sets">4 × 15</span></div>
-        <div class="exercise-row"><span>Pike push-up</span><span class="sets">3 × 10</span></div>
-        <div class="exercise-row"><span>Fondos en banco</span><span class="sets">4 × 12</span></div>
-    </div>
-    <div class="routine-block">
-        <span class="variant-tag">Con pesas</span>
-        <div class="exercise-row"><span>Press de banca / suelo</span><span class="sets">4 × 8</span></div>
-        <div class="exercise-row"><span>Press militar</span><span class="sets">4 × 10</span></div>
-        <div class="exercise-row"><span>Aperturas con mancuerna</span><span class="sets">3 × 12</span></div>
-    </div>
-</section>
 
-<!-- DÍA 2 -->
-<section class="section-title" id="dia2">
-    <span class="idx mono">02</span>
-    <div>
-        <h2>Día 2 — Tirón (Pull)</h2>
-        <p>Tracciones completas para toda la espalda.</p>
+    <div class="info-card">
+      <h4>Calentamiento (5-8 min, antes de cada día)</h4>
+      <ul>
+        <li>Saltos de tijera o soga imaginaria — 1 min</li>
+        <li>Movilidad articular específica del día (hombros en días de torso, cadera y tobillo en días de pierna)</li>
+        <li>2 series livianas del primer ejercicio del día</li>
+      </ul>
     </div>
-</section>
-<section class="bento">
-    <div class="routine-block">
-        <span class="variant-tag">Sin pesas</span>
-        <div class="exercise-row"><span>Dominadas o remo invertido</span><span class="sets">4 × 8</span></div>
-        <div class="exercise-row"><span>Remo con toalla</span><span class="sets">4 × 12</span></div>
-        <div class="exercise-row"><span>Superman</span><span class="sets">3 × 15</span></div>
-    </div>
-    <div class="routine-block">
-        <span class="variant-tag">Con pesas</span>
-        <div class="exercise-row"><span>Remo con barra</span><span class="sets">4 × 8</span></div>
-        <div class="exercise-row"><span>Curl de bíceps con mancuerna</span><span class="sets">3 × 12</span></div>
-        <div class="exercise-row"><span>Face pull con banda / mancuerna</span><span class="sets">3 × 15</span></div>
-    </div>
-</section>
 
-<!-- DÍA 3 -->
-<section class="section-title" id="dia3">
-    <span class="idx mono">03</span>
-    <div>
-        <h2>Día 3 — Piernas (Legs)</h2>
-        <p>Trabajo localizado del tren inferior.</p>
+    <div class="day-tabs" id="dayTabs">
+      <button class="day-tab active" data-day="1">Empuje</button>
+      <button class="day-tab" data-day="2">Tracción</button>
+      <button class="day-tab" data-day="3">Pierna</button>
+      <button class="day-tab" data-day="4">Superior</button>
+      <button class="day-tab" data-day="5">Inferior</button>
     </div>
-</section>
-<section class="bento">
-    <div class="routine-block">
-        <span class="variant-tag">Sin pesas</span>
-        <div class="exercise-row"><span>Sentadillas</span><span class="sets">4 × 15</span></div>
-        <div class="exercise-row"><span>Zancadas búlgaras</span><span class="sets">3 × 10 c/p</span></div>
-        <div class="exercise-row"><span>Puente de glúteo</span><span class="sets">3 × 12</span></div>
-    </div>
-    <div class="routine-block">
-        <span class="variant-tag">Con pesas</span>
-        <div class="exercise-row"><span>Sentadilla con barra</span><span class="sets">4 × 8</span></div>
-        <div class="exercise-row"><span>Peso muerto rumano</span><span class="sets">4 × 8</span></div>
-        <div class="exercise-row"><span>Zancadas con mancuernas</span><span class="sets">3 × 10</span></div>
-    </div>
-</section>
 
-<!-- DÍA 4 -->
-<section class="section-title" id="dia4">
-    <span class="idx mono">04</span>
-    <div>
-        <h2>Día 4 — Torso Completo</h2>
-        <p>Estímulo global y metabólico de tren superior en super-series.</p>
-    </div>
-</section>
-<section class="bento">
-    <div class="routine-block">
-        <span class="variant-tag">Sin pesas</span>
-        <div class="exercise-row"><span>Flexiones diamante</span><span class="sets">4 × 12</span></div>
-        <div class="exercise-row"><span>Remo invertido supinado</span><span class="sets">4 × 10</span></div>
-        <div class="exercise-row"><span>Flexiones declinadas</span><span class="sets">3 × 12</span></div>
-    </div>
-    <div class="routine-block">
-        <span class="variant-tag">Con pesas</span>
-        <div class="exercise-row"><span>Press de banca cerrado</span><span class="sets">4 × 10</span></div>
-        <div class="exercise-row"><span>Remo mancuerna a una mano</span><span class="sets">4 × 10</span></div>
-        <div class="exercise-row"><span>Vuelos laterales hombros</span><span class="sets">3 × 12</span></div>
-    </div>
-</section>
+    <div id="panels">
 
-<!-- DÍA 5 -->
-<section class="section-title" id="dia5">
-    <span class="idx mono">05</span>
-    <div>
-        <h2>Día 5 — Tren Inferior + Core</h2>
-        <p>Cierre del ciclo con potencia y estabilizadores abdominales.</p>
-    </div>
-</section>
-<section class="bento">
-    <div class="routine-block">
-        <span class="variant-tag">Sin pesas</span>
-        <div class="exercise-row"><span>Sentadillas con salto</span><span class="sets">4 × 12</span></div>
-        <div class="exercise-row"><span>Zancadas laterales</span><span class="sets">3 × 12 c/p</span></div>
-        <div class="exercise-row"><span>Plancha dinámica (Spiderman)</span><span class="sets">3 × 45 s</span></div>
-    </div>
-    <div class="routine-block">
-        <span class="variant-tag">Con pesas</span>
-        <div class="exercise-row"><span>Zancadas caminando</span><span class="sets">4 × 12</span></div>
-        <div class="exercise-row"><span>Elevaciones de talón con carga</span><span class="sets">4 × 15</span></div>
-        <div class="exercise-row"><span>Abdominales con disco (Sit-ups)</span><span class="sets">3 × 15</span></div>
-    </div>
-</section>
+      <!-- EMPUJE -->
+      <div class="day-panel active" data-day="1">
+        <div class="block-title"><span class="n">01</span><h3>Día 1 — Empuje (pecho, hombro, tríceps)</h3></div>
+        <table class="routine-table">
+          <thead><tr><th>Ejercicio</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa</th></tr></thead>
+          <tbody>
+            <tr><td>Press de banca en el piso con mancuernas</td><td>4 x 8-10</td><td>90 seg</td><td class="alt">Flexiones estándar, tempo lento</td></tr>
+            <tr><td>Press militar con mancuernas</td><td>4 x 10-12</td><td>90 seg</td><td class="alt">Press pike con pies elevados</td></tr>
+            <tr><td>Flexiones con pies elevados</td><td>3 x 10-12</td><td>75 seg</td><td class="alt">Press de banca con pausa de 1 seg abajo</td></tr>
+            <tr><td>Elevaciones laterales con mancuernas</td><td>3 x 15</td><td>60 seg</td><td class="alt">Elevaciones laterales con banda</td></tr>
+            <tr><td>Extensión de tríceps sobre la cabeza</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Fondos en silla</td></tr>
+            <tr><td>Press cerrado (flexión con manos juntas)</td><td>3 x 10-12</td><td>60 seg</td><td class="alt">Extensión de tríceps con banda</td></tr>
+          </tbody>
+        </table>
+      </div>
 
+      <!-- TRACCIÓN -->
+      <div class="day-panel" data-day="2">
+        <div class="block-title"><span class="n">02</span><h3>Día 2 — Tracción (espalda, bíceps)</h3></div>
+        <table class="routine-table">
+          <thead><tr><th>Ejercicio</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa</th></tr></thead>
+          <tbody>
+            <tr><td>Remo con mancuerna a un brazo</td><td>4 x 10-12 por lado</td><td>90 seg</td><td class="alt">Remo con banda a dos manos</td></tr>
+            <tr><td>Remo invertido bajo mesa firme</td><td>4 x 8-12</td><td>90 seg</td><td class="alt">Remo con banda, torso inclinado</td></tr>
+            <tr><td>Pullover con mancuerna</td><td>3 x 12-15</td><td>75 seg</td><td class="alt">Face pull con banda</td></tr>
+            <tr><td>Face pull con banda</td><td>3 x 15</td><td>60 seg</td><td class="alt">Y-raise con mancuernas livianas</td></tr>
+            <tr><td>Curl de bíceps con mancuernas</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Curl con banda elástica</td></tr>
+            <tr><td>Curl martillo con mancuernas</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Curl martillo con banda</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PIERNA -->
+      <div class="day-panel" data-day="3">
+        <div class="block-title"><span class="n">03</span><h3>Día 3 — Pierna completa</h3></div>
+        <table class="routine-table">
+          <thead><tr><th>Ejercicio</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa</th></tr></thead>
+          <tbody>
+            <tr><td>Sentadilla goblet con mancuerna</td><td>4 x 10-12</td><td>90 seg</td><td class="alt">Sentadilla con mochila al pecho</td></tr>
+            <tr><td>Peso muerto rumano con mancuernas</td><td>4 x 10-12</td><td>90 seg</td><td class="alt">Buenos días con mochila cargada</td></tr>
+            <tr><td>Zancadas alternas con mancuernas</td><td>3 x 12 por pierna</td><td>75 seg</td><td class="alt">Zancadas estáticas sin peso</td></tr>
+            <tr><td>Hip thrust con mancuerna</td><td>3 x 12-15</td><td>75 seg</td><td class="alt">Puente de glúteo unilateral</td></tr>
+            <tr><td>Elevación de talones de pie</td><td>4 x 15-20</td><td>45 seg</td><td class="alt">Elevación de talones a una pierna</td></tr>
+            <tr><td>Plancha frontal</td><td>3 x 30-45 seg</td><td>45 seg</td><td class="alt">Plancha con rodillas apoyadas</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SUPERIOR -->
+      <div class="day-panel" data-day="4">
+        <div class="block-title"><span class="n">04</span><h3>Día 4 — Superior (volumen extra torso)</h3></div>
+        <table class="routine-table">
+          <thead><tr><th>Ejercicio</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa</th></tr></thead>
+          <tbody>
+            <tr><td>Remo con banda a dos manos</td><td>4 x 10-12</td><td>90 seg</td><td class="alt">Remo con mancuerna a un brazo</td></tr>
+            <tr><td>Flexiones estándar</td><td>4 x AMRAP (2 en reserva)</td><td>90 seg</td><td class="alt">Flexiones inclinadas sobre silla</td></tr>
+            <tr><td>Press militar con mancuernas</td><td>3 x 10-12</td><td>75 seg</td><td class="alt">Press pike</td></tr>
+            <tr><td>Elevaciones laterales con mancuernas</td><td>3 x 15</td><td>60 seg</td><td class="alt">Elevaciones laterales con banda</td></tr>
+            <tr><td>Curl de bíceps con mancuernas</td><td>3 x 12-15</td><td>60 seg</td><td class="alt">Curl con banda</td></tr>
+            <tr><td>Fondos en silla (tríceps)</td><td>3 x 10-15</td><td>60 seg</td><td class="alt">Extensión de tríceps sobre la cabeza</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- INFERIOR -->
+      <div class="day-panel" data-day="5">
+        <div class="block-title"><span class="n">05</span><h3>Día 5 — Inferior (volumen extra piernas y core)</h3></div>
+        <table class="routine-table">
+          <thead><tr><th>Ejercicio</th><th>Series x Reps</th><th>Descanso</th><th>Alternativa</th></tr></thead>
+          <tbody>
+            <tr><td>Sentadilla búlgara con mancuernas</td><td>4 x 10 por pierna</td><td>90 seg</td><td class="alt">Zancada estática con mochila</td></tr>
+            <tr><td>Peso muerto rumano a una pierna</td><td>3 x 10 por pierna</td><td>75 seg</td><td class="alt">Peso muerto rumano bipodal</td></tr>
+            <tr><td>Sentadilla sumo con mancuerna</td><td>3 x 12-15</td><td>75 seg</td><td class="alt">Sentadilla sumo con mochila</td></tr>
+            <tr><td>Puente de glúteo a una pierna</td><td>3 x 12-15 por lado</td><td>60 seg</td><td class="alt">Puente de glúteo bipodal con pausa</td></tr>
+            <tr><td>Elevaciones de piernas acostado</td><td>3 x 15</td><td>45 seg</td><td class="alt">Rodillas al pecho, ritmo controlado</td></tr>
+            <tr><td>Mountain climbers</td><td>3 x 30 seg</td><td>45 seg</td><td class="alt">Rodilla a codo alterna, ritmo lento</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="info-card">
+      <h4>Enfriamiento (3-5 min, después de cada día)</h4>
+      <ul>
+        <li>Estiramiento de pectoral en marco de puerta — 30 seg por lado</li>
+        <li>Estiramiento de isquiotibiales y cuádriceps — 30 seg por lado</li>
+        <li>Estiramiento de dorsal ancho — 30 seg</li>
+        <li>Respiración diafragmática — 1 min</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <h4>Notas para recomposición corporal</h4>
+      <ul>
+        <li>Con 5 días de entrenamiento el volumen es alto: cuidá especialmente el sueño (7-9 h) y la ingesta de proteína (1.6-2.2 g por kg de peso).</li>
+        <li>Si tres semanas seguidas sentís fatiga acumulada, tomá una semana de descarga: mismos ejercicios, 40-50% menos de series.</li>
+        <li>Rotá las alternativas de cada ejercicio cada 4-6 semanas para variar el estímulo y evitar el estancamiento.</li>
+        <li>La recomposición es lenta por definición: priorizá la consistencia semana a semana por encima de cambios bruscos de dieta o rutina.</li>
+      </ul>
+    </div>
+
+  </div>
 </main>
 
 <footer class="footer">
-    <div class="foot-links">
-        <a href="../index.html">Inicio</a>
-        <a href="rutinas.html">Entrenamiento</a>
-        <a href="../plan/plan.html">Plan</a>
-        <a href="../dieta/dieta.html">Dieta</a>
-    </div>
-    <p>Fitness Life © 2026 · Rutina de 5 días Híbrida Avanzada</p>
+  <p>© 2026 FITNESS LIFE // TODOS LOS DERECHOS RESERVADOS.</p>
+  <p class="tagmark">hecho a pulso 🖤</p>
 </footer>
 
+<script>
+  const tabs = document.querySelectorAll('.day-tab');
+  const panels = document.querySelectorAll('.day-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const day = tab.dataset.day;
+      tabs.forEach(t => t.classList.toggle('active', t === tab));
+      panels.forEach(p => p.classList.toggle('active', p.dataset.day === day));
+      window.scrollTo({ top: document.getElementById('dayTabs').offsetTop - 100, behavior: 'smooth' });
+    });
+  });
+</script>
+<script src="background.js"></script>
 </body>
 </html>
